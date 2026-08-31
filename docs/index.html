@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>けんさくくん - 高機能Excel検索ツール</title>
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts BIZ UDPGothic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'BIZ UDPGothic', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+            <div class="flex items-center space-x-3">
+                <div
+                    class="h-9 w-9 rounded-xl bg-gradient-to-tr from-blue-600 to-sky-400 p-1.5 shadow-md shadow-blue-500/20 flex items-center justify-center text-white font-bold text-lg">
+                    🔍</div>
+                <span class="text-xl font-bold tracking-tight text-slate-900">けんさくくん</span>
+                <span
+                    class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600 border border-slate-200">高機能Excel検索ツール</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#features" class="hover:text-blue-600 transition">特長・機能</a>
+                <a href="#specs" class="hover:text-blue-600 transition">動作環境</a>
+                <a href="#license" class="hover:text-blue-600 transition">ライセンス・試用</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="#download"
+                    class="rounded-full bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:bg-blue-700 transition-all hover:-translate-y-0.5">ダウンロード</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-blue-50/50 via-white to-slate-50 py-20 lg:py-28">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div
+                        class="inline-flex items-center space-x-2 rounded-full bg-blue-50 border border-blue-200/60 p-1 pr-3 text-xs font-medium text-blue-800">
+                        <span class="rounded-full bg-blue-600 px-2.5 py-0.5 text-white font-bold">個人開発 × AI駆動開発</span>
+                        <span>現場の泥臭い課題から生まれた実用ツール</span>
+                    </div>
+                    <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl leading-tight">
+                        大量の方眼紙・仕様書・業務Excelを、<br class="hidden sm:inline">
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">セルの見た目そのまま横断レビュー。</span>
+                    </h1>
+                    <p class="text-base sm:text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto lg:mx-0">
+                        セル結合、背景色、文字色、取り消し線、図形やコメント内のテキストまで限界再現。システム開発の影響調査から、経理・総務の大規模な帳票照合まで、日々のExcel確認作業を根本から効率化します。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#download"
+                            class="flex items-center justify-center space-x-2 rounded-xl bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 transition-all hover:-translate-y-0.5">
+                            <i data-lucide="download" class="w-5 h-5"></i>
+                            <span>けんさくくん をダウンロード</span>
+                        </a>
+                        <a href="#license"
+                            class="flex items-center justify-center space-x-2 rounded-xl bg-white border border-slate-300 px-7 py-3.5 text-base font-bold text-slate-700 hover:bg-slate-50 transition-all">
+                            <span>ライセンス案内（Vector販売）</span>
+                        </a>
+                    </div>
+                    <p class="text-xs text-slate-400">※自己完結型EXE（インストーラー不要／.NETランタイム同梱）</p>
+                </div>
+
+                <!-- App Mockup / Video Demo Preview Area -->
+                <div class="lg:col-span-5 relative">
+                    <div
+                        class="relative mx-auto max-w-[520px] rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-slate-900/5">
+                        <div
+                            class="rounded-xl border border-slate-100 overflow-hidden bg-slate-900 aspect-[16/10] relative group flex items-center justify-center">
+                            <!-- 実際のデモ動画埋め込み、またはアニメーションGIF領域 -->
+                            <div
+                                class="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center text-center p-6">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 mb-3 group-hover:scale-110 transition-transform">
+                                    <i data-lucide="play" class="w-7 h-7 fill-current ml-0.5"></i>
+                                </div>
+                                <span class="text-white font-bold text-base mb-1">実際の操作デモを見る</span>
+                                <p class="text-xs text-slate-400 max-w-xs">
+                                    「Enter連打で該当セルへフォーカス起動」「書式再現」「周辺セルの巻き込みエクスポート」の様子を確認できます</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Point Section -->
+    <section class="py-16 border-y border-slate-200 bg-slate-100/50">
+        <div class="mx-auto max-w-5xl px-6 text-center">
+            <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">こんな「Excel探しのストレス」を抱えていませんか？</h2>
+            <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 text-left">
+                <div class="flex space-x-4 rounded-xl bg-white p-5 shadow-sm border border-slate-200/70">
+                    <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-50 text-rose-600">
+                        <i data-lucide="folder-search" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">数十〜数百のファイルを1つずつ開く手間</h3>
+                        <p class="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            過去の設計書や帳票フォルダから、該当するキーワードを手動のCtrl+Fで1枚ずつめくっていく膨大な時間。</p>
+                    </div>
+                </div>
+                <div class="flex space-x-4 rounded-xl bg-white p-5 shadow-sm border border-slate-200/70">
+                    <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-50 text-rose-600">
+                        <i data-lucide="eye-off" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">結合セル・隠し文字・図形内テキストの見落とし</h3>
+                        <p class="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            一般的な全文検索ではヒットしにくい、吹き出しや図形、コメント、非表示列に埋もれた重要ワードの見落とし。</p>
+                    </div>
+                </div>
+                <div class="flex space-x-4 rounded-xl bg-white p-5 shadow-sm border border-slate-200/70">
+                    <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-50 text-rose-600">
+                        <i data-lucide="filter-x" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">検索結果のノイズが多くて確認が進まない</h3>
+                        <p class="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            非表示シートや作業用の一時セルまで大量にヒットしてしまい、本当に確認したい項目へ辿り着けない。</p>
+                    </div>
+                </div>
+                <div class="flex space-x-4 rounded-xl bg-white p-5 shadow-sm border border-slate-200/70">
+                    <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-50 text-rose-600">
+                        <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">破損ファイルや暗号化ファイルでの処理中断</h3>
+                        <p class="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            途中に開けないファイルが1つ混ざっているだけでツール全体が止まり、どれが原因か探すだけで一苦労。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl leading-snug">
+                    現場のわがままを具体化した、<br>圧倒的プロ仕様機能
+                </h2>
+                <p class="text-sm sm:text-base text-slate-600">ただ文字を引っかけるだけでなく、「探した後の確認・レビュー・再利用」を極限まで快適にするための専用設計です。
+                </p>
+            </div>
+
+            <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- F1: 背景色・文字色・書式再現 -->
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                            data-lucide="palette" class="w-5 h-5"></i></div>
+                    <h3 class="mt-4 text-base font-bold text-slate-900">背景色・文字色・書式まで再現</h3>
+                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        ヒットしたセルの背景色や文字色、取消線、パターン塗りを一覧上で忠実に再現。セルの意味合いやステータスを画面越しに直感把握できます。</p>
+                    <div
+                        class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold cursor-pointer hover:underline">
+                        <span>動作イメージを確認</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- F2: Enter連打フォーカス -->
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                            data-lucide="corner-down-left" class="w-5 h-5"></i></div>
+                    <h3 class="mt-4 text-base font-bold text-slate-900">[Enter]で該当セルへ直接フォーカス起動</h3>
+                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        一覧で行を選んで[Enter]を押すだけで実Excelが開き、該当セルへ即座にフォーカス。起動済マーク（✔）も付き、次行へスムーズに作業を進められます。</p>
+                    <div
+                        class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold cursor-pointer hover:underline">
+                        <span>動作イメージを確認</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- F3: 周辺セル拡張エクスポート -->
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                            data-lucide="table-cells-split" class="w-5 h-5"></i></div>
+                    <h3 class="mt-4 text-base font-bold text-slate-900">「周辺セル」を巻き込むExcel再出力</h3>
+                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        ヒットしたセルだけでなく、上下左右の周辺セルも含めて構造を保持したままExcelへ再出力可能（RANGE機能）。横断レビューの資料作成が一瞬で完了します。</p>
+                    <div
+                        class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold cursor-pointer hover:underline">
+                        <span>動作イメージを確認</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- F4: オートフィルタライクな絞り込み -->
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                            data-lucide="filter" class="w-5 h-5"></i></div>
+                    <h3 class="mt-4 text-base font-bold text-slate-900">Excel感覚の強力なノイズ除去フィルタ</h3>
+                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        検索結果に対して「隠しセル」「非表示シート」「色別」「日付別」のフィルタをワンクリック適用。膨大なヒット件数から必要な情報だけを素早く絞り込めます。</p>
+                </div>
+
+                <!-- F5: 柔軟な検索オプション -->
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                            data-lucide="sliders-horizontal" class="w-5 h-5"></i></div>
+                    <h3 class="mt-4 text-base font-bold text-slate-900">行跨ぎ・同シートAND・図形内検索</h3>
+                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        セル単体だけでなく「行全体でのマッチング」、同シート内での複数キーワード必須条件、ワイルドカード検索、コメント・図形内テキストの包含指定に対応。</p>
+                </div>
+
+                <!-- F6: エラー耐性とログ連携 -->
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                            data-lucide="file-text" class="w-5 h-5"></i></div>
+                    <h3 class="mt-4 text-base font-bold text-slate-900">壊れたファイルがあっても止まらない堅牢性</h3>
+                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        破損ファイルやパスワード付きExcelがあっても検索プロセスを中断せず安全にスキップ。実行ログから問題のファイルやフォルダを直接開いて確認できます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs Section -->
+    <section id="specs" class="py-16 border-t border-slate-200 bg-slate-50">
+        <div class="mx-auto max-w-4xl px-6">
+            <h2 class="text-2xl font-bold text-slate-900 text-center mb-8">製品仕様・動作環境</h2>
+            <div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                    <tr class="border-b border-slate-200/70">
+                        <th class="px-5 py-3.5 font-bold text-slate-900 bg-slate-50/50 w-1/3">対応OS</th>
+                        <td class="px-5 py-3.5 text-slate-600">Windows 10 / Windows 11（64bit環境推奨）</td>
+                    </tr>
+                    <tr class="border-b border-slate-200/70">
+                        <th class="px-5 py-3.5 font-bold text-slate-900 bg-slate-50/50">ランタイム依存</th>
+                        <td class="px-5 py-3.5 text-slate-600"><strong>なし</strong>（.NET 10
+                            ランタイム同梱の自己完結型EXE。別途フレームワークの導入は不要です）</td>
+                    </tr>
+                    <tr class="border-b border-slate-200/70">
+                        <th class="px-5 py-3.5 font-bold text-slate-900 bg-slate-50/50">対象ファイル形式</th>
+                        <td class="px-5 py-3.5 text-slate-600">Microsoft Excel 形式 (.xlsx, .xlsm などの OpenXML 準拠ブック)</td>
+                    </tr>
+                    <tr>
+                        <th class="px-5 py-3.5 font-bold text-slate-900 bg-slate-50/50">導入方法</th>
+                        <td class="px-5 py-3.5 text-slate-600">
+                            インストーラー不要。ZIPを解凍して実行ファイル（kensaku-kun.exe）を起動するだけで動作します。レジストリも汚しません。</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- License Section -->
+    <section id="license" class="py-20 bg-white border-t border-slate-200">
+        <div class="mx-auto max-w-5xl px-6 lg:px-8">
+            <div class="mx-auto max-w-3xl text-center space-y-3">
+                <h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">ライセンス・試用について</h2>
+                <p class="text-sm sm:text-base text-slate-600">「まずは現場のExcelで試す」ことができるよう、同一のアーカイブでそのまま試用可能です。</p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 items-stretch max-w-4xl mx-auto">
+                <!-- 試用利用について -->
+                <div
+                    class="flex flex-col justify-between rounded-xl border border-slate-200 p-7 bg-slate-50/40 shadow-sm">
+                    <div>
+                        <div
+                            class="inline-flex items-center rounded-full bg-slate-200 px-3 py-0.5 text-xs font-bold text-slate-700 mb-3">
+                            ダウンロード版</div>
+                        <h3 class="text-lg font-bold text-slate-900">初回1ヶ月のフル試用</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            ダウンロードしたアーカイブは、初回起動から1ヶ月間フル機能をお試しいただけます。
+                        </p>
+                        <div
+                            class="mt-5 rounded-lg bg-white p-4 border border-slate-200 text-xs text-slate-600 space-y-2">
+                            <p class="font-bold text-slate-800">💡 試用期間終了後の動作について</p>
+                            <p>試用期間が終了しても、検索機能自体のロックや強制終了は行いません。引き続き検索はお使いいただけますが、以下の軽微な制限・通知が入ります：</p>
+                            <ul class="list-disc list-inside space-y-1 text-slate-500 pl-1">
+                                <li>起動時およびExcel連携時の案内ダイアログ表示</li>
+                                <li>Excelエクスポート時の背景透かしの挿入</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <a href="#download"
+                            class="flex items-center justify-center rounded-xl bg-slate-800 py-3 text-sm font-bold text-white hover:bg-slate-700 transition">ダウンロードへ進む</a>
+                    </div>
+                </div>
+
+                <!-- 商用・製品版ライセンス -->
+                <div
+                    class="flex flex-col justify-between rounded-xl border-2 border-blue-600 p-7 bg-blue-50/10 shadow-md relative">
+                    <div
+                        class="absolute -top-3.5 left-6 rounded-full bg-blue-600 px-3 py-0.5 text-xs font-bold text-white shadow-sm">
+                        製品版</div>
+                    <div>
+                        <div
+                            class="inline-flex items-center rounded-full bg-blue-100 text-blue-800 px-3 py-0.5 text-xs font-bold mb-3">
+                            Vectorにて販売予定</div>
+                        <h3 class="text-lg font-bold text-slate-900">永久ライセンス</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            業務利用、およびすべての案内表示・透かしの解除に対応する買い切りライセンスです。
+                        </p>
+                        <div class="mt-5 space-y-2 text-xs sm:text-sm text-slate-700">
+                            <div class="flex items-center"><i data-lucide="check"
+                                    class="w-4 h-4 text-blue-600 mr-2 shrink-0"></i>すべての試用通知・ダイアログの非表示化</div>
+                            <div class="flex items-center"><i data-lucide="check"
+                                    class="w-4 h-4 text-blue-600 mr-2 shrink-0"></i>Excelエクスポート時の背景透かしの完全解除</div>
+                            <div class="flex items-center"><i data-lucide="check"
+                                    class="w-4 h-4 text-blue-600 mr-2 shrink-0"></i>同一メジャーバージョンの無償アップデート</div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <a href="#vector-link-placeholder"
+                            class="flex items-center justify-center rounded-xl bg-blue-600 py-3 text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:bg-blue-700 transition">Vector製品ページへ（準備中）</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download"
+        class="bg-gradient-to-tr from-slate-900 via-slate-950 to-indigo-950 py-20 text-center text-white relative overflow-hidden">
+        <div class="relative mx-auto max-w-3xl px-6 space-y-6">
+            <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">テスト利用したExcelをまずはお試しください。<br>
+			そして、業務のExcelを検索してみてください。</h2>
+            <p class="text-sm sm:text-base text-slate-300 max-w-xl mx-auto">
+              「けんさくくん」はZIP解凍ですぐに起動できます。まずはテスト時に利用した大量のテストExcelを検索対象にドラッグして、その一覧性と連携感を体感してください。
+          </p>
+
+            <!-- メインダウンロードボタン -->
+            <div class="pt-2">
+                <a href="./release/kensaku-kun-v1.0.0.zip"
+                    class="inline-flex items-center space-x-3 rounded-2xl bg-gradient-to-r from-blue-500 to-sky-400 px-8 py-4 text-base sm:text-lg font-bold text-white shadow-xl shadow-blue-500/30 hover:from-blue-600 hover:to-sky-400 transition-all hover:-translate-y-0.5">
+                    <i data-lucide="download" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span>けんさくくん をダウンロード (.zip / 約35MB)</span>
+                </a>
+            </div>
+            <p class="text-xs text-slate-400">Windows 10 / 11 対応 ｜ .NET 10 梱包済（単体起動） ｜ 64bit</p>
+
+            <!-- 動作確認用 サンプルExcelデータ ダウンロード領域 -->
+            <div class="mt-10 pt-8 border-t border-slate-800">
+                <p class="text-xs font-bold text-slate-400 mb-4 tracking-wider uppercase">▼ 動作検証用 サンプルExcelデータセット</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="./sample-data/test_excel_200.zip"
+                        class="inline-flex items-center space-x-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 px-4 py-2.5 text-xs text-slate-200 transition hover:border-slate-500">
+                        <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-400"></i>
+                        <span>テストExcel × 200件 <span class="text-slate-400 font-mono">(11MB)</span></span>
+                    </a>
+                    <a href="./sample-data/test_excel_600.zip"
+                        class="inline-flex items-center space-x-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 px-4 py-2.5 text-xs text-slate-200 transition hover:border-slate-500">
+                        <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-400"></i>
+                        <span>テストExcel × 600件 <span class="text-slate-400 font-mono">(43MB)</span></span>
+                    </a>
+                    <a href="./sample-data/test_excel_1000.zip"
+                        class="inline-flex items-center space-x-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 px-4 py-2.5 text-xs text-slate-200 transition hover:border-slate-500">
+                        <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-400"></i>
+                        <span>テストExcel × 2000件 <span class="text-slate-400 font-mono">(188MB)</span></span>
+                    </a>
+                </div>
+            </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 text-slate-500 py-10 text-xs">
+        <div class="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="font-bold text-slate-300 text-sm mb-0.5">けんさくくん</p>
+                <p>© 2026 tossy.apps All Rights Reserved.</p>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <a href="#features" class="hover:text-slate-300 transition">特長・機能</a>
+                <a href="#specs" class="hover:text-slate-300 transition">動作環境</a>
+                <a href="#license" class="hover:text-slate-300 transition">ライセンス条項</a>
+                <a href="#download" class="hover:text-slate-300 transition">ダウンロード</a>
+                <!-- 目立たない来訪者／DLカウンタ埋め込み領域 -->
+                <span class="text-slate-700 font-mono select-none" title="Counter">
+                    <!-- カウンタスクリプト（FC2/忍者等のタグ）をここに配置可能 -->
+                    [#001048]
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

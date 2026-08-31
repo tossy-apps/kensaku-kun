@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,
+      initial-scale=1.0">
+  <title>けんさくくん ユーザーズマニュアル</title>
+  <link rel="icon" type="image/png" href="help/pics/favicon.png">
+  <style>
+    /* MkDocs Material風 オフラインCSS */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Meiryo", sans-serif;
+      display: flex;
+      height: 100vh;
+      color: #333;
+    }
+
+    /* 左サイドバー */
+    nav {
+      width: 260px;
+      min-width: 260px;
+      background: #f8f9fa;
+      border-right: 1px solid #e0e0e0;
+      padding: 30px 15px;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    nav h1 {
+      font-size: 1.3em;
+      color: #311b92;
+      margin-top: 0;
+      padding-left: 5px;
+      border: none;
+      padding-bottom: 0;
+    }
+
+    nav h2 {
+      font-size: 1.1em;
+      color: #512da8;
+      margin-top: 10px;
+      padding-left: 5px;
+      border: none;
+    }
+
+    nav ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    nav ul li {
+      margin-bottom: 4px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #444;
+      font-size: 0.95em;
+      display: block;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: #e3f2fd;
+      color: #1976d2;
+      font-weight: bold;
+    }
+
+    /* メインコンテンツ */
+    main {
+      flex: 1;
+      padding: 40px 60px;
+      overflow-y: auto;
+      background: #ffffff;
+      scroll-behavior: smooth;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #311b92;
+      border-bottom: 2px solid #ede7f6;
+      padding-bottom: 10px;
+      margin-top: 0;
+      font-size: 2.2em;
+    }
+
+    h2 {
+      color: #4527a0;
+      margin-top: 50px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+      font-size: 1.5em;
+    }
+
+    h3 {
+      color: #1976d2;
+      margin-top: 30px;
+      font-size: 1.2em;
+    }
+
+    p,
+    li {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 注意・豆知識スタイル */
+    .note {
+      background-color: #fff3e0;
+      border-left: 4px solid #ff9800;
+      padding: 12px 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .info {
+      background-color: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      padding: 12px 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* テーブルスタイル */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 15px 0 30px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #e0e0e0;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* 中央寄せセル用クラス */
+    .td-center {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    /* 画像配置用レイアウト ＆ ホバー拡大機能 */
+    .img-box {
+      margin: 15px 0 25px 0;
+      border: 1px solid #ddd;
+      padding: 8px;
+      background: #fafafa;
+      border-radius: 4px;
+      overflow: hidden;
+      /* 拡大時に枠からはみ出さないようにガード */
+    }
+
+    .img-box img,
+    .img-flex .img-sub img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+    }
+
+    .img-box img:hover,
+    .img-flex .img-sub img:hover {
+      opacity: 0.85;
+    }
+
+    .img-flex {
+      display: flex;
+      gap: 15px;
+      margin: 15px 0 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .img-flex .img-sub {
+      flex: 1;
+      min-width: 200px;
+      border: 1px solid #ddd;
+      padding: 6px;
+      background: #fafafa;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .img-caption {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    /* 装飾タグ */
+    code {
+      background-color: #f1f1f1;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: Consolas, monospace;
+      color: #c2185b;
+    }
+
+    /* ショートカット一覧用レイアウト（X軸をきれいに揃える） */
+    .shortcut-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .shortcut-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .shortcut-key {
+      width: 180px;
+      /* X軸を固定化して揃える */
+      flex-shrink: 0;
+    }
+
+    kbd {
+      background-color: #fafafa;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+      color: #333;
+      display: inline-block;
+      font-size: 0.85em;
+      font-weight: 700;
+      line-height: 1;
+      padding: 3px 6px;
+      white-space: nowrap;
+    }
+
+    /* Lightbox (Modal) */
+    .lightbox {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1000;
+      /* Sit on top */
+      padding-top: 60px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.9);
+      /* Black w/ opacity */
+      cursor: zoom-out;
+    }
+
+    /* Modal Content (image) */
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90vh;
+      animation-name: zoom;
+      animation-duration: 0.4s;
+    }
+
+    @keyframes zoom {
+      from {
+        transform: scale(0)
+      }
+
+      to {
+        transform: scale(1)
+      }
+    }
+
+    /* The Close Button */
+    .close-lightbox {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close-lightbox:hover,
+    .close-lightbox:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* スライドショーコンテナ（紙芝居用） */
+    .slideshow-container {
+      position: relative;
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 15px 0;
+      border: 1px solid #ddd;
+      padding: 8px;
+      background: #fafafa;
+      border-radius: 4px;
+    }
+
+    .slideshow-container img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .slideshow-slide {
+      display: none;
+      animation: fade 0.8s;
+    }
+
+    .slideshow-slide.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0.4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* JSハイライト用の四角枠 */
+    .highlight-box {
+      position: absolute;
+      border: 3px solid red;
+      border-radius: 4px;
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+      pointer-events: none;
+      /* クリックを邪魔しない */
+      animation: pulse 1.5s infinite;
+      display: none;
+      /* デフォルト非表示、JSで制御 */
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* トリミング用 (Point 14) */
+    .crop-circle {
+      width: 32px;
+      height: 32px;
+      object-fit: none;
+      object-position: right center;
+      border-radius: 50%;
+      vertical-align: middle;
+      border: 1px solid #ccc;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h1>けんさくくん</h1>
+    <h2>マニュアル</h2>
+    <ul id="nav-list">
+      <li><a href="#sec-1">1. はじめに・インストール</a></li>
+      <li><a href="#sec-2">2. 基本操作</a></li>
+      <li><a href="#sec-3">3. 高度な検索オプション</a></li>
+      <li><a href="#sec-4">4. 絞り込み検索・フィルター</a></li>
+      <li><a href="#sec-5">5. 表示列のカスタマイズ</a></li>
+      <li><a href="#shortcuts">6. ショートカット操作</a></li>
+      <li><a href="#tips">7. 便利な活用Tips</a></li>
+      <li><a href="#limitations">8. 制限事項と仕様詳細</a></li>
+      <li><a href="#messages">9. メッセージ・ログ一覧</a></li>
+      <li><a href="#license">10. ライセンス登録と試用期間</a></li>
+    </ul>
+  </nav>
+  <main>
+    <div class="content">
+      <h1 id="intro"> ★★★ けんさくくん　高機能Excel検索ツール ★★★ </h1>
+      <p>本ツールは、大量のExcelファイルから必要な情報を「一瞬」で探し出すための、高機能検索ツールです。<br>
+        フォルダをドラッグ＆ドロップして対象ワードを入力するだけで、目的のセルを素早く見つけ出し、<br>
+        ワンクリックで該当箇所を開くことができます。<br>
+        <br>
+        さらに、検索したセルの周辺もあわせてExcel出力したり、行単位での検索など、さまざまなユースケースでの<br>
+        利用を想定した機能を備えています。
+      </p>
+      <div class="info"> <strong>💡 このソフトウェアについて</strong>
+        <p style="margin: 5px 0 0 0;">
+          ・zipファイルを解凍し、任意のディレクトリに配置するだけでインストール完了となります。<br>
+          　付属の「スタートメニューへの登録.vbs」を実行してスタートメニューに登録することもできます。<br>
+          ・本ソフトウェアは、「%userprofile%\AppData\Local\けんさくくん」にのみ設定等の情報を格納しま
+          す。<br>
+          ・本ソフトウェアは、Windowsレジストリを利用しません。<br>
+          ・本ソフトウェアは、外部API通信やデータ送信など、一切のネットワークアクセスを行いません。<br>
+          ・検索対象のフォルダやファイルへのアクセスは、ユーザー様自身が持つアクセス権限の範囲内でのみ行われます。 </p>
+      </div>
+      <div class="note"> <strong>⚠️ 注意事項</strong>
+        <p style="margin: 5px 0 0 0;">
+          ・SharePoint等、クラウド上のExcelを直接URL指定で検索する機能は持っていません。<br>
+          　OneDriveの同期機能などを利用し、エクスプローラーからローカルファイルや<br>
+          　ネットワークドライブとして、扱える状態にする必要があります。<br>
+          ・本ソフトウェアは、その品質や機能について保証するものではありません。<br>
+          　また、本ソフトウェアの使用によって生じた損害について、開発者は一切の責任を負いません。<br>
+          ・本ソフトウェアはシェアウェアとして公開します。継続的な利用には、ライセンス登録が必要です。 </p>
+      </div>
+      <h2 id="sec-1">1. はじめに・インストール</h2>
+      <p>「けんさくくん」は、大量のExcelファイルから必要な情報を爆速で探し出すためのプロフェッショナル向け検索ツールです。<br>
+        インストーラー不要で、配布されたZipファイルを解凍し、任意のディレクトリに配置するだけで動作します。</p>
+      <h3>【動画】基本的な使い方</h3>
+      <div class="img-box" style="padding: 0; background: #000;"> <video src="help/movie/けんさくくん－基本動作.mp4"
+          controls="controls" autoplay="autoplay" muted="muted" loop="" style="max-width:
+            100%; display: block;"></video> </div>
+      <div class="img-box"> <img src="help/pics/91_kensakukun_directory_kouzo.PNG" alt="ディレクトリ構造"> <span
+          class="img-caption">【図】ディレクトリ構造。zipを解
+          凍して「けんさくくん.exe」を実行します。</span> </div>
+      <div class="info"> <strong>同梱されているVBSツールについて</strong><br>
+        <ul>
+          <li><strong>スタートメニューへの登録.vbs</strong>：けんさくくんへのショートカットをスタートメ
+            ニューに追加します。</li>
+          <li><strong>システム設定を開く.vbs</strong>：ツールを起動せずにシステム設定を変更できます。</li>
+          <li><strong>tools/設定初期化.vbs</strong>：ライセンス登録を維持したまま、検索履歴や動作設
+          定などの情報を<br>すべて初期状態にリセットします。</li>
+          <li><strong>tools/アンインストール.vbs</strong>：本体フォルダや設定ファイルを安全に一括削
+            除します。<br>			
+			<span style="color:red">※エクスプローラー等で本体フォルダを開いていると削除できません。<br>
+              　スタートメニューから実行されることを想定したツールです。</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="note-box" style="border-left: 4px solid #f57c00; background: #fff3e0; padding: 12px 16px; margin: 16px 0;">
+        <strong style="color: #e65100;">⚠️ 初回起動時に「WindowsによってPCが保護されました」と表示される場合</strong>
+        <p style="margin: 8px 0 0 0; font-size: 0.9em; line-height: 1.6;">
+          本アプリは個人開発ソフトウェアのため、コードサイニング（電子署名）を行っておりません。<br>
+          初回起動時にWindows SmartScreenの青い警告画面が表示された場合は、以下の手順で起動してください。
+        </p>
+        <ol style="margin: 8px 0 0 20px; padding: 0; font-size: 0.9em; line-height: 1.6;">
+          <li>画面内の<strong>「詳細情報」</strong>リンクをクリックします。</li>
+          <li>表示された<strong>「実行」</strong>ボタンをクリックします。</li>
+        </ol>
+        <p style="margin: 8px 0 0 0; font-size: 0.85em; color: #666;">
+          ※本ツールは外部通信を一切行わない完全オフライン設計です。PC内のデータを外部送信することはございません。
+        </p>
+      </div>
+
+      <h2 id="sec-2">2. 基本操作</h2>
+      <h3>対象指定と検索実行</h3>
+      <p>画面左側の「検索対象」にフォルダやファイルリストを指定し、検索キーワードを入力して「検索実行」を押します。<br>
+        検索対象キーワードは、改行で「OR」検索となり、すべてのメッセージIDを検索する、<br>
+        といった数100個の検索条件の指定もできます。<br>
+        入力欄は、検索対象キーワード下部のグレーの線を下方向へドラッグすることで入力欄を拡げることもできます。<br>
+      </p>
+      <div class="img-box" id="img-init" style="position: relative;
+          display: inline-block;"> <img src="help/pics/02_init.png" alt="起動直後の画面">
+        <!-- 検索対象の赤枠 -->
+        <div class="highlight-box" style="top: 10%; left: 12%; width:
+            50%; height: 6%; border-color: red;"></div>
+        <div style="position: absolute; top: 40px; left: 50px; color: red; font-weight: bold; font-size: 0.9em; background: transparent; padding: 2px;">① 検索対象（フォルダ等）を指定</div>
+        <!-- 検索条件の赤枠 -->
+        <div class="highlight-box" style="top: 24%; left: 24%; width:
+            44%; height: 16%; border-color: red;"></div>
+        <div style="position: absolute; top: 72px; left: 50px; color: red; font-weight: bold; font-size: 0.9em; background: transparent; padding: 2px;">② 検索キーワード入力</div>
+        <span class="img-caption">【図】メイン画面。フォルダをドラッグ＆ドロップで対象を指定可能です。</span>
+        <svg class="red-line" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;">
+          <line x1="2%" y1="20%" x2="98%" y2="20%" stroke="red" stroke-width="2"/>
+        </svg>
+        <div style="position: absolute; top: 108px; left: 428px; transform: translateX(-50%); color: red; font-weight: bold; font-size: 0.7em; background: rgba(255,255,255,0); padding: 2px;">ドラッグして拡げられます</div>
+      </div>
+      <div class="img-box"> <img src="help/pics/01_basic.png" alt="検索結果"> <span
+          class="img-caption">【図】検索実行後。ヒットしたファイルとセル内容が一覧で表示されます。</span> </div>
+      <h3>お気に入り検索対象の登録と切り替え</h3>
+      <p>よく検索するディレクトリは「お気に入り」として登録しておくことができます。<br>
+        検索対象の右側にある▼ボタンからワンタッチで切り替えが可能です。</p>
+      <div class="img-box"> 
+        <img src="help/pics/05_1_search_pane.png" alt="検索対象">
+        <span class="img-caption">検索対象の右のお気に入り追加ボタンで、簡単にお気に入りに追加ができます。<br>
+          順番の変更や削除をしたい場合、<strong>お気に入りメンテ</strong>ボタンをクリックします。
+        </span>
+        <p><p>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <img src="help/pics/05_sort_dialog_before.png" alt="お気に入り登録とメンテナンス" style="max-width:45%; height:auto;">
+          <img src="help/pics/05_sort_dialog_after.png" alt="お気に入り登録とメンテナンス（後）" style="max-width:45%; height:auto;">
+        </div>
+        <span class="img-caption">お気に入りメンテナンス画面で、順番の変更などを行うことができます。</span>
+      </div>
+      <h3>検索結果一覧の見方と操作</h3>
+      <p>トグルボタンで、セルの高さを固定して見やすくしたり、自動調整したりできます。また、ページネーションでサクサクめくれます。</p>
+      <!-- Point 5: Toggle button explanation in one cell -->
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 150px;" class="td-center">トグルボタン状態</th>
+            <th>表示例と意味</th>
+          </tr>
+          <tr>
+            <td class="td-center"> <img src="help/pics/59_part_1_height_fixed.PNG" style="margin-bottom:10px;"><img
+                src="help/pics/59_part_2_height_no_fixed.PNG"><br>
+            </td>
+            <td> <strong>行の高さ固定ON（デフォルト）：</strong>行の高さが一定になり、一覧性が高くなり
+              ます。<br>
+              <strong>行の高さ固定OFF</strong>　　　　　　　<b>：</b>長いテキストも折り返して全内容
+              が表示されます。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>一覧からファイルを開く</h3>
+      <p>一覧をダブルクリックするか、<kbd>Enter</kbd>キーを押すことで、該当ファイルが自動的に開き対象セルにフォーカ
+        スします。</p>
+      <!-- Point 6: Slide show for file open -->
+      <div class="img-flex" style="flex-direction: column;
+          align-items: center;">
+        <div class="img-sub" style="margin-bottom: 20px;"> <img src="help/pics/14_list_sign_open-ng_before.png"
+            alt="開く前" style="max-width: 100%;"> <span class="img-caption">①
+            ファイルを開こうとする前の状態</span> </div>
+        <div class="img-sub" style="margin-bottom: 20px;"> <img src="help/pics/14_list_sign_opened.png" alt="正常に開けた"
+            style="max-width: 100%;"> <span class="img-caption">②
+            正常に開けた場合、一覧に「レ」が付きます</span> </div>
+        <div class="img-sub" style="margin-bottom: 20px;"> <img src="help/pics/14_excel_open_focused.png" alt="フォーカス"
+            style="max-width: 100%;"> <span class="img-caption">③
+            Excelが開いて、対象セルが自動フォーカスされます</span></div>
+        <div class="img-sub"> <img src="help/pics/14_list_sign_open-ng_after.png" alt="エラー" style="max-width: 100%;">
+          <span class="img-caption">④
+            エラー時（ファイルがない等）は「×」に</span> </div>
+      </div>
+      <h2 id="sec-3">3. 高度な検索オプション（詳細条件）</h2>
+      <p>検索精度を高めるため、各種トグルやプルダウンで条件を制御できます。</p>
+      <!-- Point 7: Advanced options in table -->
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 25%;" class="td-center">トグル・プルダウン</th>
+            <th>表示例と意味</th>
+          </tr>
+          <tr>
+            <td class="td-center"> <img src="help/pics/09_pulldown_char_type.png"><br>
+            </td>
+            <td> <strong>文字種の区別</strong><br>
+              大文字・小文字、全角・半角を厳密に区別して検索するかどうかを指定します。 </td>
+          </tr>
+          <tr>
+            <td class="td-center"> <img src="help/pics/51_1_part_comment_on.PNG" style="margin-bottom:10px;"><br>
+              <img src="help/pics/51_1_part_comment_off.PNG"><br>
+            </td>
+            <td> <strong>コメント・図形を含む</strong><br>
+              通常のテキストに加え、付箋（コメント）や図形オブジェクト内の文字も検索対象に含めるかを切り替えます。 </td>
+          </tr>
+          <tr>
+            <td class="td-center"> <img src="help/pics/53_1_part_match_part.PNG" style="margin-bottom:10px;"><br>
+              <img src="help/pics/53_2_part_match_full.PNG"><br>
+            </td>
+            <td> ・<strong>部分一致：</strong> 入力したキーワードが<b><span style="color: #c2185b;">セル</span></b><b><span
+                  style="color: #c2185b;">またはセルを結合した行※</span></b>に<b>含
+                まれていれば</b>ヒットします。（※前後にワイルドカード `*`
+              をつけても意味がありませんが、単語の途中に `*` を挟む場合は有効です）<br>
+              ・<strong>完全一致：</strong> <b><span style="color:
+                    #c2185b;">セル</span></b><b><span style="color:
+                    #c2185b;">またはセルを結合した行※</span></b>の内容とキーワードが<b>完全に一致</b>す
+              る場合にヒットします。ワイルドカード `*` を前後に応用することで、前方一致や後方一致を実現できます。<br>
+              <span style="color: #c2185b;">※下で「行検索」を指定した場合は、「結合した行」で部
+                分一致または、完全一致で検索します。</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-center"> <img src="help/pics/52_1_part_search_cell.PNG" style="margin-bottom:10px;"><br>
+              <img src="help/pics/52_2_part_search_line.PNG"><br>
+            </td>
+            <td> <strong>検索対象の単位</strong><br>
+              ・<strong>セル検索：</strong> 1つのセルの中で検索が完結します。<br>
+              ・<strong>行検索：</strong> 1行分の全セルのテキストを連結した文字列で検索を行います。<br>
+              <span style="color: #c2185b;">　※例えばA列に「機能名」、B列に「検索処理」とある
+                場合、「機能名検索処理」で<br>
+                　　ヒットさせることができます。</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 id="sec-4">4. 絞り込み検索・各種フィルター</h2>
+      <!-- Point 8: Detail search dialog exactly mapping XAML -->
+      <h3>列フィルター（文字・日付・シートなど）</h3>
+      <p>検索結果の一覧の見出し（列ヘッダ）にある▼ボタンをクリックすると、Excelと同じようなフィルター機能を使って結果をさらに
+        絞り込むことができます。</p>
+      <div class="img-flex">
+        <div class="img-sub" align="center"> <img src="help/pics/60_1_filter_column_for_text_ex-filter.PNG"
+            alt="テキストフィルタ"> <span class="img-caption">テキストフィルタ（特定の文字を
+            含む/含まないなど）</span> </div>
+        <div class="img-sub" align="center"> <img src="help/pics/60_2_filter_column_for_update_date.PNG" alt="日付フィルタ">
+          <span class="img-caption">更新日時での絞り込み</span>
+        </div>
+      </div>
+      <div class="img-flex">
+        <div class="img-sub" align="center"> <img src="help/pics/60_3_filter_column_for_sheet.PNG" alt="シートフィルタ"> <span
+            class="img-caption">シート色による絞り込み</span>
+        </div>
+        <div class="img-sub" align="center"><img src="help/pics/60_7_filter_column_for_zokusei.PNG" alt="" width="184"
+            height="334"><span class="img-caption">検索したセルの
+            状態による高度なフィルタ（セルの番地）</span> </div>
+      </div>
+      <div class="img-flex">
+        <div class="img-sub" align="center"> <img src="help/pics/60_4_filter_column_for_cell.PNG" alt="シートフィルタ"> <span
+            class="img-caption">セルの値　文字のフィルター</span>
+        </div>
+        <div class="img-sub" align="center"><img src="help/pics/60_8_filter_column_for_zokusei.PNG" alt="" width="250"
+            height="331"><span class="img-caption">セルの値　背景
+            色のフィルター</span> </div>
+        <div class="img-sub" align="center"><img src="help/pics/60_6_filter_column_for_cell.PNG" alt="" width="250"
+            height="332"><span class="img-caption">セルの値　高度
+            な文字のスタイルのフィルター</span> </div>
+      </div>
+      <h3>詳細検索条件ダイアログ</h3>
+      <p>画面中央の「詳細検索条件」から、さらに細かい複合条件を指定できます。<br>
+        こちらも改行で入力することで、「OR」検索となります。また、「除外」で「含まない」条件も指定できます。</p>
+      <div class="img-box" style="display: block;"> <img src="help/pics/13_detail_condition_expand.png" alt="詳細検索条件
+            展開時"> </div>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 25%;">条件単位</th>
+            <th>説明・ユースケース</th>
+          </tr>
+          <tr>
+            <td><strong>シート内でヒット必須のワード</strong></td>
+            <td>ヒットしたセルと「同じシート内のどこか」に指定のキーワードが存在することを必須条件とします。<br>
+              例：セル検索で「設計」を探しつつ、同じシートのどこかに「承認済」という文字があるシートだけを抽出する。<br>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>このシートのみ検索</strong><br>
+            </td>
+            <td>検索対象とするシート名に、指定キーワードが含まれることを必須条件とします。<br>
+              例：「マスタ」という名前のシートを検索対象にする。</td>
+          </tr>
+          <tr>
+            <td><strong>このファイルのみ検索</strong></td>
+            <td>検索対象とするファイル名に、指定キーワードが含まれることを必須条件とします。<br>
+              例：「プログラム仕様書」が含まれるファイルのみを検索対象にする。</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>フィルタの解除</h3>
+      <p>適用した各種フィルタ（絞り込み）を解除したい場合は、一覧上部の「フィルタ解除」ボタンを押すか、ステータスバーに表示されるオ
+        レンジの<b>フィルタ適用中</b>を<b>ダブル・クリック</b>するとメッセージをチェックして、すべてのフィルタ設定をリ
+        セットできます。</p>
+      <div class="img-box"> <img src="help/pics/60_z_part_filter_reflesh.PNG" alt="フィルタ解除"> <span
+          class="img-caption">フィルタが指定されている状態の場合、オレンジにステータスバーが変わります。<br>
+          ダブル・クリックすると、確認メッセージでOKを押すと、列フィルタをクリアします。</span> </div>
+      <h3>表示モードの切り替え</h3>
+      <div class="img-box"> <img src="help/pics/09_pulldown_display_mode.png" alt="表示モード"> </div>
+      <ul>
+        <li><strong>全セル表示（デフォルト）<br>
+          </strong>すべてのヒット箇所が一覧に表示されます。</li>
+        <li><b>シート単位表示<br>
+          </b>シート単位で一覧に表示されます。「シートごとにExcelを順次開いてチェック・修正作業を行っていくケース」に最適
+          です。</li>
+        <li><strong>ブック単位<br>
+          </strong>ブック単位で一覧に表示されます。「ブックごとにExcelを順次開いてチェック・修正作業を行っていくケー
+          ス」に最適です。</li>
+      </ul>
+      <h3>拡張セル出力（周辺セルの一括出力）機能</h3>
+      <p>ヒットしたセルだけでなく、その周辺のセル（行全体や特定の列範囲）もまとめてExcelに出力したい場合に便利な機能です。結果
+        一覧の右クリックメニュー「拡張セル出力」から使用します。</p>
+      <div class="img-flex" style="flex-direction: column; align-items: center;">
+        <div class="img-sub" style="margin-bottom: 20px;">
+          <img src="help/pics/72_excel_search_function_1.png" alt="Step1" style="max-width: 100%; height: auto;">
+          <span class="img-caption">① 共通関数物理で検索しました。行を選択して、EnterかダブルクリックでExcelを起動します</span></div>
+        <div class="img-sub" style="margin-bottom: 20px;">
+          <img src="help/pics/72_excel_search_function_2.png" alt="Step2" style="max-width: 100%; height: auto;">
+          <span class="img-caption">② Excelが起動しました</span>
+        </div>
+        <div class="img-sub" style="margin-bottom: 20px;">
+          <img src="help/pics/72_excel_search_function_3.png" alt="Step3" style="max-width: 100%; height: auto;">
+          <span class="img-caption">③ 一覧にしたい範囲をExcelで選択します。</span>
+        </div>
+        <div class="img-sub" style="margin-bottom: 20px;">
+          <span class="img-sub" style="margin-bottom: 20px;">
+			  <img src="help/pics/72_excel_search_function_4.png" alt="Step4" style="max-width: 100%; height: auto;"><img src="help/pics/72_excel_search_function_5.png" alt="Step5" style="max-width: 100%; height: auto;"></span>　
+          <span class="img-caption">④ 選択した範囲から相対座標が自動計算されます。そのまま「Excel出力」を押します</span>
+        </div>
+        <div class="img-sub" style="margin-bottom: 20px;">
+			<img src="help/pics/72_excel_search_function_6.png" alt="Step5" style="max-width: 100%; height: auto;">
+			<span class="img-caption">⑤ 指定した範囲のセルが、すべてまとめてExcelへ出力されます！</span>
+        </div>
+      </div>
+      <h2 id="sec-5">5. 表示列のカスタマイズ</h2>
+      <p>一覧の右上にある設定アイコン（<img src="help/pics/56_part_selector_list.PNG"
+          style="vertical-align: middle; height: 1.2em;">）から、列の表示・非表示を
+        切り替えられます。</p>
+      <div class="img-box"> <img src="help/pics/07_1_selector_display_on.png" alt="表示列対象選択">
+        <span class="img-caption">表示列選択ダイアログ。不要な列のチェックを外します。</span>
+      </div>
+      <div class="img-flex">
+        <div class="img-sub"> <img src="help/pics/07_3_selector_display_mixed_before_list.png" alt="全列表示">
+          <div class="img-caption">カスタマイズ前：<br>
+            すべての列が表示されています（ALLチェック版）</div>
+        </div>
+        <div class="img-sub"> <img src="help/pics/07_4_selector_display_mixed_after_list.png" alt="不要な列を非表示">
+          <div class="img-caption">カスタマイズ後：<br>
+            不要な列を非表示にすることでスッキリ見やすくなります</div>
+        </div>
+      </div>
+      <h2 id="system-config">システム設定について</h2>
+      <p>「ファイル」＞「システム設定」から、アプリケーションの挙動やパフォーマンスに関する詳細な設定を行うことができます。</p>
+      <div class="img-box" style="max-width: 600px;"> <img src="help/pics/10_config_dialog.png" alt="システム設定画面">
+        <span class="img-caption">システム設定ダイアログ。タブを切り替えて各種設定を行います。</span>
+      </div>
+      <p>各種設定項目は、大きく3つのグループに分かれています。</p>
+      <h3>① 検索・システム負荷に関する主要設定</h3>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 25%;">設定項目</th>
+            <th>詳細説明</th>
+          </tr>
+          <tr>
+            <td>検索警告ファイル数</td>
+            <td> 一度に大量のExcelを検索に巻き込む際、警告ポップアップを出す閾値（ファイル数）です。<br>
+              予期せぬ超巨大検索によるフリーズや一時的なレスポンス低下をガードします。 </td>
+          </tr>
+          <tr>
+            <td>メモリ閾値</td>
+            <td> ツールが内部に保持・使用する最大メモリ消費量の制限値（MB単位）です。<br>
+              PC全体のメモリを圧迫しすぎないよう安全弁として機能します。 </td>
+          </tr>
+          <tr>
+            <td>最大チェックファイル数</td>
+            <td> 解析対象にするファイル数の上限です。これを超えるファイルは探索対象から除外されます。 </td>
+          </tr>
+          <tr>
+            <td>最大表示件数</td>
+            <td> 一覧に表示する検索結果の上限件数です。上限を超えた場合は安全のため一覧への表示が打ち切られます。 </td>
+          </tr>
+          <tr>
+            <td>最大並列処理数</td>
+            <td>
+              同時に処理を行うスレッド数を指定します。「0」を指定すると、PCの最大コア数を自動で取得してフルパワーで処理します。他の作業への影響を抑えたい場
+              合は数値を下げてください。 </td>
+          </tr>
+          <tr>
+            <td>1ページの表示件数</td>
+            <td> 1ページあたりに表示する検索結果の件数です。この件数ごとにページングが行われます。 </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>② 表示・出力の記憶設定と探索除外設定</h3>
+      <div class="img-box" > <img src="help/pics/75_system_setting_column_on_off.png" alt="その他の設定">
+      </div>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 25%;">設定項目</th>
+            <th>詳細説明</th>
+          </tr>
+          <tr>
+            <td>探索を除外するフォルダ名<br>
+              （カンマまたはスペース区切り）</td>
+            <td>
+              ここで指定した名前のフォルダ（「.git」や「.svn」など）は中身を一切探索せずスキップします。</td>
+          </tr>
+          <tr>
+            <td>表示列の選択状態を記憶する</td>
+            <td> チェックを入れると、検索結果一覧で選択した「表示列選択」の状態を次回起動時にも復元します。 </td>
+          </tr>
+          <tr>
+            <td>出力列の選択状態を記憶する</td>
+            <td> チェックを入れると、Excel出力時の「出力列選択」の設定を次回起動時にも復元します。 </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 id="shortcuts">6. ショートカット操作一覧</h2>
+      <p>検索結果一覧画面では、キーボードやマウスを使って素早く以下の操作を行うことができます。</p>
+      <ul class="shortcut-list">
+        <li class="shortcut-item">
+          <div class="shortcut-key"><kbd>ダブルクリック</kbd></div>
+          <div>： 選択している行のExcelを起動</div>
+        </li>
+        <li class="shortcut-item">
+          <div class="shortcut-key"><kbd>ENTERキーをタイプ</kbd></div>
+          <div>： 選択している行のExcelを起動（一覧またはログのテキスト）</div>
+        </li>
+        <li class="shortcut-item">
+          <div class="shortcut-key"><kbd>SHIFT＋<br>
+              ENTERキーをタイプ</kbd></div>
+          <div>： 選択している行のフォルダを開く（一覧またはログのテキスト）</div>
+        </li>
+        <li class="shortcut-item">
+          <div class="shortcut-key"><kbd>F5キー</kbd></div>
+          <div>： 検索を実行</div>
+        </li>
+        <li class="shortcut-item">
+          <div class="shortcut-key"><kbd>F9キー</kbd></div>
+          <div>： 検索されたExcelを出力（フィルタ後の全ページ）</div>
+        </li>
+        <li class="shortcut-item">
+          <div class="shortcut-key"><kbd>No.列値をクリック</kbd></div>
+          <div>： 対象の行をまるごと選択</div>
+        </li>
+        <li class="shortcut-item">
+          <div class="shortcut-key"><kbd>A列以外をクリック</kbd></div>
+          <div>： 対象セルの個別選択</div>
+        </li>
+        <li class="shortcut-item">
+          <div class="shortcut-key"><kbd>CTRL</kbd> + <kbd>C</kbd></div>
+          <div> ： 選択部分をコピー。Excel等へ <kbd>CTRL</kbd> + <kbd>V</kbd>
+            で貼り付ければ、セルの背景色や取消線を維持したまま転記可能です！ </div>
+        </li>
+      </ul>
+      <h2 id="tips">7. 便利な活用Tips</h2>
+      <p>業務での実用性をさらに高めるための、ちょっとした工夫や使い方を紹介します。</p>
+      <h3>💡 パス一覧ファイル（.txt）を使ったピンポイント検索</h3>
+      <p> 検索対象にはフォルダだけでなく、ファイルパスが1行ずつ書かれたテキストファイル（.txt）を指定することも可能です。<br>
+        例えば、コマンドプロンプトを使って以下のコマンドを実行すると、フォルダ内の全ファイルパス一覧を作成できます。<br>
+        <code>dir /s /a-d /b &gt; files.txt</code><br>
+        作成された <code>files.txt</code>
+        をメモ帳などで開き、検索したいファイルだけを残して保存します。このテキストファイルを「検索対象」にドラッグ＆ドロップすれば、不要なファイルを弾い
+        た無駄のないピンポイント検索が可能です。<br>
+        このファイルに複数のフォルダを記載すれば、検索対象を複数指定したのと同じ効果が得られます。
+      </p>
+      <h3 id="ignore-folders">💡 過去データ（oldフォルダ等）を避けて高速化</h3>
+      <p> 実業務のフォルダには、<code>old</code> や <code>bak</code>、<code>アーカイブ</code>
+        といった過去の不要なファイルが大量に眠っていることがよくあります。<br>
+        これらを検索対象に含めると無駄に時間がかかり、結果もノイズだらけになってしまいます。<br>
+        「システム設定」の<strong>「探索を除外するフォルダ名」</strong>に <code>old</code>
+        などを登録しておけば、これらのフォルダを丸ごと無視して爆速で検索できます！ </p>
+      <h3>便利な付属ツール（セットアップと管理）</h3>
+      <p> けんさくくんのフォルダ内には、導入や運用をサポートする便利なスクリプトが
+        同梱されています。用途に合わせてダブルクリックで実行してください。 </p>
+      <ul>
+        <li> <strong>スタートメニューへの登録.vbs</strong><br>
+          けんさくくんとマニュアルへのショートカットをスタートメニューに追加します。<br>
+          レジストリは一切変更しないため、システムを汚さず安全に利用できます。<br>
+        </li>
+        <li> <strong>システム設定を開く.vbs</strong><br>
+          ツールを起動せずに、システム設定を変更できます。</li>
+      </ul>
+      <h3>アンインストールと設定の初期化について</h3>
+      <p>システムを削除・初期化するツールを <code>tools</code> フォルダに配置しました。 </p>
+      <ul>
+        <li> <strong>設定初期化.vbs</strong><br>
+          ライセンス登録を維持したまま、検索履歴や動作設定などの情報をすべて初期状態にリセットします。 </li>
+        <li> <strong>アンインストール.vbs</strong><br>
+          本体フォルダ、設定ファイル、スタートメニューの登録情報を安全に一括削除します。<br>
+          ※エクスプローラー等でフォルダを開いていると削除できない場合があります。 <br>
+          　基本的にスタートメニューから呼び出されることを想定したツールです。　<br>
+        </li>
+      </ul>
+      <h2 id="limitations">8. 制限事項と仕様詳細</h2>
+      <p>本ツールを快適・安全にご利用いただく上での制限事項や仕様についてご案内します。</p>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 25%;">項目</th>
+            <th>制限事項・仕様</th>
+          </tr>
+          <tr>
+            <td>特殊な一覧表示</td>
+            <td> <b>図形やコメント</b>が検索でヒットしたり、コメントが付与されているセルを検索した場合、
+              セル番地の表示に、[図形]、[コメント]、[印刷外]、[非表示]が追記されていていることがあります。<br>
+              セルの値には、図形は、図形のテキストが表示されます。<br>
+              コメントについては、セルの左上に赤い<span style="color: #f44336;
+                  font-weight: bold;">◤</span>が付与され、マウスをフォーカスすると文言が表示されま
+              す。<br>
+<b>非表示：</b>列の非表示、行の非表示に該当した箇所を検索した場合に、表示されます。<br>
+              <b>印刷外：</b>印刷範囲外を検索した場合に、表示されます。<br>
+              <div class="img-box" style="margin-top: 10px;"> <img src="help/pics/28_list_special_view.png"
+                  alt="特殊な一覧の表示">
+                <div class="img-caption">特殊な一覧のセル番地とセルの値の表示</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>セルの書式再現範囲について</td>
+            <td> <strong>【検索結果一覧（グリッド表示）】</strong><br>
+              視認性を高めるためにExcelの書式をある程度再現して表示します（背景色、文字色、太字、斜体、取消線など）。ただ
+              し、条件付き書式や複雑なフォントサイズ混在は再現できません。あくまで「探しやすくするための簡易ビュー」です。<br>
+              <div class="img-box" style="margin-top: 10px;"> <img src="help/pics/76_shoshiki_saigen_image.png"
+                  alt="書式シミュレーション">
+                <div class="img-caption">一覧での書式再現イメージ（※一部対応していない書式もありま
+                  す）</div>
+              </div>
+              <strong>【Excel出力機能】</strong><br>
+              結果一覧から「Excel出力」を行った場合は、元のファイルに設定されていた色や文字に対する書式は出力先の
+              Excelファイルへ可能な限り引き継がれます。<br>
+              なお特に、セル結合、パターン（網掛けなど）、センタリング等の文字揃えについては、対応しておりません。
+            </td>
+          </tr>
+          <tr>
+            <td>数式（計算式）の扱い</td>
+            <td>
+              本ツールは、高速化のためにExcelファイルをバックグラウンドで解析します。そのため、数式そのもの（「=A1+B1」など）の文字列を検索すること
+              はできません。<br>
+              その代わり、Excelが内部に保持している<strong>「計算結果の表示値（生データ）」</strong>を検
+              索対象としています。（※日付やパーセンテージ等は、表示形式適用前のシリアル値など生データでのヒットとなる場合があ
+              ります） </td>
+          </tr>
+          <tr>
+            <td>メモリとパフォーマンス</td>
+            <td>
+              数万行に及ぶ巨大なデータベース表（数十MB）として利用されているExcelファイルを大量に検索すると、PCのメモリを大きく消費します。<br>
+              本ツールはシステム限界を超えないよう設計されており、設定された「メモリ閾値」を超えると、安全のために一時的に処理
+              速度を落とすか、処理を中断する場合があります。 </td>
+          </tr>
+          <tr>
+            <td>クラウドパス（SharePoint等）</td>
+            <td> SharePointなどの <code>http(s)://</code>
+              から始まるクラウド上のExcelファイルを直接指定して検索する機能は持っていません。<br>
+              ただし、工夫として、パス検索文字列～パス置換文字列を利用すれば、SharePointのurlが構築できるため、
+              SharePointのExcelを起動できる指定も考慮しました。</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 id="messages">9. メッセージ・ログ一覧</h2>
+      <p>操作中やログ画面（左側）に表示される主なメッセージとその対処方法です。</p>
+      <h3>1. ログ一覧</h3>
+      <p>ログには以下の4種類の状態があり、アイコンの色や形状でひと目でわかるようになっています。</p>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 15%;">状態</th>
+            <th style="width: 15%; text-align: center;">アイコン</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>正常時</td>
+            <td style="text-align: center;"><img src="help/pics/50_1_part_log_normal.PNG" alt="正常"
+                style="vertical-align: middle;"></td>
+            <td>特に問題なく処理が完了している状態です。</td>
+          </tr>
+          <tr>
+            <td>正常時（未確認あり）</td>
+            <td style="text-align: center;"><img src="help/pics/50_2_part_log_normal_2.PNG" alt="未確認あり"
+                style="vertical-align: middle;"></td>
+            <td>正常ですが、まだ確認していないINFOログがある状態です。</td>
+          </tr>
+          <tr>
+            <td>警告あり</td>
+            <td style="text-align: center;"><img src="help/pics/50_3_part_log_warn.PNG" alt="警告"
+                style="vertical-align: middle;"></td>
+            <td>パスワード保護やスキップなど、処理は継続されましたが確認が必要な警告（WARN）が発生しています。</td>
+          </tr>
+          <tr>
+            <td>エラーあり</td>
+            <td style="text-align: center;"><img src="help/pics/50_4_part_log_error.PNG" alt="エラー"
+                style="vertical-align: middle;"></td>
+            <td>ファイルの破損などで読み取れなかった重大なエラー（ERROR）が発生しています。</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>主なログメッセージ</h4>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 15%;">種類</th>
+            <th style="width: 35%;">メッセージ例</th>
+            <th>意味と対処</th>
+          </tr>
+          <tr>
+            <td><span style="color: #2196f3; font-weight: bold;">[INFO]</span></td>
+            <td>対象ファイル抽出を開始します（対象フォルダ）…</td>
+            <td>指定されたフォルダ内のExcelファイルをリストアップした際の通常ログです。</td>
+          </tr>
+          <tr>
+            <td><span style="color: #ff9800; font-weight: bold;">[WARN]</span></td>
+            <td>対象ファイルが多すぎるため、処理を中止しました。</td>
+            <td>対象ファイル数が警告閾値を超え、ユーザーが確認ダイアログで「いいえ（中止）」を選んだ場合です。</td>
+          </tr>
+          <tr>
+            <td><span style="color: #ff9800; font-weight: bold;">[WARN]</span></td>
+            <td>パスワード保護（暗号化）されているため解析をスキップしました</td>
+            <td>Excelファイルにパスワードが設定されているため、中身を読み取れませんでした。スキップして次のファイルを処
+              理します。</td>
+          </tr>
+          <tr>
+            <td><span style="color: #ff9800; font-weight: bold;">[WARN]</span></td>
+            <td>メモリ使用量が閾値（〇〇 MB）に達しました。</td>
+            <td>PCのメモリ使用量が設定された閾値を超過しました。古いキャッシュを破棄しながら安全に処理を継続しています。</td>
+          </tr>
+          <tr>
+            <td><span style="color: #ff9800; font-weight: bold;">[WARN]</span></td>
+            <td>対象が見つかりません</td>
+            <td>検索対象として指定されたパス一覧のテキストファイル内に、存在しないパスが含まれています。</td>
+          </tr>
+          <tr>
+            <td><span style="color: #f44336; font-weight: bold;">[ERROR]</span></td>
+            <td>ファイルが壊れているか、ロック中のため読み取れませんでした。</td>
+            <td>ファイルが破損しているか、非対応の形式です。または他プロセスに完全ロックされていて開けなかったため検索できま
+              せん。</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>2. ステータスバー表示</h3>
+      <p>画面最下部のステータスバーに常時表示される、現在の状態や最終結果のサマリーです。</p>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 35%;">ステータス表示例</th>
+            <th>発生契機・意味</th>
+          </tr>
+          <tr>
+            <td>検索対象にディレクトリまたは、ファイル一覧ファイルを指定してください</td>
+            <td>起動時、またはパス関連のエラーから復帰し、ユーザーに入力を促す初期状態です。</td>
+          </tr>
+          <tr>
+            <td>対象ファイルを抽出中...</td>
+            <td>検索・解析実行時、ディレクトリ内のExcelファイル一覧を取得している最中です。</td>
+          </tr>
+          <tr>
+            <td>解析中... 〇〇 / 〇〇 ブック (メモリ: 〇〇 MB)</td>
+            <td>検索・解析処理の実行中、進捗状況をリアルタイムで表示しています。</td>
+          </tr>
+          <tr>
+            <td>解析完了 - 対象: 〇〇 ブック, 〇〇 セル (処理時間: 〇〇)</td>
+            <td>バックグラウンド解析処理が完了した時のサマリーです。</td>
+          </tr>
+          <tr>
+            <td>検索完了 - 対象: 〇〇 ブック, 〇〇 セル (処理: 〇〇 / メモリ: 〇〇 MB)</td>
+            <td>検索処理が完了した際のサマリーです。</td>
+          </tr>
+          <tr>
+            <td>〇〇 ｜ ※表示上限到達</td>
+            <td>検索ヒット数が設定された「最大表示件数」を超え、結果の一部表示が打ち切られた状態です。</td>
+          </tr>
+          <tr>
+            <td>💡 ヒット: 〇〇 件 / 〇〇 件</td>
+            <td>検索結果に対して、UI上で列フィルタ（文字や色など）が適用され、表示件数が絞り込まれている状態です。</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>3. 画面メッセージ（ポップアップ等）</h3>
+      <p>ユーザーへポップアップで直接通知されるメッセージの一覧です。</p>
+      <h4>警告・エラー通知</h4>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 35%;">メッセージ例</th>
+            <th>意味と対処</th>
+          </tr>
+          <tr>
+            <td>[エラー] ファイルがありませんでした</td>
+            <td>検索結果の一覧からファイルを開こうとしたが、実ファイルが削除・移動されていた場合です。</td>
+          </tr>
+          <tr>
+            <td>[Excel起動エラー] 読み取れないExcelか、Excelがビジーのため、開けませんでした</td>
+            <td>Excelを開く際、致命的なエラーが発生し復帰できなかった場合です。</td>
+          </tr>
+          <tr>
+            <td>[試用期間終了] 試用期間が終了しています。<br>
+              製品版ライセンスのご登録をご検討ください</td>
+            <td> 初回起動から30日が経過しました。<br>
+              機能の制限はありませんが、起動時のアラート画面や、Excel編集時の背景にロゴが追加されます。<br>
+              そのまま全機能を利用し続けることも可能ですが、製品版への移行をご検討ください。 </td>
+          </tr>
+          <tr>
+            <td>[入力エラー] 〇〇には〇〇以上の数値を入力してください</td>
+            <td>設定画面で、該当項目に不正な数値が入力された場合です。正しい範囲の数値を入力してください。</td>
+          </tr>
+          <tr>
+            <td>[確認] 検索したセルがExcel上の選択範囲に含まれていません。<br>
+              正しい範囲を選択してから、再度お試しください</td>
+            <td>拡張セル出力機能等で、Excelの選択範囲指定が間違っている場合です。正しい範囲を選択してください。</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>ユーザー選択・確認</h4>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 35%;">メッセージ例</th>
+            <th>発生契機・意味</th>
+          </tr>
+          <tr>
+            <td>[クリア] 選択した行の履歴をクリアしますか？</td>
+            <td>検索結果の一覧で右クリックメニューから「起動履歴をクリア」を選択した時です。</td>
+          </tr>
+          <tr>
+            <td>[ビジー状態の検知] Excelが入力中またはダイアログを開いているなどで、応答を返せません(ビジー状態)。<br>
+              ビジー状態のExcelの操作中の内容をキャンセルして指定したExcelを開きますか？</td>
+            <td>Excelを開こうとした際、対象のExcelが編集中(ビジー)のため操作がブロックされた時です。</td>
+          </tr>
+          <tr>
+            <td>[確認] 対象ファイルが 〇〇 件あります。<br>
+              処理を続行しますか？</td>
+            <td>対象ファイル抽出完了後、ファイル数が設定画面の「警告ファイル数」を超過した時の確認ダイアログです。</td>
+          </tr>
+          <tr>
+            <td>[フィルタ解除] フィルタの適用をすべてリセット（解除）しますか？</td>
+            <td>検索結果の全フィルタ解除ボタン（またはステータスバーの解除リンク）をクリックした時です。</td>
+          </tr>
+          <tr>
+            <td>[スタートメニューの更新確認]
+              スタートメニューのリンク先と異なる場所から「けんさくくん.exe」が起動されました。<br>
+              スタートメニューに登録されているリンク先を現在の場所に更新しますか？</td>
+            <td>起動時に、スタートメニューに登録されているショートカットのリンク先と現在の実行ファイルのパスが異なる場合の確
+              認です。</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 id="license">10. ライセンス登録と試用期間について</h2>
+      <p>本ツールはどなたでも、初回起動から<strong>30日間はすべての機能を制限なく無料でお試しいただけます。</strong></p>
+      <div class="img-box" style="max-width: 600px;"> <img src="help/pics/11_licence_dialog.png" alt="ライセンス登録画面">
+        <div class="img-caption">ライセンス登録画面（システム設定内から開けます）</div>
+      </div>
+      <h3>試用期間（30日）終了後の動作について</h3>
+      <p>
+        30日が経過した後も、検索機能そのものがロックされて使えなくなるようなことはありません。引き続き業務でツールをご利用いただくことは可能ですが、以
+        下の制限が加わります。 </p>
+      <ul>
+        <li>起動時に毎回「試用期間終了」の案内ダイアログが表示され、非表示にできなくなります。</li>
+        <li>検索結果からExcelファイルを開いた際や、Excel出力を行った際、<strong>対象ファイルの背景に「けんさく
+            くんのロゴマーク」が透かし（ウォーターマーク）として挿入される</strong>ようになります。 </li>
+      </ul>
+      <p>これらの制限を解除し、業務で快適に本格利用されたい場合は、画面上部のメニュー「ファイル」＞「システム設定」内の「ライセンス
+        登録」ボタンより、製品版のライセンスキーをご登録ください。</p>
+    </div>
+  </main>
+  <div class="lightbox" id="lightbox"> <span class="close-lightbox" onclick="closeLightbox()">×</span> <img
+      class="lightbox-content" id="lightbox-img" src=""> </div>
+  <script>
+    // Get the modal
+    var lightbox = document.getElementById("lightbox");
+    var lightboxImg = document.getElementById("lightbox-img");
+    var lightboxCaption = document.getElementById("lightbox-caption");
+
+    // スムーズスクロールとナビゲーション
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetEl = document.getElementById(targetId);
+
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // スクロール追従
+    const main = document.querySelector('main');
+    const sections = document.querySelectorAll('h1[id], h2[id]');
+    main.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (main.scrollTop >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+      document.querySelectorAll('nav a').forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href').substring(1) === current) {
+          a.classList.add('active');
+        }
+      });
+    });
+
+    // Get all images with the zoom-in cursor and add click event
+    var images = document.querySelectorAll('.img-box img, .img-flex .img-sub img, .slideshow-container img');
+    images.forEach(function (img) {
+      if (img.classList.contains('crop-circle')) return;
+      img.onclick = function () {
+        lightbox.style.display = "block";
+        lightboxImg.src = this.src;
+        // ファイル名を抽出してキャプションに設定
+        if (lightboxCaption) {
+          var filename = this.src.substring(this.src.lastIndexOf('/') + 1);
+          lightboxCaption.innerText = decodeURIComponent(filename);
+        }
+      }
+    });
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close-lightbox")[0];
+
+    // When the user clicks on <span> (x) or the background, close the modal
+    function closeLightbox() {
+      lightbox.style.display = "none";
+    }
+
+    if (span) {
+      span.onclick = closeLightbox;
+    }
+    lightbox.onclick = function (event) {
+      // Close only if the click is on the background, not the image itself
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    };
+
+    // Add keyboard support (Escape key) to close the lightbox
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && lightbox.style.display === 'block') {
+        closeLightbox();
+      }
+    });
+
+    // スライドショーの切り替えロジック (自動アニメーション化)
+    setInterval(() => {
+      const container = document.getElementById('slideshow-openfile');
+      if (!container) return;
+      const slides = container.querySelectorAll('.slideshow-slide');
+      if (slides.length === 0) return;
+      let activeIndex = -1;
+      for (let i = 0; i < slides.length; i++) {
+        if (slides[i].classList.contains('active')) {
+          activeIndex = i;
+          slides[i].classList.remove('active');
+          break;
+        }
+      }
+      const nextIndex = (activeIndex + 1) % slides.length;
+      slides[nextIndex].classList.add('active');
+    }, 2500); // 2.5秒ごとに切り替え
+  </script>
+</body>
+
+</html>
