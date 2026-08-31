@@ -26,7 +26,7 @@
     <header class="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
         <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
             <div class="flex items-center space-x-3">
-                <img src="../../KensakuKun/MyResources/exe/help/pics/favicon.png" width="36" height="36" alt=""/> <span class="text-xl font-bold tracking-tight text-slate-900">けんさくくん</span>
+                <img src="help/pics/favicon.png" width="36" height="36" alt=""/> <span class="text-xl font-bold tracking-tight text-slate-900">けんさくくん</span>
                 <span
                     class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600 border border-slate-200">高機能Excel検索ツール</span>
             </div>
@@ -49,13 +49,13 @@
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                     <div
                         class="inline-flex items-center space-x-2 rounded-full bg-blue-50 border border-blue-200/60 p-1 pr-3 text-xs font-medium text-blue-800">
-                        <span class="rounded-full bg-blue-600 px-2.5 py-0.5 text-white font-bold">個人開発 × AI駆動開発</span>
-                        <span>現場の泥臭い課題から生まれた実用ツール</span>
+                        <span class="rounded-full bg-blue-600 px-2.5 py-0.5 text-white font-bold">AI駆動開発</span>
+                        <span>現場の課題から生まれた実用ツール</span>
                     </div>
                     <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl leading-tight">
                         大量の方眼紙・仕様書・業務Excelを、<br class="hidden sm:inline">
                         <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">セルの見た目そのまま横断レビュー。</span>
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">セルの見た目そのまま横断レビュー</span>
                     </h1>
                     <p class="text-base sm:text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto lg:mx-0">
                         セル結合、背景色、文字色、取り消し線、図形やコメント内のテキストまで限界再現。システム開発の影響調査から、経理・総務の大規模な帳票照合まで、日々のExcel確認作業を根本から効率化します。
@@ -80,17 +80,10 @@
                         class="relative mx-auto max-w-[520px] rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-slate-900/5">
                         <div
                             class="rounded-xl border border-slate-100 overflow-hidden bg-slate-900 aspect-[16/10] relative group flex items-center justify-center">
-                            <!-- 実際のデモ動画埋め込み、またはアニメーションGIF領域 -->
-                            <div
-                                class="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center text-center p-6">
-                                <div
-                                    class="w-14 h-14 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 mb-3 group-hover:scale-110 transition-transform">
-                                    <i data-lucide="play" class="w-7 h-7 fill-current ml-0.5"></i>
-                                </div>
-                                <span class="text-white font-bold text-base mb-1">実際の操作デモを見る</span>
-                                <p class="text-xs text-slate-400 max-w-xs">
-                                    「Enter連打で該当セルへフォーカス起動」「書式再現」「周辺セルの巻き込みエクスポート」の様子を確認できます</p>
-                            </div>
+                            <video id="hero-video-player" class="w-full h-full object-cover" controls playsinline muted preload="metadata">
+                                <source src="movie/kensaku-kun_demo.mp4" type="video/mp4">
+                                お使いのブラウザはビデオタグをサポートしていません。
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -120,9 +113,9 @@
                         <i data-lucide="eye-off" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">結合セル・隠し文字・図形内テキストの見落とし</h3>
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">結合セル・隠し文字・図形内テキストの見落とし・除外</h3>
                         <p class="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            一般的な全文検索ではヒットしにくい、吹き出しや図形、コメント、非表示列に埋もれた重要ワードの見落とし。</p>
+                            一般的な全文検索ではヒットしにくい、吹き出しや図形、コメント、非表示列に埋もれた重要ワードの見落とし、印刷範囲外や非表示列の除外。</p>
                     </div>
                 </div>
                 <div class="flex space-x-4 rounded-xl bg-white p-5 shadow-sm border border-slate-200/70">
@@ -164,72 +157,99 @@
 
             <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <!-- F1: 背景色・文字色・書式再現 -->
-                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
-                            data-lucide="palette" class="w-5 h-5"></i></div>
-                    <h3 class="mt-4 text-base font-bold text-slate-900">背景色・文字色・書式まで再現</h3>
-                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        ヒットしたセルの背景色や文字色、取消線、パターン塗りを一覧上で忠実に再現。セルの意味合いやステータスを画面越しに直感把握できます。</p>
-                    <div
-                        class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold cursor-pointer hover:underline">
-                        <span>動作イメージを確認</span>
-                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                                data-lucide="palette" class="w-5 h-5"></i></div>
+                        <h3 class="mt-4 text-base font-bold text-slate-900">背景色・文字色・書式まで再現</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            ヒットしたセルの背景色や文字色、取消線、パターン塗りを一覧上で忠実に再現。セルの意味合いやステータスを画面越しに直感把握できます。</p>
                     </div>
+                    <button type="button" onclick="openVideoModal('movie/ex-bg_fg.mp4', '動作デモ：背景色・文字色・書式まで再現')"
+                        class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold hover:text-blue-700 hover:underline w-full text-left">
+                        <span class="flex items-center gap-1.5"><i data-lucide="play-circle" class="w-4 h-4"></i> 動作イメージを確認</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
 
                 <!-- F2: Enter連打フォーカス -->
-                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
-                            data-lucide="corner-down-left" class="w-5 h-5"></i></div>
-                    <h3 class="mt-4 text-base font-bold text-slate-900">[Enter]で該当セルへ直接フォーカス起動</h3>
-                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        一覧で行を選んで[Enter]を押すだけで実Excelが開き、該当セルへ即座にフォーカス。起動済マーク（✔）も付き、次行へスムーズに作業を進められます。</p>
-                    <div
-                        class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold cursor-pointer hover:underline">
-                        <span>動作イメージを確認</span>
-                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                                data-lucide="corner-down-left" class="w-5 h-5"></i></div>
+                        <h3 class="mt-4 text-base font-bold text-slate-900">[Enter]で該当セルへ直接フォーカス起動</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            一覧で行を選んで[Enter]を押すだけで実Excelが開き、該当セルへ即座にフォーカス。起動済マーク（✔）も付き、次行へスムーズに作業を進められます。</p>
                     </div>
+                    <button type="button" onclick="openVideoModal('movie/ex-direct-focus.mp4', '動作デモ：[Enter]で該当セルへ直接フォーカス起動')"
+                        class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold hover:text-blue-700 hover:underline w-full text-left">
+                        <span class="flex items-center gap-1.5"><i data-lucide="play-circle" class="w-4 h-4"></i> 動作イメージを確認</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
 
                 <!-- F3: 周辺セル拡張エクスポート -->
-                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
-                            data-lucide="table-cells-split" class="w-5 h-5"></i></div>
-                    <h3 class="mt-4 text-base font-bold text-slate-900">「周辺セル」を巻き込むExcel再出力</h3>
-                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        ヒットしたセルだけでなく、上下左右の周辺セルも含めて構造を保持したままExcelへ再出力可能（RANGE機能）。横断レビューの資料作成が一瞬で完了します。</p>
-                    <div
-                        class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold cursor-pointer hover:underline">
-                        <span>動作イメージを確認</span>
-                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                                data-lucide="table-cells-split" class="w-5 h-5"></i></div>
+                        <h3 class="mt-4 text-base font-bold text-slate-900">「周辺セル」を巻き込むExcel再出力</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            ヒットしたセルだけでなく、上下左右の周辺セルも含めて構造を保持したままExcelへ再出力可能（RANGE機能）。横断レビューの資料作成が一瞬で完了します。</p>
                     </div>
+                    <button type="button" onclick="openVideoModal('movie/ex-excel-around-output.mp4', '動作デモ：「周辺セル」を巻き込むExcel再出力')"
+                        class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold hover:text-blue-700 hover:underline w-full text-left">
+                        <span class="flex items-center gap-1.5"><i data-lucide="play-circle" class="w-4 h-4"></i> 動作イメージを確認</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
 
                 <!-- F4: オートフィルタライクな絞り込み -->
-                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
-                            data-lucide="filter" class="w-5 h-5"></i></div>
-                    <h3 class="mt-4 text-base font-bold text-slate-900">Excel感覚の強力なノイズ除去フィルタ</h3>
-                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        検索結果に対して「隠しセル」「非表示シート」「色別」「日付別」のフィルタをワンクリック適用。膨大なヒット件数から必要な情報だけを素早く絞り込めます。</p>
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                                data-lucide="filter" class="w-5 h-5"></i></div>
+                        <h3 class="mt-4 text-base font-bold text-slate-900">Excel感覚の強力なノイズ除去フィルタ</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            検索結果に対して「隠しセル」「非表示シート」「色別」「日付別」のフィルタをワンクリック適用。膨大なヒット件数から必要な情報だけを素早く絞り込めます。</p>
+                    </div>
+                    <button type="button" onclick="openVideoModal('movie/ex-filter.mp4', '動作デモ：Excel感覚の強力なノイズ除去フィルタ')"
+                        class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold hover:text-blue-700 hover:underline w-full text-left">
+                        <span class="flex items-center gap-1.5"><i data-lucide="play-circle" class="w-4 h-4"></i> 動作イメージを確認</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
 
                 <!-- F5: 柔軟な検索オプション -->
-                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
-                            data-lucide="sliders-horizontal" class="w-5 h-5"></i></div>
-                    <h3 class="mt-4 text-base font-bold text-slate-900">行跨ぎ・同シートAND・図形内検索</h3>
-                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        セル単体だけでなく「行全体でのマッチング」、同シート内での複数キーワード必須条件、ワイルドカード検索、コメント・図形内テキストの包含指定に対応。</p>
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                                data-lucide="sliders-horizontal" class="w-5 h-5"></i></div>
+                        <h3 class="mt-4 text-base font-bold text-slate-900">行単位検索・同じシートAND・図形検索</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            セル単体だけでなく「行全体でのマッチング」、同シート内での複数キーワード必須条件、ワイルドカード検索、コメント・図形内テキストの包含指定に対応。</p>
+                    </div>
+                    <button type="button" onclick="openVideoModal('movie/ex-line_and_figure.mp4', '動作デモ：行単位検索・同じシートAND・図形検索')"
+                        class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold hover:text-blue-700 hover:underline w-full text-left">
+                        <span class="flex items-center gap-1.5"><i data-lucide="play-circle" class="w-4 h-4"></i> 動作イメージを確認</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
 
                 <!-- F6: エラー耐性とログ連携 -->
-                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
-                            data-lucide="file-text" class="w-5 h-5"></i></div>
-                    <h3 class="mt-4 text-base font-bold text-slate-900">壊れたファイルがあっても止まらない堅牢性</h3>
-                    <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                        破損ファイルやパスワード付きExcelがあっても検索プロセスを中断せず安全にスキップ。実行ログから問題のファイルやフォルダを直接開いて確認できます。</p>
+                <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
+                                data-lucide="file-text" class="w-5 h-5"></i></div>
+                        <h3 class="mt-4 text-base font-bold text-slate-900">壊れたファイルがあっても止まらない堅牢性</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            破損ファイルやパスワード付きExcelがあっても検索プロセスを中断せず安全にスキップ。実行ログから問題のファイルやフォルダを直接開いて確認できます。</p>
+                    </div>
+                    <button type="button" onclick="openVideoModal('movie/ex-logviewer.mp4', '動作デモ：壊れたファイルがあっても止まらない堅牢性')"
+                        class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold hover:text-blue-700 hover:underline w-full text-left">
+                        <span class="flex items-center gap-1.5"><i data-lucide="play-circle" class="w-4 h-4"></i> 動作イメージを確認</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -336,7 +356,7 @@
     <section id="download"
         class="bg-gradient-to-tr from-slate-900 via-slate-950 to-indigo-950 py-20 text-center text-white relative overflow-hidden">
         <div class="relative mx-auto max-w-3xl px-6 space-y-6">
-            <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">テスト利用したExcelをまずはお試しください。<br>
+            <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">テストExcelをまずはお試しください。<br>
 			そして、業務のExcelを検索してみてください。</h2>
             <p class="text-sm sm:text-base text-slate-300 max-w-xl mx-auto">
               「けんさくくん」はZIP解凍ですぐに起動できます。まずはテスト時に利用した大量のテストExcelを検索対象にドラッグして、その一覧性と連携感を体感してください。
@@ -347,7 +367,7 @@
                 <a href="./release/kensaku-kun-v1.0.0.zip"
                     class="inline-flex items-center space-x-3 rounded-2xl bg-gradient-to-r from-blue-500 to-sky-400 px-8 py-4 text-base sm:text-lg font-bold text-white shadow-xl shadow-blue-500/30 hover:from-blue-600 hover:to-sky-400 transition-all hover:-translate-y-0.5">
                     <i data-lucide="download" class="w-5 h-5 sm:w-6 sm:h-6"></i>
-                    <span>けんさくくん をダウンロード (.zip / 約35MB)</span>
+                    <span>けんさくくん をダウンロード (.zip / 約81MB)</span>
                 </a>
             </div>
             <p class="text-xs text-slate-400">Windows 10 / 11 対応 ｜ .NET 10 梱包済（単体起動） ｜ 64bit</p>
@@ -359,7 +379,7 @@
                     <a href="./sample-data/test_excel_200.zip"
                         class="inline-flex items-center space-x-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 px-4 py-2.5 text-xs text-slate-200 transition hover:border-slate-500">
                         <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-400"></i>
-                        <span>テストExcel × 200件 <span class="text-slate-400 font-mono">(11MB)</span></span>
+                        <span>テストExcel × 200件 <span class="text-slate-400 font-mono">(12MB)</span></span>
                     </a>
                     <a href="./sample-data/test_excel_600.zip"
                         class="inline-flex items-center space-x-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 px-4 py-2.5 text-xs text-slate-200 transition hover:border-slate-500">
@@ -369,8 +389,12 @@
                     <a href="./sample-data/test_excel_1000.zip"
                         class="inline-flex items-center space-x-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 px-4 py-2.5 text-xs text-slate-200 transition hover:border-slate-500">
                         <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-400"></i>
-                        <span>テストExcel × 2000件 <span class="text-slate-400 font-mono">(188MB)</span></span>
+                        <span>テストExcel × 2000件 <span class="text-slate-400 font-mono">(184MB)</span></span>
                     </a>
+                </div>
+                <div class="mt-4 text-[11px] text-slate-400 max-w-xl mx-auto leading-relaxed text-left flex items-start">
+                    <span class="shrink-0 mr-1 select-none">※</span>
+                    <span>サンプルExcelは、パブリックドメイン英和辞書『<a href="https://kujirahand.com/web-tools/EJDictFreeDL.php" target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-200 transition">ejdict-hand</a>』（くじらはんど様）と生成AIを活用して作成した架空のテストデータです。</span>
                 </div>
             </div>
       </div>
@@ -398,9 +422,80 @@
         </div>
     </footer>
 
+    <!-- Video Modal Dialog -->
+    <div id="video-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-3 sm:p-5" onclick="handleModalBackdropClick(event)">
+        <div class="relative w-full max-w-6xl bg-slate-900 border border-slate-750 rounded-2xl shadow-2xl overflow-hidden flex flex-col" onclick="event.stopPropagation()">
+            <!-- Modal Header (高さを抑えてコンパクト化 & フォントサイズ縮小) -->
+            <div class="flex items-center justify-between px-4 py-2 border-b border-slate-800 bg-slate-900/95">
+                <div class="flex items-center space-x-2">
+                    <span class="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                    <h3 id="modal-video-title" class="text-xs sm:text-[13px] font-medium text-slate-200 tracking-wide truncate">動作デモ</h3>
+                </div>
+                <button type="button" onclick="closeVideoModal()" class="text-slate-400 hover:text-white rounded-lg p-1 hover:bg-slate-800 transition focus:outline-none" aria-label="閉じる">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <!-- Video Player Area -->
+            <div class="relative aspect-video bg-black flex items-center justify-center">
+                <video id="modal-video-player" class="w-full h-full object-contain" controls playsinline muted preload="auto">
+                    お使いのブラウザはビデオタグをサポートしていません。
+                </video>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Hero Video Player Speed (等倍速)
+        const heroPlayer = document.getElementById('hero-video-player');
+        if (heroPlayer) {
+            heroPlayer.playbackRate = 1.0;
+            heroPlayer.defaultPlaybackRate = 1.0;
+        }
+
+        // Video Modal Handler (等倍速)
+        const modal = document.getElementById('video-modal');
+        const modalPlayer = document.getElementById('modal-video-player');
+        const modalTitle = document.getElementById('modal-video-title');
+
+        function openVideoModal(videoSrc, title) {
+            modalTitle.textContent = title;
+            modalPlayer.src = videoSrc;
+            modalPlayer.muted = true;
+            modalPlayer.defaultPlaybackRate = 1.0;
+            modalPlayer.playbackRate = 1.0;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            modalPlayer.currentTime = 0;
+            
+            modalPlayer.play().then(() => {
+                modalPlayer.playbackRate = 1.0;
+            }).catch(() => {});
+            
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeVideoModal() {
+            modalPlayer.pause();
+            modalPlayer.removeAttribute('src');
+            modalPlayer.load();
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function handleModalBackdropClick(e) {
+            closeVideoModal();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeVideoModal();
+            }
+        });
     </script>
 </body>
 
