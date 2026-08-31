@@ -55,3 +55,15 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# 実行ファイル・圧縮ファイルはReleasesで配るためGit管理から除外
+*.exe
+*.zip
+*.dll
+*.pdb
+
+# 一時ファイルやOS生成ファイル
+.DS_Store
+Thumbs.db
+[Bb]in/
+[Oo]bj/

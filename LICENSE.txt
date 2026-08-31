@@ -1,0 +1,64 @@
+ソフトウェア使用許諾契約書 (EULA)
+
+本契約は、お客様（個人または法人）と、本ソフトウェアの著作者（以下「権利者」）との間に締結される法的な契約です。お客様が本ソフトウェアをインストール、複製、または使用することにより、本契約のすべての条項に同意したものとみなされます。同意されない場合は、本ソフトウェアを直ちに破棄してください。
+
+第1条（使用許諾）
+1. 権利者は、お客様に対し、本契約の条項に従って本ソフトウェアを使用する、非独占的かつ譲渡不能な権利を許諾します。
+2. 試用版については、定められた試用期間内に限り、機能の評価を目的とした使用のみを許諾するものとします。
+
+第2条（著作権等の知的財産権）
+本ソフトウェアに関する著作権、商標権、その他一切の知的財産権は、権利者または権利者に使用を許諾した正当な権利者に帰属します。本契約は、お客様に対する知的財産権の譲渡を意味するものではありません。
+
+第3条（禁止事項）
+お客様は、本ソフトウェアに関して以下の行為を行ってはならないものとします。
+(1) 本ソフトウェアの改変、リバースエンジニアリング、逆コンパイル、または逆アセンブル。
+(2) 本ソフトウェアまたはその複製物の、第三者への再配布、販売、貸与、またはリース。
+(3) ライセンスキー等の不正取得、不正使用、または第三者への開示・共有。
+
+第4条（免責事項）
+1. 権利者は、本ソフトウェアがお客様の特定の目的に適合すること、バグや瑕疵がないこと、および本ソフトウェアの動作が中断されないことを一切保証いたしません。
+2. 本ソフトウェアの使用、または使用不能によりお客様に生じた直接的、間接的、付随的、特別、あるいは結果的損害（データの消失、業務の停止等を含む）について、権利者は一切の責任を負わないものとします。
+3. セキュリティソフトウェアやOSの仕様（SmartScreen等）による警告表示、動作制限、または誤検知等について、権利者は一切の責任を負いません。
+
+第5条（契約の解除）
+お客様が本契約のいずれかの条項に違反した場合、権利者は何らの催告を要することなく直ちに本契約を解除することができます。この場合、お客様は本ソフトウェアおよびそのすべての複製物を直ちに破棄するものとします。
+
+==================================================
+サードパーティ ライセンス情報 (Third-Party Licenses)
+==================================================
+
+本ソフトウェアは、以下のオープンソースソフトウェアまたはサードパーティ製ライブラリを使用しています。各ライブラリの著作者および貢献者に感謝いたします。
+
+--------------------------------------------------
+・ClosedXML
+  MIT License, Copyright (c) ClosedXML
+・DocumentFormat.OpenXml
+  MIT License, Copyright (c) Microsoft Corporation.
+・Material Design In XAML Toolkit
+  MIT License, Copyright (c) 2015 James Willock, Mulholland Software and Contributors
+--------------------------------------------------
+【MIT License】
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+--------------------------------------------------
+・Microsoft Edge WebView2
+  WebView2 SDK License, Copyright (c) Microsoft Corporation.
+・Google Fonts (Material Symbols)
+  Apache License Version 2.0, https://fonts.google.com/icons
+
+Copyright (c) 2026 tossy.apps All Rights Reserved.
