@@ -505,7 +505,7 @@
             const dlBadge = document.getElementById('dl-counter-badge');
             if (!dlCountEl) return;
 
-            fetch('https://api.github.com/repos/tossy-apps/kensaku-kun/releases')
+            fetch('https://api.github.com/repos/tossy-apps/kensaku-kun/releases', { cache: 'no-store' })
                 .then(res => res.ok ? res.json() : null)
                 .then(releases => {
                     if (!releases || !Array.isArray(releases)) return;
