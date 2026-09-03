@@ -17,6 +17,17 @@
 - "Excel方眼紙"のようなファイルの検索には向いています。一方、数万行に及ぶ巨大なデータベース表として利用されているExcelファイルの検索は、多くのメモリを消費するため、本ツールの用途にはあまり**向いていません**。
 - SharePointなどのhttp(s)上にあるExcelファイルを直接検索する機能は持っていません。ローカルやネットワークドライブへ、ダウンロードして検索してください。
 
+## ダウンロード (最新版: v1.0.0)
+
+- **[けんさくくん 本体 (kensaku-kun_v1.0.0.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
+  ※インストーラー不要。ZIP解凍ですぐに起動できます（.NET 10 ランタイム同梱・自己完結型EXE）。
+- **動作検証用 サンプルExcelデータセット**:
+  - [テストExcel × 200件 (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
+  - [テストExcel × 600件 (41MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/600_excels.zip)
+  - [テストExcel × 2000件 (181MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/2000_excels.zip)
+
+- **公式Webサイト / 操作デモ**: [https://tossy-apps.github.io/kensaku-kun/](https://tossy-apps.github.io/kensaku-kun/)
+
 ## 動作環境
 
 - OS: Windows 10 / 11 (64bit)
@@ -69,7 +80,7 @@ zipファイルを展開すると、以下のファイルに解凍されます�
 
 継続してご利用いただく場合は、正規ライセンスの登録をお願いいたします。  
 ※ライセンスの購入方法および登録手順については、同梱の `LICENSE.txt`  
-または公式サイト（URL予定地）をご確認ください。
+または[公式サイト](https://tossy-apps.github.io/kensaku-kun/)をご確認ください。
 
 ## 免責事項
 

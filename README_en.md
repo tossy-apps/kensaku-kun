@@ -14,7 +14,19 @@ A Windows desktop application designed to quickly and easily find data across ma
 - While it excels at searching complex, layout-driven files ("Excel Hoganshi"), it is **not well-suited** for searching massive database-style Excel tables with tens of thousands of rows, as doing so consumes an excessive amount of memory.
 - It does not support direct searching of Excel files hosted on HTTP(S) locations (like SharePoint). Please download them to a local or network drive before searching.
 
+## Download (Latest: v1.0.0)
+
+- **[Kensaku-kun Application (kensaku-kun_v1.0.0.zip / ~81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
+  *No installer required. Simply extract the ZIP to run standalone (.NET 10 Runtime bundled / self-contained EXE).*
+- **Sample Excel Datasets for Verification**:
+  - [Test Excel × 200 files (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
+  - [Test Excel × 600 files (41MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/600_excels.zip)
+  - [Test Excel × 2000 files (181MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/2000_excels.zip)
+
+- **Official Website & Demo**: [https://tossy-apps.github.io/kensaku-kun/](https://tossy-apps.github.io/kensaku-kun/)
+
 ## System Requirements
+
 - OS: Windows 10 / 11 (64-bit)
 - Memory: 16GB or more recommended (Designed to operate on around 2-3GB for approximately 500 files, though actual usage depends on file contents).
 - The executable is self-contained. It works standalone without requiring any separate .NET Runtime installation.
@@ -57,7 +69,7 @@ If the 30-day trial period expires, the following functional limitations will ap
 - A background watermark will be applied to the exported Excel files.
 
 To continue using the tool without limitations, please purchase and register a valid license.
-*For purchase and registration instructions, please see the bundled `LICENSE.txt` or our official website (URL TBD).*
+*For purchase and registration instructions, please see the bundled `LICENSE.txt` or our [Official Website](https://tossy-apps.github.io/kensaku-kun/).*
 
 ## Disclaimer
 The author (developer) assumes no responsibility for any damages (including but not limited to search failure, data loss, business interruption, loss of profits, system crashes, or impact on other applications) arising from the use of this software. Please use it entirely at your own risk.
