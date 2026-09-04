@@ -373,6 +373,31 @@
             </div>
             <p class="text-xs text-slate-400">Windows 10 / 11 対応 ｜ .NET 10 梱包済（単体起動） ｜ 64bit</p>
 
+            <!-- 初回起動時のSmartScreen警告についての案内カード -->
+            <div class="mt-6 rounded-2xl bg-slate-800/70 border border-slate-700/80 p-5 sm:p-6 text-left max-w-2xl mx-auto shadow-xl backdrop-blur-sm">
+                <div class="flex items-center space-x-2 text-amber-400 font-bold text-sm sm:text-base mb-2">
+                    <i data-lucide="shield-alert" class="w-5 h-5 shrink-0 text-amber-400"></i>
+                    <span>初回起動時の「Windows によってPCが保護されました」について</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    本ツールは個人開発のソフトウェアのため、高額なコードサイニング証明書（EV/OV電子署名）による署名を行っておりません。そのため、初回起動時にWindows SmartScreenの青い警告画面が表示される場合があります。
+                </p>
+                <div class="mt-3.5 bg-slate-900/90 rounded-xl p-3.5 border border-slate-700/60 text-xs sm:text-sm text-slate-200 space-y-2">
+                    <p class="font-bold text-sky-300 flex items-center gap-1.5">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400"></i>
+                        起動手順（2ステップ）：
+                    </p>
+                    <ol class="list-decimal list-inside space-y-1 text-slate-300 pl-1">
+                        <li>警告画面内の <strong class="text-white underline decoration-sky-400 underline-offset-2">「詳細情報」</strong> をクリックします。</li>
+                        <li>右下に表示される <strong class="text-white underline decoration-sky-400 underline-offset-2">「実行」</strong> ボタンをクリックすると通常通り起動します。</li>
+                    </ol>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-700/50 flex items-start gap-2 text-[11px] sm:text-xs text-slate-300 leading-relaxed">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                    <span><strong>完全オフライン・通信ゼロ設計：</strong> 外部ネットワークへの通信は一切行わず、検索ファイルや入力情報が外部に送信されることはありません。安心してお使いください。</span>
+                </div>
+            </div>
+
             <!-- 動作確認用 サンプルExcelデータ ダウンロード領域 -->
             <div class="mt-10 pt-8 border-t border-slate-800">
                 <p class="text-xs font-bold text-slate-400 mb-4 tracking-wider uppercase">▼ 動作検証用 サンプルExcelデータセット</p>
@@ -402,22 +427,31 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-950 text-slate-500 py-10 text-xs">
-        <div class="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-                <p class="font-bold text-slate-300 text-sm mb-0.5">けんさくくん</p>
-                <p>© 2026 tossy.apps All Rights Reserved.</p>
+    <footer class="border-t border-slate-800 bg-slate-950 text-slate-400 py-10 text-xs">
+        <div class="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left space-y-1">
+                <p class="font-bold text-slate-200 text-sm">けんさくくん</p>
+                <p class="text-slate-500">© 2026 tossy.apps All Rights Reserved.</p>
+                <p class="text-slate-400 text-xs flex items-center justify-center md:justify-start gap-1.5 pt-1">
+                    <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span>作者連絡先:</span>
+                    <a href="mailto:tossy.apps@gmail.com" class="text-blue-400 hover:text-blue-300 underline underline-offset-2">tossy.apps@gmail.com</a>
+                </p>
             </div>
 
-            <div class="flex items-center space-x-6">
-                <a href="#features" class="hover:text-slate-300 transition">特長・機能</a>
-                <a href="#specs" class="hover:text-slate-300 transition">動作環境</a>
-                <a href="#license" class="hover:text-slate-300 transition">ライセンス・試用</a>
-                <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="hover:text-slate-300 transition">マニュアル</a>
-                <a href="#download" class="hover:text-slate-300 transition">ダウンロード</a>
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-slate-400">
+                <a href="#features" class="hover:text-slate-200 transition">特長・機能</a>
+                <a href="#specs" class="hover:text-slate-200 transition">動作環境</a>
+                <a href="#license" class="hover:text-slate-200 transition">ライセンス・試用</a>
+                <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="hover:text-slate-200 transition">マニュアル</a>
+                <a href="#download" class="hover:text-slate-200 transition">ダウンロード</a>
+                <a href="mailto:tossy.apps@gmail.com" class="hover:text-slate-200 transition flex items-center gap-1">
+                    <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-500"></i>
+                    <span>お問い合わせ</span>
+                </a>
                 <!-- 目立たないささやかなDLカウンタ（GitHub公式API） -->
-                <span id="dl-counter-badge" class="text-slate-700 font-mono text-[11px] select-none flex items-center gap-1 hover:text-slate-400 transition" title="GitHub Releases 累計ダウンロード数">
-                    <i data-lucide="download" class="w-3 h-3 text-slate-600"></i>
+                <span id="dl-counter-badge" class="text-slate-600 font-mono text-[11px] select-none flex items-center gap-1 hover:text-slate-400 transition" title="GitHub Releases 累計ダウンロード数">
+                    <i data-lucide="download" class="w-3 h-3 text-slate-500"></i>
                     <span id="app-dl-count">--</span>
                 </span>
             </div>
