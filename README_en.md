@@ -47,14 +47,14 @@ A Windows desktop application designed to quickly and easily find data across ma
 
 ## Folder Structure & Included Files
 Extracting the zip package will provide the following files:
-- `けんさくくん.exe` (Kensaku-kun.exe) : Application executable
+- `Kensaku-kun.exe` : Application executable
 - `スタートメニューへの登録.vbs` (Register to Start Menu) : Creates shortcuts in the Windows Start Menu (Registry-free)
 - `システム設定を開く.vbs` (Open System Settings) : Allows configuring memory limits and exclusion folders prior to running searches
 - `help.html` : Offline user manual
-- `tools/` : Utility scripts for uninstallation and resetting settings
+- `tools/` : Utility scripts for uninstallation (`アンインストール.vbs`) and resetting settings (`設定初期化.vbs`)
 
 ## Quick Start
-1. Double-click `けんさくくん.exe` (Kensaku-kun.exe) to launch.
+1. Double-click `Kensaku-kun.exe` to launch.
 2. Drag and drop the folder containing your Excel files, or a text file (.txt) with a list of files, into the **"Search Target (検索対象)"** box.
 3. Move the focus away from the search target box. The pre-parsing process will begin automatically to prepare for the search.
 4. Enter your desired text or conditions in the **"Search Conditions (検索条件)"** window and execute the search.
@@ -68,8 +68,8 @@ If the 30-day trial period expires, the following functional limitations will ap
 - Hyperlinks in the search results and exported Excel files will be disabled.
 - A background watermark will be applied to the exported Excel files.
 
-To continue using the tool without limitations, please purchase and register a valid license.
-*For purchase and registration instructions, please see the bundled `LICENSE.txt` or our [Official Website](https://tossy-apps.github.io/kensaku-kun/).*
+To continue using the tool without limitations, please purchase and register a valid license.  
+*For purchase and registration instructions, please see our [Official Website](https://tossy-apps.github.io/kensaku-kun/).*
 
 ## Disclaimer
 The author (developer) assumes no responsibility for any damages (including but not limited to search failure, data loss, business interruption, loss of profits, system crashes, or impact on other applications) arising from the use of this software. Please use it entirely at your own risk.
