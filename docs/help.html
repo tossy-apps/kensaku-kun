@@ -8,48 +8,89 @@
       initial-scale=1.0">
   <title>けんさくくん ユーザーズマニュアル</title>
   <link rel="icon" type="image/png" href="help/pics/favicon.png">
+  
   <style>
-    /* MkDocs Material風 オフラインCSS */
+    /* 基本レイアウト */
     body {
       margin: 0;
+      padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Meiryo", sans-serif;
       display: flex;
       height: 100vh;
+      overflow: hidden;
       color: #333;
+      background: #f4f6f8;
     }
 
     /* 左サイドバー */
     nav {
-      width: 260px;
-      min-width: 260px;
-      background: #f8f9fa;
+      width: 280px;
+      min-width: 280px;
+      background: #ffffff;
       border-right: 1px solid #e0e0e0;
-      padding: 30px 15px;
-      overflow-y: auto;
-      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.03);
+      z-index: 20;
     }
 
-    nav h1 {
-      font-size: 1.3em;
+    .nav-header {
+      padding: 24px 20px 16px 20px;
+      border-bottom: 1px solid #f0f0f0;
+      background: #fafbfc;
+    }
+
+    .nav-header h1 {
+      font-size: 1.25em;
       color: #311b92;
-      margin-top: 0;
-      padding-left: 5px;
+      margin: 0 0 12px 0;
+      padding: 0;
       border: none;
-      padding-bottom: 0;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    nav h2 {
-      font-size: 1.1em;
-      color: #512da8;
-      margin-top: 10px;
-      padding-left: 5px;
+    /* 表示モード切替 */
+    .view-mode-toggle-box {
+      background: #ede7f6;
+      border-radius: 8px;
+      padding: 3px;
+      display: flex;
+      gap: 2px;
+    }
+
+    .view-mode-btn {
+      flex: 1;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 600;
       border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: transparent;
+      color: #5e35b1;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .view-mode-btn.active {
+      background: #ffffff;
+      color: #311b92;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 12px;
     }
 
     nav ul {
       list-style: none;
-      padding-left: 0;
-      margin-bottom: 0;
+      padding: 0;
+      margin: 0;
     }
 
     nav ul li {
@@ -58,346 +99,509 @@
 
     nav ul li a {
       text-decoration: none;
-      color: #444;
-      font-size: 0.95em;
-      display: block;
+      color: #4a5568;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
       padding: 8px 12px;
-      border-radius: 4px;
-      transition: background 0.2s;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      line-height: 1.4;
     }
 
-    nav ul li a:hover,
+    nav ul li a:hover {
+      background: #f3f4f6;
+      color: #1a202c;
+    }
+
     nav ul li a.active {
-      background: #e3f2fd;
-      color: #1976d2;
+      background: #ede7f6;
+      color: #311b92;
       font-weight: bold;
     }
 
-    /* メインコンテンツ */
+    /* 右メインコンテンツ */
     main {
       flex: 1;
-      padding: 40px 60px;
-      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      background: #f8fafc;
+      position: relative;
+    }
+
+    /* 上部・下部固定ヘッダー／フッター（約2.2cm = 84px） */
+    .fixed-pager-header, .fixed-pager-footer {
+      height: 60px;
+      min-height: 60px;
       background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 10;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    .fixed-pager-footer {
+      border-top: 1px solid #e2e8f0;
+      border-bottom: none;
+      box-shadow: 0 -1px 4px rgba(0,0,0,0.03);
+    }
+
+    .pager-left, .pager-right {
+      z-index: 2;
+    }
+
+    .pager-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pager-btn:hover:not(:disabled) {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .pager-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      background: #f8fafc;
+      border-color: #e2e8f0;
+    }
+
+    .pager-title {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 15px;
+      font-weight: 700;
+      color: #311b92;
+      white-space: nowrap;
+      pointer-events: none;
+      text-align: center;
+    }
+
+    /* 中央スクロールエリア */
+    .main-scroll-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 40px;
       scroll-behavior: smooth;
     }
 
-    .content {
-      max-width: 900px;
-      margin: 0 auto;
+    /* 全章固定幅＆中央寄せ（M18） */
+    .manual-chapter {
+      max-width: 960px;
+      margin: 0 auto 48px auto;
+      width: 100%;
+      box-sizing: border-box;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      border: 1px solid #e2e8f0;
     }
 
+    /* 見出しスタイル */
     h1 {
       color: #311b92;
       border-bottom: 2px solid #ede7f6;
       padding-bottom: 10px;
       margin-top: 0;
-      font-size: 2.2em;
+      font-size: 2.1em;
     }
 
     h2 {
       color: #4527a0;
-      margin-top: 50px;
-      border-bottom: 1px solid #eee;
+      margin-top: 40px;
+      border-bottom: 1px solid #e5e7eb;
       padding-bottom: 8px;
       font-size: 1.5em;
     }
 
+    .manual-chapter > h2:first-child,
+    .manual-chapter > h1:first-child {
+      margin-top: 0 !important;
+    }
+
     h3 {
       color: #1976d2;
-      margin-top: 30px;
-      font-size: 1.2em;
+      margin-top: 48px;
+      margin-bottom: 12px;
+      font-size: 1.25em;
     }
 
-    p,
-    li {
+    h4 {
+      color: #374151;
+      margin-top: 36px;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+
+    p, li {
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: #374151;
     }
 
-    /* 注意・豆知識スタイル */
-    .note {
-      background-color: #fff3e0;
-      border-left: 4px solid #ff9800;
-      padding: 12px 15px;
-      margin: 15px 0;
-      border-radius: 0 4px 4px 0;
+    /* 注意・Tips */
+    .note, .note-box {
+      background-color: #fff8e1;
+      border-left: 4px solid #ffb300;
+      padding: 12px 16px;
+      margin: 20px 0;
+      border-radius: 0 6px 6px 0;
     }
 
     .info {
-      background-color: #e3f2fd;
-      border-left: 4px solid #2196f3;
-      padding: 12px 15px;
-      margin: 15px 0;
-      border-radius: 0 4px 4px 0;
+      background-color: #e8f4fd;
+      border-left: 4px solid #1976d2;
+      padding: 12px 16px;
+      margin: 20px 0;
+      border-radius: 0 6px 6px 0;
     }
 
     /* テーブルスタイル */
     table {
       border-collapse: collapse;
       width: 100%;
-      margin: 15px 0 30px 0;
+      margin: 18px 0 30px 0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-radius: 6px;
+      overflow: hidden;
     }
 
-    th,
-    td {
-      border: 1px solid #e0e0e0;
-      padding: 10px 12px;
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 10px 14px;
       text-align: left;
       font-size: 14px;
       line-height: 1.5;
     }
 
     th {
-      background-color: #f5f5f5;
-      font-weight: bold;
-      white-space: nowrap;
+      background: #f8fafc;
+      color: #1e293b;
+      font-weight: 600;
     }
 
-    /* 中央寄せセル用クラス */
     .td-center {
       text-align: center;
       vertical-align: middle;
     }
 
-    /* 画像配置用レイアウト ＆ ホバー拡大機能 */
+    /* 画像ボックス・グリッド */
     .img-box {
-      margin: 15px 0 25px 0;
-      border: 1px solid #ddd;
-      padding: 8px;
-      background: #fafafa;
-      border-radius: 4px;
-      overflow: hidden;
-      /* 拡大時に枠からはみ出さないようにガード */
+      margin: 18px auto 28px auto;
+      border: 1px solid #e2e8f0;
+      padding: 10px;
+      background: #fafbfc;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-sizing: border-box;
     }
 
-    .img-box img,
-    .img-flex .img-sub img {
+    .img-box img {
       max-width: 100%;
       height: auto;
-      display: block;
+      display: inline-block;
       cursor: zoom-in;
-      transition: opacity 0.2s;
     }
 
-    .img-box img:hover,
-    .img-flex .img-sub img:hover {
-      opacity: 0.85;
+    .img-caption {
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 8px;
+      text-align: center;
+      display: block;
     }
 
     .img-flex {
       display: flex;
-      gap: 15px;
-      margin: 15px 0 25px 0;
+      gap: 16px;
+      margin: 18px auto 28px auto;
       flex-wrap: wrap;
+      box-sizing: border-box;
     }
 
     .img-flex .img-sub {
       flex: 1;
-      min-width: 200px;
-      border: 1px solid #ddd;
-      padding: 6px;
-      background: #fafafa;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .img-caption {
-      font-size: 12px;
-      color: #666;
-      margin-top: 5px;
+      min-width: 220px;
+      border: 1px solid #e2e8f0;
+      padding: 10px;
+      background: #fafbfc;
+      border-radius: 6px;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-sizing: border-box;
     }
 
-    /* 装飾タグ */
-    code {
-      background-color: #f1f1f1;
-      padding: 2px 4px;
-      border-radius: 3px;
-      font-family: Consolas, monospace;
-      color: #c2185b;
+    .img-flex .img-sub img {
+      max-width: 100%;
+      height: auto;
+      display: inline-block;
+      cursor: zoom-in;
     }
 
-    /* ショートカット一覧用レイアウト（X軸をきれいに揃える） */
+    /* 画像コンテナ & SVGオーバーレイ */
+    .manual-img-container {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      margin: 8px 0;
+      overflow: visible;
+    }
+
+    .manual-img-container img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      cursor: zoom-in;
+    }
+
+    .manual-overlay-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    /* パルス点滅（ユーザー要望：完全消灯 0% ➜ 100% ➜ 0% でメリハリ） */
+    .pulse-red {
+      animation: pulseAnimation 2.0s infinite ease-in-out;
+    }
+
+    @keyframes pulseAnimation {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ステップアニメーション（非アクティブ時は完全非表示） */
+    .shape-item.is-step {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .shape-item.is-step.active {
+      opacity: 1;
+      visibility: visible;
+      animation: pulseAnimation 2.0s infinite ease-in-out;
+    }
+
+    /* ショートカット一覧 & キートップ装飾 kbd */
     .shortcut-list {
       list-style: none;
       padding-left: 0;
+      margin: 16px 0 28px 0;
     }
 
     .shortcut-item {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-size: 15px;
     }
 
-    .shortcut-key {
-      width: 180px;
-      /* X軸を固定化して揃える */
+    .shortcut-item kbd {
+      display: inline-block;
+      padding: 4px 10px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #1e293b;
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-bottom: 3px solid #94a3b8;
+      border-radius: 6px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+      min-width: 110px;
+      text-align: center;
+      margin-right: 16px;
       flex-shrink: 0;
     }
 
-    kbd {
-      background-color: #fafafa;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-      color: #333;
-      display: inline-block;
-      font-size: 0.85em;
-      font-weight: 700;
-      line-height: 1;
-      padding: 3px 6px;
-      white-space: nowrap;
+    /* スライドショーコンテナ */
+    .slideshow-container {
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      border-radius: 8px;
+      margin: 24px auto 32px auto;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      overflow: hidden;
     }
 
-    /* Lightbox (Modal) */
+    .slideshow-header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #311b92 100%);
+      color: #ffffff;
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slideshow-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .slideshow-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .slide-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .slide-indicator {
+      font-size: 12px;
+      font-weight: 700;
+      color: #e0e7ff;
+      min-width: 45px;
+      text-align: center;
+    }
+
+    .slideshow-body {
+      padding: 16px;
+      text-align: center;
+      background: #f8fafc;
+      position: relative;
+    }
+
+    .slide-item {
+      display: none;
+      animation: fadeInSlide 0.35s ease;
+    }
+
+    .slide-item.active {
+      display: block;
+    }
+
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-caption {
+      margin-top: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1e293b;
+      padding: 6px 12px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      display: inline-block;
+      max-width: 90%;
+    }
+
+    /* Lightboxモーダル */
     .lightbox {
       display: none;
-      /* Hidden by default */
       position: fixed;
-      /* Stay in place */
-      z-index: 1000;
-      /* Sit on top */
-      padding-top: 60px;
-      /* Location of the box */
-      left: 0;
       top: 0;
-      width: 100%;
-      /* Full width */
-      height: 100%;
-      /* Full height */
-      overflow: auto;
-      /* Enable scroll if needed */
-      background-color: rgba(0, 0, 0, 0.9);
-      /* Black w/ opacity */
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
       cursor: zoom-out;
     }
 
-    /* Modal Content (image) */
     .lightbox-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-      max-height: 90vh;
-      animation-name: zoom;
-      animation-duration: 0.4s;
-    }
-
-    @keyframes zoom {
-      from {
-        transform: scale(0)
-      }
-
-      to {
-        transform: scale(1)
-      }
-    }
-
-    /* The Close Button */
-    .close-lightbox {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .close-lightbox:hover,
-    .close-lightbox:focus {
-      color: #bbb;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    /* スライドショーコンテナ（紙芝居用） */
-    .slideshow-container {
       position: relative;
+      max-width: 92vw;
+      max-height: 92vh;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .lightbox-content img {
       display: block;
-      width: 100%;
-      max-width: 100%;
-      margin: 15px 0;
-      border: 1px solid #ddd;
-      padding: 8px;
-      background: #fafafa;
-      border-radius: 4px;
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
     }
 
-    .slideshow-container img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      cursor: zoom-in;
-    }
-
-    .slideshow-slide {
-      display: none;
-      animation: fade 0.8s;
-    }
-
-    .slideshow-slide.active {
-      display: block;
-    }
-
-    @keyframes fade {
-      from {
-        opacity: 0.4
-      }
-
-      to {
-        opacity: 1
-      }
-    }
-
-    /* JSハイライト用の四角枠 */
-    .highlight-box {
+    .lightbox-close-btn {
       position: absolute;
-      border: 3px solid red;
-      border-radius: 4px;
-      box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
-      pointer-events: none;
-      /* クリックを邪魔しない */
-      animation: pulse 1.5s infinite;
-      display: none;
-      /* デフォルト非表示、JSで制御 */
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      50% {
-        transform: scale(1.05);
-        opacity: 0.8;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    /* トリミング用 (Point 14) */
-    .crop-circle {
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
       width: 32px;
       height: 32px;
-      object-fit: none;
-      object-position: right center;
-      border-radius: 50%;
-      vertical-align: middle;
-      border: 1px solid #ccc;
-      display: inline-block;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close-btn:hover {
+      background: rgba(225, 29, 72, 0.9);
     }
   </style>
+
 </head>
 
 <body>
   <nav>
-    <h1>けんさくくん</h1>
+
+    <div class="nav-header">
+      <h1><img src="help/pics/favicon.png" style="width:22px;height:22px;" alt=""> けんさくくん</h1>
+      <div class="view-mode-toggle-box">
+        <button id="mode-paged-btn" class="view-mode-btn active" onclick="setViewMode('paged')">📖 章ごと</button>
+        <button id="mode-cont-btn" class="view-mode-btn" onclick="setViewMode('continuous')">📜 連続表示</button>
+      </div>
+    </div>
+    <div class="nav-body">
+
     <h2>マニュアル</h2>
     <ul id="nav-list">
       <li><a href="#sec-1">1. はじめに・インストール</a></li>
@@ -412,10 +616,24 @@
       <li><a href="#license">10. ライセンス登録と試用期間</a></li>
       <li><a href="#contact">11. お問い合わせ・著作権</a></li>
     </ul>
+      </div>
   </nav>
+  
   <main>
-    <div class="content">
-      <h1 id="intro"> ★★★ けんさくくん　高機能Excel検索ツール ★★★ </h1>
+    <!-- 上部固定ヘッダー（約2.2cm） -->
+    <div id="main-header" class="fixed-pager-header">
+      <div class="pager-left">
+        <button id="header-prev-btn" class="pager-btn" onclick="goToPrevChapter()">◀ 前へ</button>
+      </div>
+      <div id="header-chapter-title" class="pager-title">1. はじめに・インストール</div>
+      <div class="pager-right">
+        <button id="header-next-btn" class="pager-btn" onclick="goToNextChapter()">次へ ▶</button>
+      </div>
+    </div>
+
+    <!-- 中央スクロール本文 -->
+    <div id="main-scroll-body" class="main-scroll-body"><article class="manual-chapter" data-chapter-id="sec-1">
+<h1 id="intro"> ★★★ けんさくくん　高機能Excel検索ツール ★★★ </h1>
       <p>本ツールは、大量のExcelファイルから必要な情報を「一瞬」で探し出すための、高機能検索ツールです。<br>
         フォルダをドラッグ＆ドロップして対象ワードを入力するだけで、目的のセルを素早く見つけ出し、<br>
         ワンクリックで該当箇所を開くことができます。<br>
@@ -449,7 +667,19 @@
       <div class="img-box" style="padding: 0; background: #000;"> <video src="help/movie/けんさくくん－基本動作.mp4"
           controls="controls" autoplay="autoplay" muted="muted" loop="" style="max-width:
             100%; display: block;"></video> </div>
-      <div class="img-box"> <img src="help/pics/91_kensakukun_directory_kouzo.png" alt="ディレクトリ構造"> <span
+      <div class="img-box"> <div class="manual-img-container" data-img-no="1">
+    <img data-processed="true" src="help/pics/91_kensakukun_directory_kouzo.png" alt="【図】ディレクトリ構造。zipを解 凍して「Kensaku-kun.exe」を実行します。">
+    <svg class="manual-overlay-svg" viewBox="0 0 460 445" overflow="visible">
+  <defs>
+    <marker id="arrow-1" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="999" data-step-order="999">
+      <rect x="278" y="195" width="74" height="86" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div> <span
           class="img-caption">【図】ディレクトリ構造。zipを解
           凍して「Kensaku-kun.exe」を実行します。</span> </div>
       <div class="info"> <strong>同梱されているVBSツールについて</strong><br>
@@ -477,55 +707,334 @@
           <li>警告画面内の<strong>「詳細情報」</strong>リンクをクリックします。</li>
           <li>右下に表示された<strong>「実行」</strong>ボタンをクリックします。</li>
         </ol>
-        <div class="img-box" style="margin: 12px auto 8px auto; text-align: center; max-width: 440px;">
-          <img src="help/pics/92_defender_smartscreen.png" alt="Microsoft Defender SmartScreenの解除手順" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: 1px solid #ddd;">
+        
+        <div class="img-box" style="margin: 18px auto 12px auto; text-align: center; max-width: 650px; width: 100%;">
+          <div class="manual-img-container step-anim-container" data-img-no="2">
+    <img data-processed="true" src="help/pics/92_defender_smartscreen.png" style="max-width: 650px; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); border: 1px solid #ddd;" alt="【図】①「詳細情報」をクリック ➜ ②「実行」をクリック（クリックで拡大）">
+    <svg class="manual-overlay-svg" viewBox="0 0 1175 535" overflow="visible">
+  <defs>
+    <marker id="arrow-2" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ffd600" />
+    </marker>
+  </defs>
+    <g class="shape-item is-step" data-step-group="1" data-step-order="1">
+      <rect x="38" y="206" width="84" height="33" rx="8" ry="8" fill="none" stroke="#ffd600" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 2px #000);" />
+    </g>
+    <g class="shape-item is-step" data-step-group="2" data-step-order="2">
+      <rect x="919.9" y="448.5" width="77.7" height="54.9" rx="8" ry="8" fill="none" stroke="#ffd600" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 2px #000);" />
+    </g>
+  </svg>
+  </div>
           <span class="img-caption">【図】①「詳細情報」をクリック ➜ ②「実行」をクリック（クリックで拡大）</span>
         </div>
+
         <p style="margin: 8px 0 0 0; font-size: 0.85em; color: #666;">
           ※本ツールは外部通信を一切行わない完全オフライン設計（データ送信ゼロ）です。安心してお使いください。
         </p>
       </div>
 
-      <h2 id="sec-2">2. 基本操作</h2>
+      </article><article class="manual-chapter" data-chapter-id="sec-2">
+<h2 id="sec-2">2. 基本操作</h2>
       <h3>対象指定と検索実行</h3>
       <p>画面左側の「検索対象」にフォルダやファイルリストを指定し、検索キーワードを入力して「検索実行」を押します。<br>
         検索対象キーワードは、改行で「OR」検索となり、すべてのメッセージIDを検索する、<br>
         といった数100個の検索条件の指定もできます。<br>
         入力欄は、検索対象キーワード下部のグレーの線を下方向へドラッグすることで入力欄を拡げることもできます。<br>
       </p>
-      <div class="img-box" id="img-init" style="position: relative;
-          display: inline-block;"> <img src="help/pics/02_init.png" alt="起動直後の画面">
-        <!-- 検索対象の赤枠 -->
-        <div class="highlight-box" style="top: 10%; left: 12%; width:
-            50%; height: 6%; border-color: red;"></div>
-        <div style="position: absolute; top: 40px; left: 50px; color: red; font-weight: bold; font-size: 0.9em; background: transparent; padding: 2px;">① 検索対象（フォルダ等）を指定</div>
-        <!-- 検索条件の赤枠 -->
-        <div class="highlight-box" style="top: 24%; left: 24%; width:
-            44%; height: 16%; border-color: red;"></div>
-        <div style="position: absolute; top: 72px; left: 50px; color: red; font-weight: bold; font-size: 0.9em; background: transparent; padding: 2px;">② 検索キーワード入力</div>
-        <span class="img-caption">【図】メイン画面。フォルダをドラッグ＆ドロップで対象を指定可能です。</span>
-        <svg class="red-line" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;">
-          <line x1="2%" y1="20%" x2="98%" y2="20%" stroke="red" stroke-width="2"/>
-        </svg>
-        <div style="position: absolute; top: 108px; left: 428px; transform: translateX(-50%); color: red; font-weight: bold; font-size: 0.7em; background: rgba(255,255,255,0); padding: 2px;">ドラッグして拡げられます</div>
+      
+      <div class="slideshow-container" data-slideshow-id="search-exec" data-interval="4000">
+        <div class="slideshow-header">
+          <span class="slideshow-title">🎬 検索条件の指定と実行（全5ステップ）</span>
+          <div class="slideshow-controls">
+            <button class="slide-btn prev" onclick="prevSlide('search-exec')">◀ 前へ</button>
+            <span class="slide-indicator" id="ind-search-exec">1 / 5</span>
+            <button class="slide-btn next" onclick="nextSlide('search-exec')">次へ ▶</button>
+          </div>
+        </div>
+        <div class="slideshow-body" style="min-height: 480px;">
+          <div class="slide-item active" data-step-desc="① 検索対象の設定">
+            <div class="manual-img-container" data-img-no="3">
+    <img data-processed="true" src="help/pics/02_init.png" alt="【図】メイン画面。フォルダをドラッグ＆ドロップで対象を指定可能です。">
+    <svg class="manual-overlay-svg" viewBox="0 0 1686 943" overflow="visible">
+  <defs>
+    <marker id="arrow-3" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="1" data-step-order="1">
+      <rect x="74.1" y="60.5" width="790.6" height="38" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <text x="469.4" y="83.86" text-anchor="middle" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="22" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+        <tspan x="469.4">検索対象のフォルダやファイルリストを設定します</tspan>
+      </text>
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">① 検索対象のフォルダやファイルリストを設定します（フォルダをドラッグ＆ドロップでも設定可能）</div>
+          </div>
+          <div class="slide-item" data-step-desc="② 検索キーワードの入力">
+            <div class="manual-img-container" data-img-no="3">
+    <img data-processed="true" src="help/pics/02_init.png" alt="【図】メイン画面。フォルダをドラッグ＆ドロップで対象を指定可能です。">
+    <svg class="manual-overlay-svg" viewBox="0 0 1686 943" overflow="visible">
+  <defs>
+    <marker id="arrow-3" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="2" data-step-order="2">
+      <rect x="72.7" y="124.9" width="570.9" height="57" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <text x="358.15" y="157.76" text-anchor="middle" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="22" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+        <tspan x="358.15">検索キーワードを入力します</tspan>
+      </text>
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">② 検索したいキーワードを入力します（スペース区切りでAND検索が可能）</div>
+          </div>
+          <div class="slide-item" data-step-desc="③ 入力欄のドラッグ拡張">
+            <div class="manual-img-container" data-img-no="3">
+    <img data-processed="true" src="help/pics/02_init.png" alt="【図】メイン画面。フォルダをドラッグ＆ドロップで対象を指定可能です。">
+    <svg class="manual-overlay-svg" viewBox="0 0 1686 943" overflow="visible">
+  <defs>
+    <marker id="arrow-3" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <line x1="18.8" y1="190" x2="1671.1" y2="190" stroke="#ff0033" stroke-width="5" stroke-linecap="round" class="manual-shape shape-item pulse-red" data-step-group="3" data-step-order="3" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    <g class="shape-item pulse-red" data-step-group="3" data-step-order="3">
+      <line x1="850.5" y1="197.1" x2="850.5" y2="219.17999999999998" stroke="#ff0033" stroke-width="5" stroke-linecap="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <polygon points="850.5,233.89999999999998 840.5,219.17999999999998 860.5,219.17999999999998" fill="#ff0033" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <text x="850.5" y="255.89999999999998" text-anchor="middle" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="20" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">ドラッグする と拡げられま す</text>
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">③ 境界線を下へドラッグすると、入力枠を広げて複数行のキーワードを入力できます</div>
+          </div>
+          <div class="slide-item" data-step-desc="④ 検索ボタンのクリック">
+            <div class="manual-img-container" data-img-no="3">
+    <img data-processed="true" src="help/pics/02_init.png" alt="【図】メイン画面。フォルダをドラッグ＆ドロップで対象を指定可能です。">
+    <svg class="manual-overlay-svg" viewBox="0 0 1686 943" overflow="visible">
+  <defs>
+    <marker id="arrow-3" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="4" data-step-order="4">
+      <rect x="1480.3" y="85.2" width="166.1" height="84.4" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <text x="1563.35" y="108" text-anchor="middle" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="20" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+        <tspan x="1563.35">検索を押します</tspan>
+      </text>
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">④ 「検索」ボタンをクリックして検索を実行します（Enterキーでも即座に実行可能）</div>
+          </div>
+          <div class="slide-item" data-step-desc="⑤ 検索結果一覧の表示">
+            <div class="manual-img-container" data-img-no="4">
+    <img data-processed="true" src="help/pics/01_basic.png" alt="【図】検索実行後。ヒットしたファイルとセル内容が一覧で表示されます。">
+    <svg class="manual-overlay-svg" viewBox="0 0 1686 943" overflow="visible">
+  <defs>
+    <marker id="arrow-4" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="5" data-step-order="5">
+      <rect x="531.8" y="525.9" width="821.7" height="67.5" rx="8" ry="8" fill="rgba(255, 255, 255, 0.699999988079071)" stroke="none" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <text x="942.65" y="584.9" text-anchor="middle" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="59" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+        <tspan x="942.65">検索結果が表示されます</tspan>
+      </text>
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">⑤ 検索結果一覧が表示されます。ヒットしたファイル名やセル内容が確認できます</div>
+          </div>
+        </div>
       </div>
-      <div class="img-box"> <img src="help/pics/01_basic.png" alt="検索結果"> <span
-          class="img-caption">【図】検索実行後。ヒットしたファイルとセル内容が一覧で表示されます。</span> </div>
+
       <h3>お気に入り検索対象の登録と切り替え</h3>
       <p>よく検索するディレクトリは「お気に入り」として登録しておくことができます。<br>
         検索対象の右側にある▼ボタンからワンタッチで切り替えが可能です。</p>
-      <div class="img-box"> 
-        <img src="help/pics/05_1_search_pane.png" alt="検索対象">
-        <span class="img-caption">検索対象の右のお気に入り追加ボタンで、簡単にお気に入りに追加ができます。<br>
-          順番の変更や削除をしたい場合、<strong>お気に入りメンテ</strong>ボタンをクリックします。
-        </span>
-        <p><p>
-        <div style="display:flex; gap:10px; align-items:center;">
-          <img src="help/pics/05_sort_dialog_before.png" alt="お気に入り登録とメンテナンス" style="max-width:45%; height:auto;">
-          <img src="help/pics/05_sort_dialog_after.png" alt="お気に入り登録とメンテナンス（後）" style="max-width:45%; height:auto;">
+      
+      <!-- お気に入り追加とプルダウン選択（2ステップスライドショー） -->
+      <div class="slideshow-container" data-slideshow-id="fav-select" data-interval="3500">
+        <div class="slideshow-header">
+          <span class="slideshow-title">🎬 お気に入り登録とプルダウン切り替え（全4ステップ）</span>
+          <div class="slideshow-controls">
+            <button class="slide-btn prev" onclick="prevSlide('fav-select')">◀ 前へ</button>
+            <span class="slide-indicator" id="ind-fav-select">1 / 4</span>
+            <button class="slide-btn next" onclick="nextSlide('fav-select')">次へ ▶</button>
+          </div>
         </div>
-        <span class="img-caption">お気に入りメンテナンス画面で、順番の変更などを行うことができます。</span>
+        <div class="slideshow-body" style="min-height: 180px;">
+          <!-- Step 1: 05_1_search_pane.png ＋ 赤枠なし -->
+          <div class="slide-item active" data-step-desc="通常状態（赤枠なし）">
+            <div class="manual-img-container" data-img-no="5">
+    <img data-processed="true" src="help/pics/05_1_search_pane.png" alt="検索対象の右のお気に入り追加ボタンで、簡単にお気に入りに追加ができます。">
+    <svg class="manual-overlay-svg" viewBox="0 0 1367 163" overflow="visible">
+  <defs>
+    <marker id="arrow-5" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div>
+            <div class="slide-caption">検索対象の通常表示状態</div>
+          </div>
+          <!-- Step 2: 05_1_search_pane.png ＋ 「★ お気に入り追加」ボタン赤枠（実ピクセルに完全フィット） -->
+          <div class="slide-item" data-step-desc="① お気に入り追加">
+            <div class="manual-img-container" data-img-no="5">
+    <img data-processed="true" src="help/pics/05_1_search_pane.png" alt="検索対象の右のお気に入り追加ボタンで、簡単にお気に入りに追加ができます。">
+    <svg class="manual-overlay-svg" viewBox="0 0 1367 163" overflow="visible">
+  <defs>
+    <marker id="arrow-5" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="1" data-step-order="1">
+      <rect x="1081" y="4" width="138" height="39" rx="6" ry="6" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">① 検索対象の右側にある「★ お気に入り追加」ボタンで、現在選択中のフォルダをお気に入りに即座に登録できます</div>
+          </div>
+          <!-- Step 3: 05_1_search_pane.png ＋ 「▼」ボタン赤枠（実ピクセルに完全フィット） -->
+          <div class="slide-item" data-step-desc="② ▼ボタンクリック">
+            <div class="manual-img-container" data-img-no="5">
+    <img data-processed="true" src="help/pics/05_1_search_pane.png" alt="検索対象の右の▼ボタンで、登録済みのお気に入りから素早く切り替えができます。">
+    <svg class="manual-overlay-svg" viewBox="0 0 1367 163" overflow="visible">
+  <defs>
+    <marker id="arrow-5" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="2" data-step-order="1">
+      <rect x="1023" y="7" width="34" height="34" rx="5" ry="5" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">② 検索対象の右側にある「▼」ボタンをクリックして、登録済みのお気に入りフォルダを展開します</div>
+          </div>
+          <!-- Step 4: 05_2_search_pane.png ＋ 「展開メニュー枠」赤枠（実ピクセルに完全フィット） -->
+          <div class="slide-item" data-step-desc="② プルダウンからワンタッチ切り替え">
+            <div class="manual-img-container" data-img-no="5.5">
+    <img data-processed="true" src="help/pics/05_2_search_pane.png" alt="検索対象の右の▼ボタンで、登録済みのお気に入りから素早く切り替えができます。">
+    <svg class="manual-overlay-svg" viewBox="0 0 1369 170" overflow="visible">
+  <defs>
+    <marker id="arrow-5.5" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="2" data-step-order="2">
+      <rect x="2" y="43" width="1365" height="118" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">② 「▼」ボタンをクリックすると登録済みフォルダが一覧表示され、選択して検索対象を切り替えます</div>
+          </div>
+        </div>
       </div>
+
+      <!-- お気に入りメンテナンス画面の起動（単独画像：★⚙ボタンの赤枠に完全フィット） -->
+      <div class="img-box" style="margin-top: 24px;">
+        <div class="manual-img-container" data-img-no="6">
+    <img data-processed="true" src="help/pics/05_1_search_pane.png" alt="「★⚙（お気に入りメンテ）」ボタンをクリックすると、お気に入りメンテナンス画面が開きます">
+    <svg class="manual-overlay-svg" viewBox="0 0 1367 163" overflow="visible">
+  <defs>
+    <marker id="arrow-6" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red">
+      <rect x="1222" y="4" width="141" height="39" rx="6" ry="6" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
+        <span class="img-caption">【図】「★⚙（お気に入りメンテ）」ボタンをクリックすると、お気に入りメンテナンス画面が開きます</span>
+      </div>
+
+      <!-- お気に入りメンテナンス画面（3ステップスライドショー：項目選択 ➜ ▲▼移動 ➜ ソート完了 ➜ 先頭ループ） -->
+      <div class="slideshow-container" data-slideshow-id="fav-sort" data-interval="3500" style="margin-top: 24px; max-width: 657px; margin-left: auto; margin-right: auto;">
+        <div class="slideshow-header">
+          <span class="slideshow-title">🎬 お気に入り登録とメンテナンス（全3ステップ）</span>
+          <div class="slideshow-controls">
+            <button class="slide-btn prev" onclick="prevSlide('fav-sort')">◀ 前へ</button>
+            <span class="slide-indicator" id="ind-fav-sort">1 / 3</span>
+            <button class="slide-btn next" onclick="nextSlide('fav-sort')">次へ ▶</button>
+          </div>
+        </div>
+        <div class="slideshow-body" style="min-height: 480px;">
+          <!-- Step 1: No.6.5 ソート前 ＋ 水色枠いっぱいの赤枠 ＋ 説明ラベル（②→削除） -->
+          <div class="slide-item active" data-step-desc="ソート順を変更したいフォルダを選択">
+            <div class="manual-img-container" data-img-no="6.5">
+              <img data-processed="true" src="help/pics/05_sort_dialog_before.png" style="max-width: 657px; width: 100%; height: auto;" alt="お気に入り登録とメンテナンス（項目選択）">
+              <svg class="manual-overlay-svg" viewBox="0 0 657 453" overflow="visible">
+                <defs>
+                  <marker id="arrow-6.5-1" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+                  </marker>
+                </defs>
+                <g class="shape-item pulse-red">
+                  <!-- 水色の枠いっぱい（横を広く）の赤枠囲い -->
+                  <rect x="36" y="127" width="536" height="30" rx="4" ry="4" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+                  <!-- 説明ラベル（「②→」削除） -->
+                  <text x="100" y="210" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="15" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+                    <tspan x="100">ソート順を変えたい項目を</tspan>
+                    <tspan x="100" dy="24">選択します</tspan>
+                  </text>
+                </g>
+              </svg>
+            </div>
+            <div class="slide-caption">ソート順を変更したいフォルダ項目を選択します</div>
+          </div>
+
+          <!-- Step 2: No.6.5 ソート前 ＋ ↑↓ボタン位置赤枠（幅1/3〜半分） ＋ 説明ラベル（③→削除、1cm下へ移動） -->
+          <div class="slide-item" data-step-desc="▲▼ボタンで上下に移動">
+            <div class="manual-img-container" data-img-no="6.5">
+              <img data-processed="true" src="help/pics/05_sort_dialog_before.png" style="max-width: 657px; width: 100%; height: auto;" alt="お気に入り登録とメンテナンス（▲▼ボタンクリック）">
+              <svg class="manual-overlay-svg" viewBox="0 0 657 453" overflow="visible">
+                <defs>
+                  <marker id="arrow-6.5-2" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+                  </marker>
+                </defs>
+                <g class="shape-item pulse-red">
+                  <!-- ↑↓ボタンの位置にあわせた赤枠（右側の幅を0.7mm/2.5px減らして微調整） -->
+                  <rect x="578.5" y="142" width="46.5" height="103" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+                  <!-- 説明ラベル（「③→」削除、リストと被らないよう1cm下に移動） -->
+                  <text x="560" y="245" text-anchor="end" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="15" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+                    <tspan x="560">上、下のボタンを</tspan>
+                    <tspan x="560" dy="22">クリックします</tspan>
+                  </text>
+                </g>
+              </svg>
+            </div>
+            <div class="slide-caption">右側の「▲」「▼」ボタンをクリックして、選択項目を上下に移動させます</div>
+          </div>
+
+          <!-- Step 3: No.6.7 ソート後 ＋ ソート結果枠 ＋ 説明文言（④→削除、枠内下部センタリング） -->
+          <div class="slide-item" data-step-desc="ソート順の変更完了">
+            <div class="manual-img-container" data-img-no="6.7">
+              <img data-processed="true" src="help/pics/05_sort_dialog_after.png" style="max-width: 657px; width: 100%; height: auto;" alt="お気に入り登録とメンテナンス（後）">
+              <svg class="manual-overlay-svg" viewBox="0 0 659 452" overflow="visible">
+                <defs>
+                  <marker id="arrow-6.7" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+                  </marker>
+                </defs>
+                <g class="shape-item pulse-red">
+                  <!-- リスト枠囲い（X開始位置:36、終了位置:572を05_sort_dialog_before.pngの赤枠と完全一致） -->
+                  <rect x="36" y="98" width="536" height="195" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+                  <!-- 説明文言（枠内の下のセンタリングに配置） -->
+                  <text x="304" y="250" text-anchor="middle" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="16" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+                    <tspan x="304">ソート順の変更完了</tspan>
+                  </text>
+                </g>
+              </svg>
+            </div>
+            <div class="slide-caption">選択したフォルダが移動し、お気に入りの表示順序が切り替わります</div>
+          </div>
+        </div>
+      </div>
+
       <h3>検索結果一覧の見方と操作</h3>
       <p>トグルボタンで、セルの高さを固定して見やすくしたり、自動調整したりできます。また、ページネーションでサクサクめくれます。</p>
       <!-- Point 5: Toggle button explanation in one cell -->
@@ -536,8 +1045,25 @@
             <th>表示例と意味</th>
           </tr>
           <tr>
-            <td class="td-center"> <img src="help/pics/59_part_1_height_fixed.PNG" style="margin-bottom:10px;"><img
-                src="help/pics/59_part_2_height_no_fixed.PNG"><br>
+            <td class="td-center"> <div class="manual-img-container" data-img-no="8">
+    <img data-processed="true" src="help/pics/59_part_1_height_fixed.PNG" alt="">
+    <svg class="manual-overlay-svg" viewBox="0 0 82 29" overflow="visible">
+  <defs>
+    <marker id="arrow-8" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><div class="manual-img-container" data-img-no="9">
+    <img data-processed="true" src="help/pics/59_part_2_height_no_fixed.PNG" alt="">
+    <svg class="manual-overlay-svg" viewBox="0 0 74 30" overflow="visible">
+  <defs>
+    <marker id="arrow-9" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><br>
             </td>
             <td> <strong>行の高さ固定ON（デフォルト）：</strong>行の高さが一定になり、一覧性が高くなり
               ます。<br>
@@ -550,23 +1076,86 @@
       <h3>一覧からファイルを開く</h3>
       <p>一覧をダブルクリックするか、<kbd>Enter</kbd>キーを押すことで、該当ファイルが自動的に開き対象セルにフォーカ
         スします。</p>
-      <!-- Point 6: Slide show for file open -->
-      <div class="img-flex" style="flex-direction: column;
-          align-items: center;">
-        <div class="img-sub" style="margin-bottom: 20px;"> <img src="help/pics/14_list_sign_open-ng_before.png"
-            alt="開く前" style="max-width: 100%;"> <span class="img-caption">①
-            ファイルを開こうとする前の状態</span> </div>
-        <div class="img-sub" style="margin-bottom: 20px;"> <img src="help/pics/14_list_sign_opened.png" alt="正常に開けた"
-            style="max-width: 100%;"> <span class="img-caption">②
-            正常に開けた場合、一覧に「レ」が付きます</span> </div>
-        <div class="img-sub" style="margin-bottom: 20px;"> <img src="help/pics/14_excel_open_focused.png" alt="フォーカス"
-            style="max-width: 100%;"> <span class="img-caption">③
-            Excelが開いて、対象セルが自動フォーカスされます</span></div>
-        <div class="img-sub"> <img src="help/pics/14_list_sign_open-ng_after.png" alt="エラー" style="max-width: 100%;">
-          <span class="img-caption">④
-            エラー時（ファイルがない等）は「×」に</span> </div>
+      
+      <div class="slideshow-container" data-slideshow-id="file-open" data-interval="3500">
+        <div class="slideshow-header">
+          <span class="slideshow-title">🎬 一覧からファイルを開く・フォーカス</span>
+          <div class="slideshow-controls">
+            <button class="slide-btn prev" onclick="prevSlide('file-open')">◀ 前へ</button>
+            <span class="slide-indicator" id="ind-file-open">1 / 4</span>
+            <button class="slide-btn next" onclick="nextSlide('file-open')">次へ ▶</button>
+          </div>
+        </div>
+        <div class="slideshow-body" style="min-height: 280px;">
+          <div class="slide-item active" data-step-desc="① ファイルを開こうとする前の状態">
+            <div class="manual-img-container" data-img-no="10">
+    <img data-processed="true" src="help/pics/14_list_sign_open-ng_before.png" alt="① ファイルを開こうとする前の状態">
+    <svg class="manual-overlay-svg" viewBox="0 0 1686 158" overflow="visible">
+  <defs>
+    <marker id="arrow-10" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="999" data-step-order="999">
+      <rect x="0" y="80.3" width="1665.6" height="42.3" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">① ファイルを開こうとする前の状態</div>
+          </div>
+          <div class="slide-item" data-step-desc="② 正常に開けた場合、一覧に「レ」が付きます">
+            <div class="manual-img-container" data-img-no="11">
+    <img data-processed="true" src="help/pics/14_list_sign_opened.png" alt="② 正常に開けた場合、一覧に「レ」が付きます">
+    <svg class="manual-overlay-svg" viewBox="0 0 1688 158" overflow="visible">
+  <defs>
+    <marker id="arrow-11" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="999" data-step-order="999">
+      <rect x="1.7" y="41.1" width="1665.6" height="42.3" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">② 正常に開けた場合、一覧に「レ」が付きます</div>
+          </div>
+          <div class="slide-item" data-step-desc="③ Excelが自動で開き、対象セルにフォーカスされます">
+            <div class="manual-img-container" data-img-no="12">
+    <img data-processed="true" src="help/pics/14_excel_open_focused.png" alt="③ Excelが開いて、対象セルが自動フォーカスされます">
+    <svg class="manual-overlay-svg" viewBox="0 0 320 92" overflow="visible">
+  <defs>
+    <marker id="arrow-12" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="999" data-step-order="999">
+      <rect x="60" y="30.4" width="248.6" height="42.3" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">③ Excelが開いて、対象セルが自動フォーカスされます</div>
+          </div>
+          <div class="slide-item" data-step-desc="④ エラー時（ファイルがない等）は「×」に">
+            <div class="manual-img-container" data-img-no="13">
+    <img data-processed="true" src="help/pics/14_list_sign_open-ng_after.png" alt="④ エラー時（ファイルがない等）は「×」に">
+    <svg class="manual-overlay-svg" viewBox="0 0 1687 156" overflow="visible">
+  <defs>
+    <marker id="arrow-13" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="999" data-step-order="999">
+      <rect x="1.4" y="81.7" width="1665.6" height="76" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
+            <div class="slide-caption">④ エラー時（ファイルがない等）は「×」に</div>
+          </div>
+        </div>
       </div>
-      <h2 id="sec-3">3. 高度な検索オプション（詳細条件）</h2>
+
+      </article><article class="manual-chapter" data-chapter-id="sec-3">
+<h2 id="sec-3">3. 高度な検索オプション（詳細条件）</h2>
       <p>検索精度を高めるため、各種トグルやプルダウンで条件を制御できます。</p>
       <!-- Point 7: Advanced options in table -->
       <table>
@@ -576,21 +1165,66 @@
             <th>表示例と意味</th>
           </tr>
           <tr>
-            <td class="td-center"> <img src="help/pics/09_pulldown_char_type.png"><br>
+            <td class="td-center"> <div class="manual-img-container" data-img-no="14">
+    <img data-processed="true" src="help/pics/09_pulldown_char_type.png" alt="">
+    <svg class="manual-overlay-svg" viewBox="0 0 154 107" overflow="visible">
+  <defs>
+    <marker id="arrow-14" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><br>
             </td>
             <td> <strong>文字種の区別</strong><br>
               大文字・小文字、全角・半角を厳密に区別して検索するかどうかを指定します。 </td>
           </tr>
           <tr>
-            <td class="td-center"> <img src="help/pics/51_1_part_comment_on.PNG" style="margin-bottom:10px;"><br>
-              <img src="help/pics/51_1_part_comment_off.PNG"><br>
+            <td class="td-center"> <div class="manual-img-container" data-img-no="15">
+    <img data-processed="true" src="help/pics/51_1_part_comment_on.PNG" alt="">
+    <svg class="manual-overlay-svg" viewBox="0 0 114 35" overflow="visible">
+  <defs>
+    <marker id="arrow-15" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><br>
+              <div class="manual-img-container" data-img-no="16">
+    <img data-processed="true" src="help/pics/51_1_part_comment_off.PNG" alt="">
+    <svg class="manual-overlay-svg" viewBox="0 0 110 30" overflow="visible">
+  <defs>
+    <marker id="arrow-16" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><br>
             </td>
             <td> <strong>コメント・図形を含む</strong><br>
               通常のテキストに加え、付箋（コメント）や図形オブジェクト内の文字も検索対象に含めるかを切り替えます。 </td>
           </tr>
           <tr>
-            <td class="td-center"> <img src="help/pics/53_1_part_match_part.PNG" style="margin-bottom:10px;"><br>
-              <img src="help/pics/53_2_part_match_full.PNG"><br>
+            <td class="td-center"> <div class="manual-img-container" data-img-no="17">
+    <img data-processed="true" src="help/pics/53_1_part_match_part.PNG" alt="">
+    <svg class="manual-overlay-svg" viewBox="0 0 66 29" overflow="visible">
+  <defs>
+    <marker id="arrow-17" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><br>
+              <div class="manual-img-container" data-img-no="18">
+    <img data-processed="true" src="help/pics/53_2_part_match_full.PNG" alt="">
+    <svg class="manual-overlay-svg" viewBox="0 0 66 30" overflow="visible">
+  <defs>
+    <marker id="arrow-18" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><br>
             </td>
             <td> ・<strong>部分一致：</strong> 入力したキーワードが<b><span style="color: #c2185b;">セル</span></b><b><span
                   style="color: #c2185b;">またはセルを結合した行※</span></b>に<b>含
@@ -605,8 +1239,26 @@
             </td>
           </tr>
           <tr>
-            <td class="td-center"> <img src="help/pics/52_1_part_search_cell.PNG" style="margin-bottom:10px;"><br>
-              <img src="help/pics/52_2_part_search_line.PNG"><br>
+            <td class="td-center"> <div class="manual-img-container" data-img-no="19">
+    <img data-processed="true" src="help/pics/52_1_part_search_cell.PNG" alt="">
+    <svg class="manual-overlay-svg" viewBox="0 0 66 29" overflow="visible">
+  <defs>
+    <marker id="arrow-19" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><br>
+              <div class="manual-img-container" data-img-no="20">
+    <img data-processed="true" src="help/pics/52_2_part_search_line.PNG" alt="">
+    <svg class="manual-overlay-svg" viewBox="0 0 62 24" overflow="visible">
+  <defs>
+    <marker id="arrow-20" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><br>
             </td>
             <td> <strong>検索対象の単位</strong><br>
               ・<strong>セル検索：</strong> 1つのセルの中で検索が完結します。<br>
@@ -618,43 +1270,132 @@
           </tr>
         </tbody>
       </table>
-      <h2 id="sec-4">4. 絞り込み検索・各種フィルター</h2>
+      </article><article class="manual-chapter" data-chapter-id="sec-4">
+<h2 id="sec-4">4. 絞り込み検索・各種フィルター</h2>
       <!-- Point 8: Detail search dialog exactly mapping XAML -->
       <h3>列フィルター（文字・日付・シートなど）</h3>
       <p>検索結果の一覧の見出し（列ヘッダ）にある▼ボタンをクリックすると、Excelと同じようなフィルター機能を使って結果をさらに
         絞り込むことができます。</p>
       <div class="img-flex">
-        <div class="img-sub" align="center"> <img src="help/pics/60_1_filter_column_for_text_ex-filter.PNG"
-            alt="テキストフィルタ"> <span class="img-caption">テキストフィルタ（特定の文字を
+        <div class="img-sub" align="center"> <div class="manual-img-container" data-img-no="21">
+    <img data-processed="true" src="help/pics/60_1_filter_column_for_text_ex-filter.PNG" alt="テキストフィルタ（特定の文字を 含む/含まないなど）">
+    <svg class="manual-overlay-svg" viewBox="0 0 254 333" overflow="visible">
+  <defs>
+    <marker id="arrow-21" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div> <span class="img-caption">テキストフィルタ（特定の文字を
             含む/含まないなど）</span> </div>
-        <div class="img-sub" align="center"> <img src="help/pics/60_2_filter_column_for_update_date.PNG" alt="日付フィルタ">
+        <div class="img-sub" align="center"> <div class="manual-img-container" data-img-no="22">
+    <img data-processed="true" src="help/pics/60_2_filter_column_for_update_date.PNG" alt="更新日時での絞り込み">
+    <svg class="manual-overlay-svg" viewBox="0 0 186 357" overflow="visible">
+  <defs>
+    <marker id="arrow-22" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div>
           <span class="img-caption">更新日時での絞り込み</span>
         </div>
       </div>
       <div class="img-flex">
-        <div class="img-sub" align="center"> <img src="help/pics/60_3_filter_column_for_sheet.PNG" alt="シートフィルタ"> <span
+        <div class="img-sub" align="center"> <div class="manual-img-container" data-img-no="23">
+    <img data-processed="true" src="help/pics/60_3_filter_column_for_sheet.PNG" alt="シート色による絞り込み">
+    <svg class="manual-overlay-svg" viewBox="0 0 205 338" overflow="visible">
+  <defs>
+    <marker id="arrow-23" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div> <span
             class="img-caption">シート色による絞り込み</span>
         </div>
-        <div class="img-sub" align="center"><img src="help/pics/60_7_filter_column_for_zokusei.PNG" alt="" width="184"
-            height="334"><span class="img-caption">検索したセルの
+        <div class="img-sub" align="center"><div class="manual-img-container" data-img-no="24">
+    <img data-processed="true" src="help/pics/60_7_filter_column_for_zokusei.PNG" alt="検索したセルの 状態による高度なフィルタ（セルの番地）">
+    <svg class="manual-overlay-svg" viewBox="0 0 184 334" overflow="visible">
+  <defs>
+    <marker id="arrow-24" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><span class="img-caption">検索したセルの
             状態による高度なフィルタ（セルの番地）</span> </div>
       </div>
       <div class="img-flex">
-        <div class="img-sub" align="center"> <img src="help/pics/60_4_filter_column_for_cell.PNG" alt="シートフィルタ"> <span
+        <div class="img-sub" align="center"> <div class="manual-img-container" data-img-no="25">
+    <img data-processed="true" src="help/pics/60_4_filter_column_for_cell.PNG" alt="セルの値　文字のフィルター">
+    <svg class="manual-overlay-svg" viewBox="0 0 260 335" overflow="visible">
+  <defs>
+    <marker id="arrow-25" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div> <span
             class="img-caption">セルの値　文字のフィルター</span>
         </div>
-        <div class="img-sub" align="center"><img src="help/pics/60_8_filter_column_for_zokusei.PNG" alt="" width="250"
-            height="331"><span class="img-caption">セルの値　背景
+        <div class="img-sub" align="center"><div class="manual-img-container" data-img-no="26">
+    <img data-processed="true" src="help/pics/60_8_filter_column_for_zokusei.PNG" alt="セルの値　背景 色のフィルター">
+    <svg class="manual-overlay-svg" viewBox="0 0 253 335" overflow="visible">
+  <defs>
+    <marker id="arrow-26" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><span class="img-caption">セルの値　背景
             色のフィルター</span> </div>
-        <div class="img-sub" align="center"><img src="help/pics/60_6_filter_column_for_cell.PNG" alt="" width="250"
-            height="332"><span class="img-caption">セルの値　高度
+        <div class="img-sub" align="center"><div class="manual-img-container" data-img-no="27">
+    <img data-processed="true" src="help/pics/60_6_filter_column_for_cell.PNG" alt="セルの値　高度 な文字のスタイルのフィルター">
+    <svg class="manual-overlay-svg" viewBox="0 0 253 336" overflow="visible">
+  <defs>
+    <marker id="arrow-27" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div><span class="img-caption">セルの値　高度
             な文字のスタイルのフィルター</span> </div>
       </div>
       <h3>詳細検索条件ダイアログ</h3>
       <p>画面中央の「詳細検索条件」から、さらに細かい複合条件を指定できます。<br>
         こちらも改行で入力することで、「OR」検索となります。また、「除外」で「含まない」条件も指定できます。</p>
-      <div class="img-box" style="display: block;"> <img src="help/pics/13_detail_condition_expand.png" alt="詳細検索条件
-            展開時"> </div>
+      <div class="img-box" style="display: block;"> <div class="manual-img-container step-anim-container" data-img-no="28">
+    <img data-processed="true" src="help/pics/13_detail_condition_expand.png" alt="詳細検索条件
+            展開時">
+    <svg class="manual-overlay-svg" viewBox="0 0 1689 255" overflow="visible">
+  <defs>
+    <marker id="arrow-28" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item is-step" data-step-group="1" data-step-order="1">
+      <rect x="21.4" y="14.3" width="1639.9" height="40.9" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <text x="841.35" y="45.3" text-anchor="middle" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="31" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+        <tspan x="841.35">クリックすると詳細検索条件が開きます</tspan>
+      </text>
+    </g>
+    <g class="shape-item is-step" data-step-group="2" data-step-order="2">
+      <rect x="61.7" y="79.1" width="826.9" height="173.6" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <text x="475.15" y="151.18" text-anchor="middle" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="31" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+        <tspan x="475.15">シート名の検索などの複合検索条件を指定。</tspan>
+        <tspan x="475.15" dy="42">改行で同じくOR検索できます</tspan>
+      </text>
+    </g>
+    <g class="shape-item is-step" data-step-group="3" data-step-order="3">
+      <rect x="890" y="76" width="546.7" height="173.6" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <text x="1163.35" y="148.07999999999998" text-anchor="middle" font-family="Yu Gothic UI, Meiryo, sans-serif" font-size="31" font-weight="bold" fill="#ff0033" style="paint-order: stroke fill; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round;">
+        <tspan x="1163.35">除外は含まない検索が</tspan>
+        <tspan x="1163.35" dy="42">できます</tspan>
+      </text>
+    </g>
+  </svg>
+  </div> </div>
       <table>
         <tbody>
           <tr>
@@ -684,11 +1425,32 @@
       <p>適用した各種フィルタ（絞り込み）を解除したい場合は、一覧上部の「フィルタ解除」ボタンを押すか、ステータスバーに表示されるオ
         レンジの<b>フィルタ適用中</b>を<b>ダブル・クリック</b>するとメッセージをチェックして、すべてのフィルタ設定をリ
         セットできます。</p>
-      <div class="img-box"> <img src="help/pics/60_z_part_filter_reflesh.PNG" alt="フィルタ解除"> <span
+      <div class="img-box"> <div class="manual-img-container" data-img-no="29">
+    <img data-processed="true" src="help/pics/60_z_part_filter_reflesh.PNG" alt="フィルタが指定されている状態の場合、オレンジにステータスバーが変わります。 ダブル・クリックすると、確認メッセージでOKを押すと、列フィルタをクリアします。">
+    <svg class="manual-overlay-svg" viewBox="0 0 669 34" overflow="visible">
+  <defs>
+    <marker id="arrow-29" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="999" data-step-order="999">
+      <rect x="414.3" y="-1.9" width="251.4" height="42.7" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div> <span
           class="img-caption">フィルタが指定されている状態の場合、オレンジにステータスバーが変わります。<br>
           ダブル・クリックすると、確認メッセージでOKを押すと、列フィルタをクリアします。</span> </div>
       <h3>表示モードの切り替え</h3>
-      <div class="img-box"> <img src="help/pics/09_pulldown_display_mode.png" alt="表示モード"> </div>
+      <div class="img-box"> <div class="manual-img-container" data-img-no="30">
+    <img data-processed="true" src="help/pics/09_pulldown_display_mode.png" alt="表示モード">
+    <svg class="manual-overlay-svg" viewBox="0 0 139 105" overflow="visible">
+  <defs>
+    <marker id="arrow-30" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div> </div>
       <ul>
         <li><strong>全セル表示（デフォルト）<br>
           </strong>すべてのヒット箇所が一覧に表示されます。</li>
@@ -702,48 +1464,124 @@
       <h3>拡張セル出力（周辺セルの一括出力）機能</h3>
       <p>ヒットしたセルだけでなく、その周辺のセル（行全体や特定の列範囲）もまとめてExcelに出力したい場合に便利な機能です。<br>
         画面右下の「Excel出力 検索セル拡張」スピナー、または対象のExcelを開いて一覧に含めたい範囲を選択することで自動設定され、「Excel出力」ボタンから一括出力します。</p>
-      <div class="img-flex" style="flex-direction: column; align-items: center;">
-        <div class="img-sub" style="margin-bottom: 20px;">
-          <img src="help/pics/72_excel_search_function_1.png" alt="Step1" style="max-width: 100%; height: auto;">
-          <span class="img-caption">① 共通関数物理で検索しました。行を選択して、EnterかダブルクリックでExcelを起動します</span></div>
-        <div class="img-sub" style="margin-bottom: 20px;">
-          <img src="help/pics/72_excel_search_function_2.png" alt="Step2" style="max-width: 100%; height: auto;">
-          <span class="img-caption">② Excelが起動しました</span>
-        </div>
-        <div class="img-sub" style="margin-bottom: 20px;">
-          <img src="help/pics/72_excel_search_function_3.png" alt="Step3" style="max-width: 100%; height: auto;">
-          <span class="img-caption">③ 一覧にしたい範囲をExcelで選択します。</span>
-        </div>
-        <div class="img-sub" style="margin-bottom: 20px;">
-          <span class="img-sub" style="margin-bottom: 20px;">
-			  <img src="help/pics/72_excel_search_function_4.png" alt="Step4" style="max-width: 100%; height: auto;"><img src="help/pics/72_excel_search_function_5.png" alt="Step5" style="max-width: 100%; height: auto;"></span>　
-          <span class="img-caption">④ 選択した範囲から相対座標が自動計算されます。そのまま「Excel出力」を押します</span>
-        </div>
-        <div class="img-sub" style="margin-bottom: 20px;">
-			<img src="help/pics/72_excel_search_function_6.png" alt="Step5" style="max-width: 100%; height: auto;">
-			<span class="img-caption">⑤ 指定した範囲のセルが、すべてまとめてExcelへ出力されます！</span>
-        </div>
+      
+      <div class="img-box" style="max-width: 820px; margin: 24px auto; text-align: center; background: #0f172a; padding: 14px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+        <video controls style="width: 100%; max-height: 480px; border-radius: 6px; background: #000;" preload="metadata">
+          <source src="help/movie/ex-excel-around-output.mp4" type="video/mp4">
+          お使いのブラウザは動画タグに対応していません。
+        </video>
+        <span class="img-caption" style="color: #f8fafc; margin-top: 10px; font-size: 13.5px;">【動画】拡張セル検索・周辺セルの一括抽出操作の流れ（再生ボタンを押してご覧ください）</span>
       </div>
-      <h2 id="sec-5">5. 表示列のカスタマイズ</h2>
-      <p>一覧の右上にある設定アイコン（<img src="help/pics/56_part_selector_list.PNG"
-          style="vertical-align: middle; height: 1.2em;">）から、列の表示・非表示を
-        切り替えられます。</p>
-      <div class="img-box"> <img src="help/pics/07_1_selector_display_on.png" alt="表示列対象選択">
+
+      </article><article class="manual-chapter" data-chapter-id="sec-5">
+<h2 id="sec-5">5. 表示列のカスタマイズ</h2>
+            <p>一覧の右上にある設定アイコン（<img src="help/pics/56_part_selector_list.PNG" style="display: inline-block; vertical-align: middle; height: 1.35em; margin: 0 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 4px;" alt="表示列選択">）から、列の表示・非表示を切り替えられます。</p>
+      <div class="img-box"> <div class="manual-img-container" data-img-no="38">
+    <img data-processed="true" src="help/pics/07_1_selector_display_on.png" alt="表示列選択ダイアログ。不要な列のチェックを外します。">
+    <svg class="manual-overlay-svg" viewBox="0 0 425 187" overflow="visible">
+  <defs>
+    <marker id="arrow-38" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div>
         <span class="img-caption">表示列選択ダイアログ。不要な列のチェックを外します。</span>
       </div>
-      <div class="img-flex">
-        <div class="img-sub"> <img src="help/pics/07_3_selector_display_mixed_before_list.png" alt="全列表示">
-          <div class="img-caption">カスタマイズ前：<br>
-            すべての列が表示されています（ALLチェック版）</div>
+      
+      <!-- 列セレクター表示の切り替え（全4ステップスライドショー：設定アイコン ➜ ダイアログ全選択 ➜ チェック解除 ➜ カスタマイズ後） -->
+      <div class="slideshow-container" data-slideshow-id="selector-mixed" data-interval="3500">
+        <div class="slideshow-header">
+          <span class="slideshow-title">🎬 列セレクター表示の切り替え（全4ステップ）</span>
+          <div class="slideshow-controls">
+            <button class="slide-btn prev" onclick="prevSlide('selector-mixed')">◀ 前へ</button>
+            <span class="slide-indicator" id="ind-selector-mixed">1 / 4</span>
+            <button class="slide-btn next" onclick="nextSlide('selector-mixed')">次へ ▶</button>
+          </div>
         </div>
-        <div class="img-sub"> <img src="help/pics/07_4_selector_display_mixed_after_list.png" alt="不要な列を非表示">
-          <div class="img-caption">カスタマイズ後：<br>
-            不要な列を非表示にすることでスッキリ見やすくなります</div>
+        <div class="slideshow-body" style="min-height: 380px;">
+          <!-- Step 1: カスタマイズ前 ＋ 設定アイコン赤枠 -->
+          <div class="slide-item active" data-step-desc="① 設定アイコンをクリック">
+            <div class="manual-img-container" data-img-no="39">
+              <img data-processed="true" src="help/pics/07_3_selector_display_mixed_before_list.png" alt="カスタマイズ前：すべての列が表示されています（ALLチェック版）">
+              <svg class="manual-overlay-svg" viewBox="0 0 1687 621" overflow="visible">
+                <g class="shape-item pulse-red">
+                  <!-- 設定アイコン（⚙）赤枠 -->
+                  <rect x="1355" y="0" width="86" height="41" rx="6" ry="6" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+                </g>
+              </svg>
+            </div>
+            <div class="slide-caption">① 一覧の右上にある設定アイコンをクリックします</div>
+          </div>
+
+          <!-- Step 2: カスタマイズ前 ＋ 列選択ダイアログ（全選択状態）オーバーレイ -->
+          <div class="slide-item" data-step-desc="② 表示列選択ダイアログが開きます（初期状態は全列表示）">
+            <div class="manual-img-container" data-img-no="39-dialog-on">
+              <img data-processed="true" src="help/pics/07_3_selector_display_mixed_before_list.png" alt="表示列選択ダイアログの展開（全選択）">
+              <svg class="manual-overlay-svg" viewBox="0 0 1687 621" overflow="visible">
+                <!-- オーバーレイ写真: 列選択ダイアログ（全選択） -->
+                <image href="help/pics/07_1_selector_display_on.png" xlink:href="help/pics/07_1_selector_display_on.png" x="1220" y="42" width="425" height="187" style="filter: drop-shadow(0 8px 24px rgba(0,0,0,0.55));" />
+                <g class="shape-item pulse-red">
+                  <rect x="1218" y="40" width="429" height="191" rx="6" ry="6" fill="none" stroke="#ff0033" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+                </g>
+              </svg>
+            </div>
+            <div class="slide-caption">② 表示列選択ダイアログが開き、現在の表示列（初期状態はすべてチェック）が表示されます</div>
+          </div>
+
+          <!-- Step 3: カスタマイズ前 ＋ 列選択ダイアログ（一部解除状態）オーバーレイ ＋ 非表示対象列ハイライト -->
+          <div class="slide-item" data-step-desc="③ 不要な列のチェックを外します">
+            <div class="manual-img-container" data-img-no="39-dialog-mixed">
+              <img data-processed="true" src="help/pics/07_3_selector_display_mixed_before_list.png" alt="不要な列のチェック解除">
+              <svg class="manual-overlay-svg" viewBox="0 0 1687 621" overflow="visible">
+                <!-- 背景一覧の非表示対象列（縦の点線赤枠） -->
+                <g class="shape-item pulse-red">
+                  <rect x="47" y="39" width="147" height="573" rx="6" ry="6" fill="rgba(255,0,0,0.06)" stroke="#ff0033" stroke-width="3" stroke-dasharray="8,6" class="manual-shape" />
+                  <rect x="249" y="38" width="147" height="573" rx="6" ry="6" fill="rgba(255,0,0,0.06)" stroke="#ff0033" stroke-width="3" stroke-dasharray="8,6" class="manual-shape" />
+                  <rect x="811" y="40" width="54" height="573" rx="6" ry="6" fill="rgba(255,0,0,0.06)" stroke="#ff0033" stroke-width="3" stroke-dasharray="8,6" class="manual-shape" />
+                </g>
+                <!-- オーバーレイ写真: 列選択ダイアログ（一部選択解除） -->
+                <image href="help/pics/07_2_selector_display_mixed.png" xlink:href="help/pics/07_2_selector_display_mixed.png" x="1220" y="42" width="424" height="189" style="filter: drop-shadow(0 8px 24px rgba(0,0,0,0.55));" />
+                <g class="shape-item pulse-red">
+                  <rect x="1218" y="40" width="428" height="193" rx="6" ry="6" fill="none" stroke="#ff0033" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+                </g>
+              </svg>
+            </div>
+            <div class="slide-caption">③ 不要な列のチェックを外して非表示に設定します</div>
+          </div>
+
+          <!-- Step 4: カスタマイズ後（スッキリ一覧） ＋ 一覧全体赤枠 -->
+          <div class="slide-item" data-step-desc="④ カスタマイズ後：不要な列を非表示にしてスッキリ">
+            <div class="manual-img-container" data-img-no="40">
+              <img data-processed="true" src="help/pics/07_4_selector_display_mixed_after_list.png" alt="カスタマイズ後： 不要な列を非表示にすることでスッキリ見やすくなります">
+              <svg class="manual-overlay-svg" viewBox="0 0 1689 624" overflow="visible">
+                <g class="shape-item pulse-red">
+                  <!-- スッキリ一覧全体赤枠 -->
+                  <rect x="4" y="39" width="1314" height="580" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+                </g>
+              </svg>
+            </div>
+            <div class="slide-caption">④ 不要な列が非表示になり、必要な情報だけがスッキリ表示されます</div>
+          </div>
         </div>
       </div>
-      <h2 id="system-config">システム設定について</h2>
+
+      </article><article class="manual-chapter" data-chapter-id="system-config">
+<h2 id="system-config">システム設定について</h2>
       <p>「ファイル」＞「システム設定」から、アプリケーションの挙動やパフォーマンスに関する詳細な設定を行うことができます。</p>
-      <div class="img-box" style="max-width: 600px;"> <img src="help/pics/10_config_dialog.png" alt="システム設定画面">
+      <div class="img-box" style="max-width: 600px;"> <div class="manual-img-container" data-img-no="41">
+    <img data-processed="true" src="help/pics/10_config_dialog.png" alt="システム設定ダイアログ。タブを切り替えて各種設定を行います。">
+    <svg class="manual-overlay-svg" viewBox="0 0 610 668" overflow="visible">
+  <defs>
+    <marker id="arrow-41" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="999" data-step-order="999">
+      <rect x="28.6" y="64.1" width="552.9" height="254.1" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
         <span class="img-caption">システム設定ダイアログ。タブを切り替えて各種設定を行います。</span>
       </div>
       <p>各種設定項目は、大きく3つのグループに分かれています。</p>
@@ -785,7 +1623,19 @@
         </tbody>
       </table>
       <h3>② 表示・出力の記憶設定と探索除外設定</h3>
-      <div class="img-box" > <img src="help/pics/75_system_setting_column_on_off.png" alt="その他の設定">
+      <div class="img-box" > <div class="manual-img-container" data-img-no="42">
+    <img data-processed="true" src="help/pics/75_system_setting_column_on_off.png" alt="その他の設定">
+    <svg class="manual-overlay-svg" viewBox="0 0 556 263" overflow="visible">
+  <defs>
+    <marker id="arrow-42" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+    <g class="shape-item pulse-red" data-step-group="999" data-step-order="999">
+      <rect x="15.7" y="61.3" width="518.6" height="38" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+    </g>
+  </svg>
+  </div>
       </div>
       <table>
         <tbody>
@@ -809,7 +1659,8 @@
           </tr>
         </tbody>
       </table>
-      <h2 id="shortcuts">6. ショートカット操作一覧</h2>
+      </article><article class="manual-chapter" data-chapter-id="shortcuts">
+<h2 id="shortcuts">6. ショートカット操作一覧</h2>
       <p>検索結果一覧画面では、キーボードやマウスを使って素早く以下の操作を行うことができます。</p>
       <ul class="shortcut-list">
         <li class="shortcut-item">
@@ -847,7 +1698,8 @@
             で貼り付ければ、セルの背景色や取消線を維持したまま転記可能です！ </div>
         </li>
       </ul>
-      <h2 id="tips">7. 便利な活用Tips</h2>
+      </article><article class="manual-chapter" data-chapter-id="tips">
+<h2 id="tips">7. 便利な活用Tips</h2>
       <p>業務での実用性をさらに高めるための、ちょっとした工夫や使い方を紹介します。</p>
       <h3>💡 パス一覧ファイル（.txt）を使ったピンポイント検索</h3>
       <p> 検索対象にはフォルダだけでなく、ファイルパスが1行ずつ書かれたテキストファイル（.txt）を指定することも可能です。<br>
@@ -886,7 +1738,8 @@
           　基本的にスタートメニューから呼び出されることを想定したツールです。　<br>
         </li>
       </ul>
-      <h2 id="limitations">8. 制限事項と仕様詳細</h2>
+      </article><article class="manual-chapter" data-chapter-id="limitations">
+<h2 id="limitations">8. 制限事項と仕様詳細</h2>
       <p>本ツールを快適・安全にご利用いただく上での制限事項や仕様についてご案内します。</p>
       <table>
         <tbody>
@@ -904,8 +1757,16 @@
               す。<br>
 <b>非表示：</b>列の非表示、行の非表示に該当した箇所を検索した場合に、表示されます。<br>
               <b>印刷外：</b>印刷範囲外を検索した場合に、表示されます。<br>
-              <div class="img-box" style="margin-top: 10px;"> <img src="help/pics/28_list_special_view.png"
-                  alt="特殊な一覧の表示">
+              <div class="img-box" style="margin-top: 10px;"> <div class="manual-img-container" data-img-no="43">
+    <img data-processed="true" src="help/pics/28_list_special_view.png" alt="特殊な一覧のセル番地とセルの値の表示">
+    <svg class="manual-overlay-svg" viewBox="0 0 410 165" overflow="visible">
+  <defs>
+    <marker id="arrow-43" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div>
                 <div class="img-caption">特殊な一覧のセル番地とセルの値の表示</div>
               </div>
             </td>
@@ -915,8 +1776,16 @@
             <td> <strong>【検索結果一覧（グリッド表示）】</strong><br>
               視認性を高めるためにExcelの書式をある程度再現して表示します（背景色、文字色、太字、斜体、取消線など）。ただ
               し、条件付き書式や複雑なフォントサイズ混在は再現できません。あくまで「探しやすくするための簡易ビュー」です。<br>
-              <div class="img-box" style="margin-top: 10px;"> <img src="help/pics/76_shoshiki_saigen_image.png"
-                  alt="書式シミュレーション">
+              <div class="img-box" style="margin-top: 10px;"> <div class="manual-img-container" data-img-no="44">
+    <img data-processed="true" src="help/pics/76_shoshiki_saigen_image.png" alt="一覧での書式再現イメージ（※一部対応していない書式もありま す）">
+    <svg class="manual-overlay-svg" viewBox="0 0 1689 947" overflow="visible">
+  <defs>
+    <marker id="arrow-44" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div>
                 <div class="img-caption">一覧での書式再現イメージ（※一部対応していない書式もありま
                   す）</div>
               </div>
@@ -951,7 +1820,8 @@
           </tr>
         </tbody>
       </table>
-      <h2 id="messages">9. メッセージ・ログ一覧</h2>
+      </article><article class="manual-chapter" data-chapter-id="messages">
+<h2 id="messages">9. メッセージ・ログ一覧</h2>
       <p>操作中やログ画面（左側）に表示される主なメッセージとその対処方法です。</p>
       <h3>1. ログ一覧</h3>
       <p>ログには以下の4種類の状態があり、アイコンの色や形状でひと目でわかるようになっています。</p>
@@ -964,26 +1834,58 @@
           </tr>
           <tr>
             <td>正常時</td>
-            <td style="text-align: center;"><img src="help/pics/50_1_part_log_normal.PNG" alt="正常"
-                style="vertical-align: middle;"></td>
+            <td style="text-align: center;"><div class="manual-img-container" data-img-no="45">
+    <img data-processed="true" src="help/pics/50_1_part_log_normal.PNG" alt="正常">
+    <svg class="manual-overlay-svg" viewBox="0 0 33 48" overflow="visible">
+  <defs>
+    <marker id="arrow-45" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div></td>
             <td>特に問題なく処理が完了している状態です。</td>
           </tr>
           <tr>
             <td>正常時（未確認あり）</td>
-            <td style="text-align: center;"><img src="help/pics/50_2_part_log_normal_2.PNG" alt="未確認あり"
-                style="vertical-align: middle;"></td>
+            <td style="text-align: center;"><div class="manual-img-container" data-img-no="46">
+    <img data-processed="true" src="help/pics/50_2_part_log_normal_2.PNG" alt="未確認あり">
+    <svg class="manual-overlay-svg" viewBox="0 0 33 48" overflow="visible">
+  <defs>
+    <marker id="arrow-46" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div></td>
             <td>正常ですが、まだ確認していないINFOログがある状態です。</td>
           </tr>
           <tr>
             <td>警告あり</td>
-            <td style="text-align: center;"><img src="help/pics/50_3_part_log_warn.PNG" alt="警告"
-                style="vertical-align: middle;"></td>
+            <td style="text-align: center;"><div class="manual-img-container" data-img-no="47">
+    <img data-processed="true" src="help/pics/50_3_part_log_warn.PNG" alt="警告">
+    <svg class="manual-overlay-svg" viewBox="0 0 34 48" overflow="visible">
+  <defs>
+    <marker id="arrow-47" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div></td>
             <td>パスワード保護やスキップなど、処理は継続されましたが確認が必要な警告（WARN）が発生しています。</td>
           </tr>
           <tr>
             <td>エラーあり</td>
-            <td style="text-align: center;"><img src="help/pics/50_4_part_log_error.PNG" alt="エラー"
-                style="vertical-align: middle;"></td>
+            <td style="text-align: center;"><div class="manual-img-container" data-img-no="48">
+    <img data-processed="true" src="help/pics/50_4_part_log_error.PNG" alt="エラー">
+    <svg class="manual-overlay-svg" viewBox="0 0 29 46" overflow="visible">
+  <defs>
+    <marker id="arrow-48" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div></td>
             <td>ファイルの破損などで読み取れなかった重大なエラー（ERROR）が発生しています。</td>
           </tr>
         </tbody>
@@ -1137,9 +2039,19 @@
           </tr>
         </tbody>
       </table>
-      <h2 id="license">10. ライセンス登録と試用期間について</h2>
+      </article><article class="manual-chapter" data-chapter-id="license">
+<h2 id="license">10. ライセンス登録と試用期間について</h2>
       <p>本ツールはどなたでも、初回起動から<strong>30日間はすべての機能を制限なく無料でお試しいただけます。</strong></p>
-      <div class="img-box" style="max-width: 600px;"> <img src="help/pics/11_licence_dialog.png" alt="ライセンス登録画面">
+      <div class="img-box" style="max-width: 600px;"> <div class="manual-img-container" data-img-no="49">
+    <img data-processed="true" src="help/pics/11_licence_dialog.png" alt="ライセンス登録画面（システム設定内から開けます）">
+    <svg class="manual-overlay-svg" viewBox="0 0 450 251" overflow="visible">
+  <defs>
+    <marker id="arrow-49" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
+    </marker>
+  </defs>
+  </svg>
+  </div>
         <div class="img-caption">ライセンス登録画面（システム設定内から開けます）</div>
       </div>
       <h3>試用期間（30日）終了後の動作について</h3>
@@ -1154,7 +2066,8 @@
       <p>これらの制限を解除し、業務で快適に本格利用されたい場合は、画面上部のメニュー「ファイル」＞「システム設定」内の「ライセンス
         登録」ボタンより、製品版のライセンスキーをご登録ください。</p>
 
-      <h2 id="contact">11. お問い合わせ・著作権</h2>
+      </article><article class="manual-chapter" data-chapter-id="contact">
+<h2 id="contact">11. お問い合わせ・著作権</h2>
       <p>本ソフトウェアに関するご意見、ご要望、不具合のご報告などは、下記メールアドレスまでお気軽にお寄せください。<br>
       個人開発のため、すべてのご要望への個別対応や即時返答は難しい場合がございますが、今後の改善に向けてありがたく拝見いたします。</p>
       
@@ -1169,109 +2082,303 @@
       <p style="font-size: 0.9em; color: #666; margin-top: 25px;">
         © 2026 tossy.apps All Rights Reserved.
       </p>
+    
+    </article>
+    </div>
+
+    <!-- 下部固定フッター（約2.2cm） -->
+    <div id="main-footer" class="fixed-pager-footer">
+      <div class="pager-left">
+        <button id="footer-prev-btn" class="pager-btn" onclick="goToPrevChapter()">◀ 前へ</button>
+      </div>
+      <div id="footer-chapter-title" class="pager-title">1. はじめに・インストール</div>
+      <div class="pager-right">
+        <button id="footer-next-btn" class="pager-btn" onclick="goToNextChapter()">次へ ▶</button>
+      </div>
     </div>
   </main>
-  <div class="lightbox" id="lightbox"> <span class="close-lightbox" onclick="closeLightbox()">×</span> <img
-      class="lightbox-content" id="lightbox-img" src=""> </div>
+
+  
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close-btn" onclick="closeLightbox()">×</button>
+      <img id="lightbox-img" src="" alt="拡大画像">
+    </div>
+  </div>
+
   <script>
-    // Get the modal
-    var lightbox = document.getElementById("lightbox");
-    var lightboxImg = document.getElementById("lightbox-img");
-    var lightboxCaption = document.getElementById("lightbox-caption");
+    const CHAPTERS = [
+      { id: "sec-1", title: "1. はじめに・インストール" },
+      { id: "sec-2", title: "2. 基本操作" },
+      { id: "sec-3", title: "3. 高度な検索オプション（詳細条件）" },
+      { id: "sec-4", title: "4. 絞り込み検索・各種フィルター" },
+      { id: "sec-5", title: "5. 表示列のカスタマイズ" },
+      { id: "system-config", title: "システム設定について" },
+      { id: "shortcuts", title: "6. ショートカット操作一覧" },
+      { id: "tips", title: "7. 便利な活用Tips" },
+      { id: "limitations", title: "8. 制限事項と仕様詳細" },
+      { id: "messages", title: "9. メッセージ一覧" },
+      { id: "license", title: "10. ライセンス登録と試用期間について" },
+      { id: "contact", title: "11. お問い合わせ・サポート" }
+    ];
 
-    // スムーズスクロールとナビゲーション
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetEl = document.getElementById(targetId);
+    let currentViewMode = 'paged';
+    let currentChapterIndex = 0;
 
-        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-        this.classList.add('active');
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      const pagedBtn = document.getElementById('mode-paged-btn');
+      const contBtn = document.getElementById('mode-cont-btn');
+      const mainHeader = document.getElementById('main-header');
+      const mainFooter = document.getElementById('main-footer');
+      const chapters = document.querySelectorAll('.manual-chapter');
 
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth' });
+      if (mode === 'paged') {
+        pagedBtn.classList.add('active');
+        contBtn.classList.remove('active');
+        if (mainHeader) mainHeader.style.display = 'flex';
+        if (mainFooter) mainFooter.style.display = 'flex';
+        showChapter(currentChapterIndex);
+      } else {
+        contBtn.classList.add('active');
+        pagedBtn.classList.remove('active');
+        if (mainHeader) mainHeader.style.display = 'none';
+        if (mainFooter) mainFooter.style.display = 'none';
+        chapters.forEach(ch => {
+          ch.style.display = 'block';
+        });
+      }
+    }
+
+    function showChapter(index) {
+      if (index < 0 || index >= CHAPTERS.length) return;
+      currentChapterIndex = index;
+      const chapter = CHAPTERS[index];
+      const chapters = document.querySelectorAll('.manual-chapter');
+
+      chapters.forEach(ch => {
+        if (ch.getAttribute('data-chapter-id') === chapter.id) {
+          ch.style.display = 'block';
+        } else {
+          ch.style.display = 'none';
         }
       });
-    });
 
-    // スクロール追従
-    const main = document.querySelector('main');
-    const sections = document.querySelectorAll('h1[id], h2[id]');
-    main.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (main.scrollTop >= sectionTop - 120) {
-          current = section.getAttribute('id');
-        }
-      });
+      const scrollBody = document.getElementById('main-scroll-body');
+      if (scrollBody) scrollBody.scrollTop = 0;
+
+      updatePagerControls();
+      updateSidebarActive(chapter.id);
+    }
+
+    function goToPrevChapter() {
+      if (currentChapterIndex > 0) {
+        showChapter(currentChapterIndex - 1);
+      }
+    }
+
+    function goToNextChapter() {
+      if (currentChapterIndex < CHAPTERS.length - 1) {
+        showChapter(currentChapterIndex + 1);
+      }
+    }
+
+    function updatePagerControls() {
+      const prevIdx = currentChapterIndex - 1;
+      const nextIdx = currentChapterIndex + 1;
+      const currentChapter = CHAPTERS[currentChapterIndex];
+
+      const hPrevBtn = document.getElementById('header-prev-btn');
+      const hNextBtn = document.getElementById('header-next-btn');
+      const hTitle = document.getElementById('header-chapter-title');
+
+      if (hTitle) hTitle.innerText = currentChapter.title;
+      if (hPrevBtn) {
+        hPrevBtn.disabled = prevIdx < 0;
+        hPrevBtn.innerText = prevIdx >= 0 ? "◀ 前へ: " + CHAPTERS[prevIdx].title : "◀ 前へ";
+      }
+      if (hNextBtn) {
+        hNextBtn.disabled = nextIdx >= CHAPTERS.length;
+        hNextBtn.innerText = nextIdx < CHAPTERS.length ? "次へ: " + CHAPTERS[nextIdx].title + " ▶" : "次へ ▶";
+      }
+
+      const fPrevBtn = document.getElementById('footer-prev-btn');
+      const fNextBtn = document.getElementById('footer-next-btn');
+      const fTitle = document.getElementById('footer-chapter-title');
+
+      if (fTitle) fTitle.innerText = currentChapter.title;
+      if (fPrevBtn) {
+        fPrevBtn.disabled = prevIdx < 0;
+        fPrevBtn.innerText = prevIdx >= 0 ? "◀ 前へ: " + CHAPTERS[prevIdx].title : "◀ 前へ";
+      }
+      if (fNextBtn) {
+        fNextBtn.disabled = nextIdx >= CHAPTERS.length;
+        fNextBtn.innerText = nextIdx < CHAPTERS.length ? "次へ: " + CHAPTERS[nextIdx].title + " ▶" : "次へ ▶";
+      }
+    }
+
+    function updateSidebarActive(targetId) {
       document.querySelectorAll('nav a').forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href').substring(1) === current) {
+        const href = a.getAttribute('href');
+        if (href === '#' + targetId) {
           a.classList.add('active');
+        } else {
+          a.classList.remove('active');
+        }
+      });
+    }
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').replace('#', '');
+        const targetIdx = CHAPTERS.findIndex(c => c.id === targetId);
+        
+        if (targetIdx !== -1) {
+          if (currentViewMode === 'paged') {
+            showChapter(targetIdx);
+          } else {
+            const targetEl = document.getElementById(targetId) || document.querySelector('[data-chapter-id="' + targetId + '"]');
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+              updateSidebarActive(targetId);
+            }
+          }
         }
       });
     });
 
-    // Get all images with the zoom-in cursor and add click event
-    var images = document.querySelectorAll('.img-box img, .img-flex .img-sub img, .slideshow-container img');
-    images.forEach(function (img) {
-      if (img.classList.contains('crop-circle')) return;
-      img.onclick = function () {
-        lightbox.style.display = "block";
-        lightboxImg.src = this.src;
-        // ファイル名を抽出してキャプションに設定
-        if (lightboxCaption) {
-          var filename = this.src.substring(this.src.lastIndexOf('/') + 1);
-          lightboxCaption.innerText = decodeURIComponent(filename);
-        }
-      }
-    });
+    const scrollBody = document.getElementById('main-scroll-body');
+    if (scrollBody) {
+      scrollBody.addEventListener('scroll', () => {
+        if (currentViewMode !== 'continuous') return;
+        let currentId = CHAPTERS[0].id;
+        const scrollPos = scrollBody.scrollTop + 100;
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close-lightbox")[0];
+        CHAPTERS.forEach(ch => {
+          const el = document.getElementById(ch.id) || document.querySelector('[data-chapter-id="' + ch.id + '"]');
+          if (el && el.offsetTop <= scrollPos) {
+            currentId = ch.id;
+          }
+        });
+        updateSidebarActive(currentId);
+      });
+    }
 
-    // When the user clicks on <span> (x) or the background, close the modal
+    // Lightbox 拡大表示
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(src) {
+      if (!lightbox || !lightboxImg) return;
+      lightboxImg.src = src;
+      lightbox.style.display = 'flex';
+    }
+
     function closeLightbox() {
-      lightbox.style.display = "none";
+      if (!lightbox) return;
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
     }
 
-    if (span) {
-      span.onclick = closeLightbox;
-    }
-    lightbox.onclick = function (event) {
-      // Close only if the click is on the background, not the image itself
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
-    };
-
-    // Add keyboard support (Escape key) to close the lightbox
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && lightbox.style.display === 'block') {
-        closeLightbox();
-      }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
     });
 
-    // スライドショーの切り替えロジック (自動アニメーション化)
-    setInterval(() => {
-      const container = document.getElementById('slideshow-openfile');
-      if (!container) return;
-      const slides = container.querySelectorAll('.slideshow-slide');
-      if (slides.length === 0) return;
-      let activeIndex = -1;
-      for (let i = 0; i < slides.length; i++) {
-        if (slides[i].classList.contains('active')) {
-          activeIndex = i;
-          slides[i].classList.remove('active');
-          break;
+    document.querySelectorAll('.manual-img-container img, .img-box img, .img-flex img').forEach(img => {
+      img.addEventListener('click', function() {
+        openLightbox(this.src);
+      });
+    });
+
+    // ステップ自動送り（1つずつ順次点灯）
+    function initStepAnimations() {
+      const stepContainers = document.querySelectorAll('.step-anim-container');
+      stepContainers.forEach(container => {
+        const stepItems = container.querySelectorAll('.shape-item.is-step');
+        if (stepItems.length === 0) return;
+
+        const groupMap = new Map();
+        stepItems.forEach(item => {
+          const grp = item.getAttribute('data-step-group') || item.getAttribute('data-step-order') || '1';
+          const numericKey = parseInt(grp, 10) || 1;
+          if (!groupMap.has(numericKey)) groupMap.set(numericKey, []);
+          groupMap.get(numericKey).push(item);
+        });
+
+        const groups = Array.from(groupMap.keys()).sort((a, b) => a - b);
+        let currentStepIdx = 0;
+
+        function updateStep() {
+          const activeGroupKey = groups[currentStepIdx];
+          stepItems.forEach(item => {
+            const grp = item.getAttribute('data-step-group') || item.getAttribute('data-step-order') || '1';
+            const itemKey = parseInt(grp, 10) || 1;
+            item.classList.toggle('active', itemKey === activeGroupKey);
+          });
+          currentStepIdx = (currentStepIdx + 1) % groups.length;
         }
-      }
-      const nextIndex = (activeIndex + 1) % slides.length;
-      slides[nextIndex].classList.add('active');
-    }, 2500); // 2.5秒ごとに切り替え
+
+        updateStep();
+        setInterval(updateStep, 2500);
+      });
+    }
+
+    // 手順スライドショー
+    const slideshowState = {};
+
+    function showSlide(slideshowId, index) {
+      const container = document.querySelector('[data-slideshow-id="' + slideshowId + '"]');
+      if (!container) return;
+      const slides = container.querySelectorAll('.slide-item');
+      if (slides.length === 0) return;
+
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+
+      slideshowState[slideshowId] = index;
+
+      slides.forEach((sl, i) => {
+        sl.classList.toggle('active', i === index);
+      });
+
+      const ind = document.getElementById('ind-' + slideshowId);
+      if (ind) ind.innerText = (index + 1) + " / " + slides.length;
+    }
+
+    function prevSlide(slideshowId) {
+      const cur = slideshowState[slideshowId] || 0;
+      showSlide(slideshowId, cur - 1);
+    }
+
+    function nextSlide(slideshowId) {
+      const cur = slideshowState[slideshowId] || 0;
+      showSlide(slideshowId, cur + 1);
+    }
+
+    function initSlideshows() {
+      document.querySelectorAll('.slideshow-container').forEach(container => {
+        const id = container.getAttribute('data-slideshow-id');
+        const interval = parseInt(container.getAttribute('data-interval')) || 3500;
+        slideshowState[id] = 0;
+        showSlide(id, 0);
+
+        let timer = setInterval(() => {
+          nextSlide(id);
+        }, interval);
+
+        container.addEventListener('mouseenter', () => clearInterval(timer));
+        container.addEventListener('mouseleave', () => {
+          timer = setInterval(() => nextSlide(id), interval);
+        });
+      });
+    }
+
+    // 起動
+    setViewMode('paged');
+    initStepAnimations();
+    initSlideshows();
   </script>
 </body>
-
 </html>
