@@ -2,6 +2,21 @@
 <html lang="ja" class="scroll-smooth">
 
 <head>
+    <script>
+        (function() {
+            var pref = localStorage.getItem('kensaku_lang_pref');
+            if (pref === 'en') {
+                window.location.replace('index_en.html');
+                return;
+            }
+            if (!pref) {
+                var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+                if (lang && !lang.startsWith('ja')) {
+                    window.location.replace('index_en.html');
+                }
+            }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>けんさくくん - 高機能Excel検索ツール</title>
@@ -36,7 +51,11 @@
                 <a href="#license" class="hover:text-blue-600 transition">ライセンス・試用</a>
                 <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="hover:text-blue-600 transition flex items-center gap-1.5"><i data-lucide="book-open" class="w-4 h-4 text-blue-500"></i>マニュアル</a>
             </nav>
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3">
+                <a href="index_en.html" onclick="localStorage.setItem('kensaku_lang_pref', 'en')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                    <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span>English</span>
+                </a>
                 <a href="#download"
                     class="rounded-full bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:bg-blue-700 transition-all hover:-translate-y-0.5">ダウンロード</a>
             </div>
@@ -456,8 +475,9 @@
                 <a href="#license" class="hover:text-slate-200 transition">ライセンス・試用</a>
                 <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="hover:text-slate-200 transition">マニュアル</a>
                 <a href="dev-story.html" class="hover:text-slate-200 transition">開発秘話</a>
+                <a href="dev-story_en.html" class="hover:text-slate-200 transition text-amber-400 font-semibold flex items-center gap-1"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i>Dev Story (EN)</a>
                 <a href="https://github.com/tossy-apps/kensaku-kun#readme" target="_blank" rel="noopener noreferrer" class="hover:text-slate-200 transition">README</a>
-                <a href="https://github.com/tossy-apps/kensaku-kun/blob/main/README_en.md" target="_blank" rel="noopener noreferrer" class="hover:text-slate-200 transition flex items-center gap-1"><i data-lucide="globe" class="w-3.5 h-3.5"></i>English</a>
+                <a href="index_en.html" onclick="localStorage.setItem('kensaku_lang_pref', 'en')" class="hover:text-slate-200 transition flex items-center gap-1 font-bold text-blue-400"><i data-lucide="globe" class="w-3.5 h-3.5"></i>English (EN)</a>
                 <a href="#download" class="hover:text-slate-200 transition">ダウンロード</a>
                 <a href="mailto:tossy.apps@gmail.com" class="hover:text-slate-200 transition flex items-center gap-1">
                     <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-500"></i>
