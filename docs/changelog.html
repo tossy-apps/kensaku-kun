@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新履歴・リリースノート - けんさくくん 公式</title>
+    <link rel="icon" type="image/png" href="help/pics/favicon.png">
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts BIZ UDPGothic & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'BIZ UDPGothic', 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <img src="help/pics/favicon.png" width="32" height="32" alt="けんさくくん" class="transition-transform group-hover:scale-105"/>
+                <span class="text-lg font-bold tracking-tight text-white group-hover:text-blue-400 transition">けんさくくん</span>
+                <span class="rounded-full bg-slate-800 px-2.5 py-0.5 text-xs font-semibold text-slate-400 border border-slate-700">更新履歴</span>
+            </a>
+            <div class="flex items-center space-x-4 text-sm font-medium">
+                <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                    <i data-lucide="book-open" class="w-4 h-4 text-blue-400"></i>
+                    <span>マニュアル</span>
+                </a>
+                <a href="dev-story.html" class="text-slate-400 hover:text-amber-400 transition flex items-center gap-1.5">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+                    <span>開発秘話</span>
+                </a>
+                <a href="index.html" class="text-slate-400 hover:text-white transition flex items-center gap-1">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span>トップへ</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16">
+        
+        <!-- Header Title -->
+        <div class="space-y-4 border-b border-slate-800 pb-8 mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400">
+                <i data-lucide="history" class="w-3.5 h-3.5"></i>
+                <span>Release Notes &amp; Changelog</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                けんさくくん 更新履歴・リリースノート
+            </h1>
+            <p class="text-base sm:text-lg text-slate-400">
+                「けんさくくん」の公式リリース予定、修正および機能改善の履歴です。
+            </p>
+        </div>
+
+        <!-- Release List -->
+        <div class="space-y-12">
+
+            <!-- Version 1.0.0 (Scheduled) -->
+            <section class="relative pl-8 border-l-2 border-blue-500/40 space-y-4">
+                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 ring-4 ring-slate-900 shadow-sm"></div>
+                
+                <div class="flex flex-wrap items-baseline gap-3">
+                    <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">v1.0.0 正式版</h2>
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Vector公開 初版確定</span>
+                    <span class="text-sm font-mono text-slate-400">2026/10/01 (予定)</span>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-4 text-sm text-slate-300">
+                    <p class="leading-relaxed">
+                        ソフトウェア配布サイト「Vector」での公式公開をもって、<strong>「けんさくくん v1.0.0」の初版確定</strong>といたします。Windows専用の有償級・超高速デスクトップツールとして正式リリース予定です。
+                    </p>
+
+                    <div class="space-y-3">
+                        <div class="font-bold text-slate-200 flex items-center gap-2 text-xs uppercase tracking-wider text-blue-400">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            <span>初版リリース 主要機能一覧</span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-1.5 text-slate-300 text-xs sm:text-sm pl-1 leading-relaxed">
+                            <li><strong>超高速インメモリ検索:</strong> 数百ファイルのExcel設計書・方眼紙をメモリにキャッシュし、条件変更時は数十秒以内で瞬時再検索</li>
+                            <li><strong>多彩な対象・条件検索:</strong> セル値、シート名、ブック名、コメント、図形内テキストの検索・除外に対応</li>
+                            <li><strong>高度なキーワード指定:</strong> 複数行OR検索、ワイルドカード（* / ?）あいまい検索、全半角・大文字小文字同一視</li>
+                            <li><strong>Excel出力と書式完全再現:</strong> 検索セル周辺（上下左右）の拡張セルプレビュー、背景色・文字色・取消線の忠実再現</li>
+                            <li><strong>列名フィルタ機構:</strong> 一覧上の列ごとに値抽出・絞り込みが可能な <code>FilteredDataGridControl</code> 搭載</li>
+                            <li><strong>100% 完全オフライン・安心設計:</strong> クラウド通信・データ送信ゼロ、レジストリ不使用のポータブル動作</li>
+                            <li><strong>セットアップ支援ツール同梱:</strong> スタートメニュー登録・アンインストール用のVBScriptを完備</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Version 1.0.0-rc / Preview -->
+            <section class="relative pl-8 border-l-2 border-slate-700 space-y-4">
+                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-600 ring-4 ring-slate-900"></div>
+
+                <div class="flex flex-wrap items-baseline gap-3">
+                    <h2 class="text-xl font-bold text-slate-200">v1.0.0 (先行プレリリース)</h2>
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">GitHub Releases 先行公開</span>
+                    <span class="text-sm font-mono text-slate-400">2026/09/10</span>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-slate-950/60 border border-slate-800/80 space-y-3 text-sm text-slate-300">
+                    <ul class="list-disc list-inside space-y-1 text-slate-400 text-xs sm:text-sm pl-1 leading-relaxed">
+                        <li>GitHub Releases にて <code>kensaku-kun_v1.0.0.zip</code>（自己完結型EXE）を先行配布開始</li>
+                        <li>Windows SmartScreen 警告への対処ガイドおよび公式LP（日本語・英語）を開設</li>
+                        <li>動作検証用サンプルExcelデータセット（200件 / 600件 / 2000件）の提供開始</li>
+                        <li>ライセンス管理モジュール（<code>LicenseHelper</code>）および試用期間管理の組み込み</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Development Milestones -->
+            <section class="relative pl-8 border-l-2 border-slate-800 space-y-4">
+                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-700 ring-4 ring-slate-900"></div>
+
+                <div class="flex flex-wrap items-baseline gap-3">
+                    <h2 class="text-lg font-bold text-slate-300">開発期 主要マイルストーン</h2>
+                    <span class="text-xs font-mono text-slate-500">2026/04/18 〜 2026/08/31</span>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-slate-950/40 border border-slate-800/50 space-y-3 text-xs sm:text-sm text-slate-400">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <span class="text-blue-400 font-bold block mb-1">2026/08/02 : 1画面モダンUI刷新</span>
+                            <span>新リポジトリ <code>KensakuKun</code> 創設。旧4画面連動からシングルウィンドウ（4分割UserControl）アーキテクチャへ全面刷新。</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <span class="text-blue-400 font-bold block mb-1">2026/07/28 : 旧4画面構成 完成版</span>
+                            <span>全205項目の総合試験に合格（7/14）。旧構成の「完成版」コミット到達。</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <span class="text-blue-400 font-bold block mb-1">2026/06/20 : Antigravityへ転籍</span>
+                            <span>Geminiライセンス満了に伴い移行。「ソース提示モード」「デグレ防止」のプロジェクト規律運用開始。</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <span class="text-blue-400 font-bold block mb-1">2026/04/18 : プロジェクト発足</span>
+                            <span>Java + Apache POI資産からの脱却。C# + WPFポーティング企画（<code>Proposal_ExcelSearchTool.md</code>）開始。</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Back to Top -->
+        <div class="mt-16 pt-8 border-t border-slate-800 flex items-center justify-between text-sm">
+            <a href="index.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-white transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>トップページに戻る</span>
+            </a>
+            <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 font-bold transition">
+                <i data-lucide="book-open" class="w-4 h-4"></i>
+                <span>ユーザーズマニュアルを見る</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-8 text-center text-xs text-slate-500">
+        <p>© 2026 tossy.apps - Kensaku-kun Project</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

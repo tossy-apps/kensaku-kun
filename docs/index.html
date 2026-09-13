@@ -4,19 +4,26 @@
 <head>
     <script>
         (function() {
-            var pref = localStorage.getItem('kensaku_lang_pref');
-            if (pref === 'en') {
-                window.location.replace('index_en.html');
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('lang') === 'ja') {
                 return;
             }
-            if (!pref) {
-                var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-                if (lang && !lang.startsWith('ja')) {
-                    window.location.replace('index_en.html');
-                }
+            var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (lang && !lang.startsWith('ja')) {
+                window.location.replace('index_en.html');
             }
         })();
     </script>
+    <link rel="alternate" hreflang="ja" href="https://tossy-apps.github.io/kensaku-kun/">
+    <link rel="alternate" hreflang="en" href="https://tossy-apps.github.io/kensaku-kun/index_en.html">
+    <link rel="alternate" hreflang="x-default" href="https://tossy-apps.github.io/kensaku-kun/">
+    <!-- OGP / Social Cards -->
+    <meta property="og:title" content="けんさくくん - 高機能Excel検索ツール">
+    <meta property="og:description" content="大量のExcel設計書・方眼紙からインメモリで爆速全文検索。書式・取消線再現、完全オフライン対応のWindows専用ツール。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tossy-apps.github.io/kensaku-kun/">
+    <meta property="og:image" content="https://tossy-apps.github.io/kensaku-kun/help/pics/favicon.png">
+    <meta name="twitter:card" content="summary">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>けんさくくん - 高機能Excel検索ツール</title>
@@ -50,9 +57,10 @@
                 <a href="#specs" class="hover:text-blue-600 transition">動作環境</a>
                 <a href="#license" class="hover:text-blue-600 transition">ライセンス・試用</a>
                 <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="hover:text-blue-600 transition flex items-center gap-1.5"><i data-lucide="book-open" class="w-4 h-4 text-blue-500"></i>マニュアル</a>
+                <a href="changelog.html" class="hover:text-blue-600 transition flex items-center gap-1.5"><i data-lucide="history" class="w-4 h-4 text-slate-500"></i>更新履歴</a>
             </nav>
             <div class="flex items-center space-x-3">
-                <a href="index_en.html" onclick="localStorage.setItem('kensaku_lang_pref', 'en')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                <a href="index_en.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
                     <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-400"></i>
                     <span>English</span>
                 </a>
@@ -475,9 +483,8 @@
                 <a href="#license" class="hover:text-slate-200 transition">ライセンス・試用</a>
                 <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="hover:text-slate-200 transition">マニュアル</a>
                 <a href="dev-story.html" class="hover:text-slate-200 transition">開発秘話</a>
-                <a href="dev-story_en.html" class="hover:text-slate-200 transition">開発秘話 (EN)</a>
-                <a href="https://github.com/tossy-apps/kensaku-kun#readme" target="_blank" rel="noopener noreferrer" class="hover:text-slate-200 transition">README</a>
-                <a href="index_en.html" onclick="localStorage.setItem('kensaku_lang_pref', 'en')" class="hover:text-slate-200 transition flex items-center gap-1"><i data-lucide="globe" class="w-3.5 h-3.5"></i>English</a>
+                                <a href="https://github.com/tossy-apps/kensaku-kun#readme" target="_blank" rel="noopener noreferrer" class="hover:text-slate-200 transition">README</a>
+                <a href="index_en.html" class="hover:text-slate-200 transition flex items-center gap-1"><i data-lucide="globe" class="w-3.5 h-3.5"></i>English</a>
                 <a href="#download" class="hover:text-slate-200 transition">ダウンロード</a>
                 <a href="mailto:tossy.apps@gmail.com" class="hover:text-slate-200 transition flex items-center gap-1">
                     <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-500"></i>

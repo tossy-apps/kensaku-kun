@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kensaku-kun - High-Performance Excel Search & Cross-Review Tool</title>
     <link rel="icon" type="image/png" href="help/pics/favicon.png">
+    <link rel="alternate" hreflang="ja" href="https://tossy-apps.github.io/kensaku-kun/">
+    <link rel="alternate" hreflang="en" href="https://tossy-apps.github.io/kensaku-kun/index_en.html">
+    <link rel="alternate" hreflang="x-default" href="https://tossy-apps.github.io/kensaku-kun/">
+    <!-- OGP / Social Cards -->
+    <meta property="og:title" content="Kensaku-kun - High-Performance Excel Search Tool">
+    <meta property="og:description" content="Blazing-fast in-memory full-text search for massive Excel files and sheets. Pixel-perfect format reproduction, 100% offline security.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tossy-apps.github.io/kensaku-kun/index_en.html">
+    <meta property="og:image" content="https://tossy-apps.github.io/kensaku-kun/help/pics/favicon.png">
+    <meta name="twitter:card" content="summary">
     <!-- Tailwind CSS & Lucide Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -41,10 +51,11 @@
                 <a href="#license" class="hover:text-blue-600 transition">License & Trial</a>
                 <a href="dev-story_en.html" class="hover:text-amber-600 transition flex items-center gap-1.5 text-amber-600 font-bold"><i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>Dev Story</a>
                 <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="hover:text-blue-600 transition flex items-center gap-1.5"><i data-lucide="book-open" class="w-4 h-4 text-blue-500"></i>Manual (JP)</a>
+                <a href="changelog.html" class="hover:text-blue-600 transition flex items-center gap-1.5"><i data-lucide="history" class="w-4 h-4 text-slate-500"></i>Changelog</a>
             </nav>
             <div class="flex items-center space-x-3">
                 <!-- Language Switcher -->
-                <a href="index.html" onclick="localStorage.setItem('kensaku_lang_pref', 'ja')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-bold text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition shadow-sm">
+                <a href="index.html?lang=ja" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-bold text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition shadow-sm">
                     <i data-lucide="globe" class="w-4 h-4 text-slate-500"></i>
                     <span>日本語</span>
                 </a>
@@ -320,8 +331,8 @@
                 <a href="#license" class="hover:text-white transition">License</a>
                 <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="hover:text-white transition">Manual (JP)</a>
                 <a href="dev-story_en.html" class="hover:text-amber-400 transition text-amber-400 font-bold flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i>Dev Story</a>
-                <a href="https://github.com/tossy-apps/kensaku-kun/blob/main/README_en.md" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">README (EN)</a>
-                <a href="index.html" onclick="localStorage.setItem('kensaku_lang_pref', 'ja')" class="hover:text-white transition flex items-center gap-1.5 font-bold text-blue-400"><i data-lucide="globe" class="w-4 h-4"></i>日本語 (JP)</a>
+                <a href="https://github.com/tossy-apps/kensaku-kun#readme" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">README (EN)</a>
+                <a href="index.html?lang=ja" class="hover:text-white transition flex items-center gap-1.5 font-bold text-blue-400"><i data-lucide="globe" class="w-4 h-4"></i>日本語 (JP)</a>
                 <a href="#download" class="hover:text-white transition">Download</a>
             </div>
         </div>

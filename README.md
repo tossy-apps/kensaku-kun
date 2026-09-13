@@ -1,117 +1,99 @@
-# けんさくくん　－高機能Excel検索ツール－
+> 🌐 **[日本語のREADMEはこちら (Japanese README)](README_ja.md)**
 
-大量のExcel資産から、素早く簡単に目的のデータを探し出すためのWindows専用  
-デスクトップツールです。特に「Excel方眼紙」の検索に向けて工夫しています！
+# Kensaku-kun (Excel Quick Search Tool)
 
-## 特徴
+A Windows desktop application designed to quickly and easily find data across massive amounts of Excel assets. It is particularly optimized for searching heavily formatted or layout-driven Excel files (such as "Excel Hoganshi")!
 
-- **高速な検索**: 検索前にExcelファイルの解析とロードを行うことで、数百のExcelファイルに対しても検索条件を変えた高速な検索を実現します。
-- **多彩な検索条件**: セルの値だけでなく、シート名やブック名、コメントや図形内のテキストなども検索・除外の対象にできます。
-- **柔軟なキーワード指定**: 改行による複数キーワードのOR検索や、ワイルドカード（\* / ?）を用いたあいまい検索に対応しています。
-- **使いやすいUI**: ドラッグ＆ドロップでのフォルダ・ファイル指定や、結果一覧から直接ファイルを開く機能など、ファイルを探すことに特化しています。
-- **検索結果の整理**: 結果をExcelへダウンロードできます。検索したセルや周辺の書式も可能な限り再現し、取消線もチェックできる業務目線の設計です。
+## Features
+- **Ultra-Fast Search**: By parsing and loading Excel files into memory prior to searching, it enables instantaneous searches across hundreds of files even when search conditions change.
+- **Versatile Search Conditions**: You can target or exclude not only cell values, but also sheet names, workbook names, comments, and text within shapes.
+- **Flexible Keyword Input**: Supports multi-keyword OR searches via line breaks, and fuzzy matching using wildcards (*).
+- **User-Friendly UI**: Optimized for finding files easily, featuring drag-and-drop for folders/file lists and the ability to open files directly from the search results.
+- **Organized Output**: Search results can be exported to Excel. The tool is designed for practical business use, reproducing the formatting of searched cells and their surroundings, and also checking for strikethrough text.
 
-## 注意事項
+## Important Notes
+- To achieve maximum search speed, this tool heavily utilizes available memory and CPU resources. A memory usage threshold is implemented; if the limit is exceeded, the tool safely slows down processing to prevent system overload.
+- While it excels at searching complex, layout-driven files ("Excel Hoganshi"), it is **not well-suited** for searching massive database-style Excel tables with tens of thousands of rows, as doing so consumes an excessive amount of memory.
+- It does not support direct searching of Excel files hosted on HTTP(S) locations (like SharePoint). Please download them to a local or network drive before searching.
 
-- 本ツールは検索高速化のため、可能な限りメモリとCPUのリソースを活用します。メモリ使用量の上限（閾値）を設定しており、上限を超えた場合は動作を低速化させ、システム限界を超過しないよう配慮した設計としています。
-- "Excel方眼紙"のようなファイルの検索には向いています。一方、数万行に及ぶ巨大なデータベース表として利用されているExcelファイルの検索は、多くのメモリを消費するため、本ツールの用途にはあまり**向いていません**。
-- SharePointなどのhttp(s)上にあるExcelファイルを直接検索する機能は持っていません。ローカルやネットワークドライブへ、ダウンロードして検索してください。
+## Download (Latest: v1.0.0)
 
-## ダウンロード (最新版: v1.0.0)
+- **[Kensaku-kun Application (kensaku-kun_v1.0.0.zip / ~81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
+  *No installer required. Simply extract the ZIP to run standalone (.NET 10 Runtime bundled / self-contained EXE).*
+- **Sample Excel Datasets for Verification**:
+  - [Test Excel × 200 files (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
+  - [Test Excel × 600 files (41MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/600_excels.zip)
+  - [Test Excel × 2000 files (181MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/2000_excels.zip)
 
-- **[けんさくくん 本体 (kensaku-kun_v1.0.0.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
-  ※インストーラー不要。ZIP解凍ですぐに起動できます（.NET 10 ランタイム同梱・自己完結型EXE）。
-- **動作検証用 サンプルExcelデータセット**:
-  - [テストExcel × 200件 (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
-  - [テストExcel × 600件 (41MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/600_excels.zip)
-  - [テストExcel × 2000件 (181MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/2000_excels.zip)
+- **Official Website & Demo**: [https://tossy-apps.github.io/kensaku-kun/](https://tossy-apps.github.io/kensaku-kun/)
 
-- **公式Webサイト / 操作デモ**: [https://tossy-apps.github.io/kensaku-kun/](https://tossy-apps.github.io/kensaku-kun/)
+## System Requirements
 
-## 動作環境
+- OS: Windows 10 / 11 (64-bit)
+- Memory: 16GB or more recommended (Designed to operate on around 2-3GB for approximately 500 files, though actual usage depends on file contents).
+- The executable is self-contained. It works standalone without requiring any separate .NET Runtime installation.
 
-- OS: Windows 10 / 11 (64bit)
-- メモリ：16GB以上推奨（500ファイル程度で2～3GB程度で動作するように設計していますが、ファイルの内容次第となります）。
-- 実行ファイルは必要なコンポーネントを内包（自己完結型）しているため、別途 .NET ランタイムをインストールすることなく単体で動作します。
+## Security and Privacy
+- **Fully Offline**: This tool requires no internet connection. All search and parsing operations are completed entirely within your local PC.
+- **Zero Data Transmission**: Your Excel file contents, search keywords, and settings are **never** transmitted to external servers, cloud services, or AI systems. You can safely use it with highly confidential business data.
 
-## セキュリティとプライバシー
+## Security Warning on Initial Launch (Windows SmartScreen)
+- As this software is an indie/personal project, it is not signed with an expensive commercial Code Signing Certificate.
+- Therefore, Windows SmartScreen may display a warning screen stating **"Windows protected your PC"** upon your initial launch.
 
-- **完全オフライン動作**: 本ツールはインターネット接続を必要とせず、すべての検索・解析処理はローカルPC内で完結します。
-- **データ送信ゼロ**: 検索対象のExcelファイルの内容、検索キーワード、設定情報などが、外部のサーバー、クラウドサービス、およびAIシステム等に送信されることは一切ありません。機密性の高い業務データでも安心です。
+**[How to Run]**
+1. Click **"More info"** on the warning screen.
+2. Click the **"Run anyway"** button that appears at the bottom right to start the application normally.
 
-## 初回起動時の警告表示について（Windows SmartScreen）
+*Note: This tool operates completely offline and never communicates with external networks. Please feel safe to use it.*
 
-- 本ソフトウェアは個人開発のため、高額なコードサイニング証明書（EV/OV電子署名）による署名を行っておりません。
-- そのため、初回起動時にWindows SmartScreenにより「WindowsによってPCが保護されました」という警告画面が表示される場合があります。
+## Folder Structure & Included Files
+Extracting the zip package will provide the following files:
+- `Kensaku-kun.exe` : Application executable
+- `スタートメニューへの登録.vbs` (Register to Start Menu) : Creates shortcuts in the Windows Start Menu (Registry-free)
+- `システム設定を開く.vbs` (Open System Settings) : Allows configuring memory limits and exclusion folders prior to running searches
+- `help.html` : Offline user manual
+- `tools/` : Utility scripts for uninstallation (`アンインストール.vbs`) and resetting settings (`設定初期化.vbs`)
 
-**【起動手順】**
+## Quick Start
+1. Double-click `Kensaku-kun.exe` to launch.
+2. Drag and drop the folder containing your Excel files, or a text file (.txt) with a list of files, into the **"Search Target (検索対象)"** box.
+3. Move the focus away from the search target box. The pre-parsing process will begin automatically to prepare for the search.
+4. Enter your desired text or conditions in the **"Search Conditions (検索条件)"** window and execute the search.
 
-1. 警告画面内の **「詳細情報」** をクリックします。
-2. 右下に表示される **「実行」** ボタンをクリックすると、通常通り起動します。 本ツールは完全オフラインで動作し、外部ネットワークへの通信は一切行いません。安心してご利用ください。
+For detailed instructions, please refer to **[Help] - [Open Manual]** in the application (or view the bundled `help.html`).
 
-## フォルダ構成と同梱ファイル
+## Trial Period and Limitations
+You can use all features for free for **30 days** from the first launch, even without registering a license.
+If the 30-day trial period expires, the following functional limitations will apply:
+- A message will be displayed when opening an Excel file from the search results (though the file can still be opened).
+- Hyperlinks in the search results and exported Excel files will be disabled.
+- A background watermark will be applied to the exported Excel files.
 
-zipファイルを展開すると、以下のファイルに解凍されます。主なファイルは以下となります。
+To continue using the tool without limitations, please purchase and register a valid license.  
+*For purchase and registration instructions, please see our [Official Website](https://tossy-apps.github.io/kensaku-kun/).*
 
-- `Kensaku-kun.exe` : アプリ本体
-- `スタートメニューへの登録.vbs` : スタートメニューにショートカットを作成します（レジストリ不使用）
-- `システム設定を開く.vbs` : 検索実行前にメモリ上限や探索除外フォルダを設定できます
-- `help.html` : オフライン操作マニュアル
-- `tools/` : アンインストール用スクリプト、設定初期化の補助ツール
+## Disclaimer
+The author (developer) assumes no responsibility for any damages (including but not limited to search failure, data loss, business interruption, loss of profits, system crashes, or impact on other applications) arising from the use of this software. Please use it entirely at your own risk.
+- This software is provided "as-is" without any warranties. There is no guarantee of fitness for a particular purpose, absence of bugs, or obligation to provide support.
+- We cannot guarantee that unexpected bugs or failure of the trial period validation mechanism will not affect your system or files. We strongly recommend backing up important data beforehand.
+- The tool can be used for both commercial and personal purposes; however, the user is solely responsible for resolving any issues arising from its use.
 
-## 簡単な使い方
+## Copyright and Licensing
+The copyright of this tool belongs to the author.
+Unauthorized redistribution, reverse engineering, modification, and sales are strictly prohibited.
 
-1. `Kensaku-kun.exe` をダブルクリックして起動します。
-2. メイン画面の **「検索対象」** に、検索したいExcelがあるフォルダ、またはファイル一覧(.txt)をドラッグ＆ドロップして指定します。
-3. 検索対象ボックスからフォーカスを外すと事前の解析が走り、準備が整います。
-4. 「検索条件」 ウィンドウで、探したい文字や条件を入力して検索を実行。
+### Third-Party Components
+This software utilizes the following open-source libraries.
+The full license texts and copyright notices for these libraries are included in the bundled `LICENSE.txt` (or in the "About" dialog within the app).
+- **ClosedXML** (MIT License) - Copyright (c) ClosedXML
+- **DocumentFormat.OpenXml** (MIT License) - Copyright (c) Microsoft Corporation.
+- **Material Design In XAML Toolkit** (MIT License) - Copyright (c) 2015 James Willock, Mulholland Software and Contributors
+- **Microsoft Edge WebView2** (WebView2 SDK License) - Copyright (c) Microsoft Corporation.
+- **Google Fonts (Material Symbols)** (Apache License Version 2.0) - https://fonts.google.com/icons
 
-詳しい操作方法については、**ヘルプ - マニュアルを開く** をご参照  
-ください（同梱の `help.html`）。
+## Contact
+At present, we do not have plans to internationalize (localize) the application's UI. However, if there is strong demand from users, we will consider it. If you have any requests or feedback regarding this, please feel free to contact us!
 
-## 試用期間と制限事項
-
-本ツールはライセンス未登録の状態であっても、初回起動日から **30日間** はすべての機能を制限なく無料でお試しいただけます。  
-試用期間（30日）を超過した場合は、以下の機能制限がかかります。
-
-- 検索一覧に表示されたExcelを開く際（Enterキーやダブルクリック操作時）に、メッセージが表示されます（Excelの起動は可能です）。
-- 検索一覧、およびExcel出力で出力したExcelのリンクが無効になります。
-- Excel出力で出力したExcelに、背景が設定されます。
-
-継続してご利用いただく場合は、正規ライセンスの登録をお願いいたします。  
-※ライセンスの購入方法および登録手順については、[公式サイト](https://tossy-apps.github.io/kensaku-kun/)をご確認ください。
-
-## 免責事項
-
-本ソフトウェアの使用により生じたいかなる損害（検索不可、データの損失、  
-業務の停止、利益の損失、PCのハングアップや他アプリケーションへの影響などを  
-含むがこれに限定されない）についても、作者（開発者）は一切の責任を負いません。  
-すべてユーザー自身の自己責任においてご利用ください。
-
-- 本ソフトウェアは「現状のまま」無保証で提供され、特定の目的への適合性やバグがないことの保証、およびサポートの義務を負うものではありません。
-- 予期せぬ不具合や試用期限判定の不作動等により、システムやファイルに影響を与える可能性がないとは言いきれません。重要なデータは事前にバックアップを取ることを強く推奨します。
-- 業務利用・個人利用を問わずご利用いただけますが、利用によって派生するいかなるトラブルも利用者の責任において解決するものとします。
-
-## 著作権およびライセンス
-
-本ツールの著作権は作者に帰属します。  
-無断での再配布、リバースエンジニアリング、改変、および販売は禁止します。
-
-### サードパーティ コンポーネント
-
-本ソフトウェアは、以下のオープンソースライブラリ等を使用しています。  
-これらライブラリのライセンス全文および著作権表示は、同梱の `LICENSE.txt`  
-（またはアプリ内「バージョン情報」）に記載されています。
-
-- **ClosedXML** (MIT License)Copyright (c) ClosedXML
-- **DocumentFormat.OpenXml** (MIT License)Copyright (c) Microsoft Corporation.
-- **Material Design In XAML Toolkit** (MIT License)Copyright (c) 2015 James Willock, Mulholland Software and Contributors
-- **Microsoft Edge WebView2** (WebView2 SDK License)Copyright (c) Microsoft Corporation.
-- **Google Fonts (Material Symbols)** (Apache License Version 2.0)[https://fonts.google.com/icons](https://fonts.google.com/icons)
-
-## ご連絡先
-
-個人制作のため、すべてのご要望への対応やご回答は難しいかと存じますが、  
-不具合のご報告やご意見につきましては、ありがたく参考にさせていただきます。
-
-- **メール**: [tossy.apps@gmail.com](mailto:tossy.apps@gmail.com) (tossy.apps)
+As this is a personal project, it may be difficult to respond to all requests or inquiries, but we gratefully welcome your messages.
+- **Email**: <tossy.apps@gmail.com> (tossy.apps)
