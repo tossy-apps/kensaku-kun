@@ -18,7 +18,7 @@ A Windows desktop application designed to quickly and easily find data across ma
 
 ## Download (Latest: v1.0.0)
 
-- **[Kensaku-kun Application (kensaku-kun_v1.0.0.zip / ~96MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
+- **[Kensaku-kun Application (kensaku-kun_v1.0.0.zip / ~86MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
   *No installer required. Simply extract the ZIP to run standalone (.NET 10 Runtime bundled / self-contained EXE).*
 - **Sample Excel Datasets for Verification**:
   - [Test Excel × 200 files (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
