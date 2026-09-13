@@ -21,7 +21,7 @@
 
 ## ダウンロード (最新版: v1.0.0)
 
-- **[けんさくくん 本体 (kensaku-kun_v1.0.0.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
+- **[けんさくくん 本体 (kensaku-kun_v1.0.0.zip / 約96MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
   ※インストーラー不要。ZIP解凍ですぐに起動できます（.NET 10 ランタイム同梱・自己完結型EXE）。
 - **動作検証用 サンプルExcelデータセット**:
   - [テストExcel × 200件 (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
