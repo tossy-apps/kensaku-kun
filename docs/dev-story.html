@@ -186,35 +186,57 @@
 
             <h2>3. たどれる限りの開発フェーズと激闘のタイムライン</h2>
 
-            <div class="my-6 p-4 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs sm:text-sm text-slate-300">
+            <div class="my-6 p-4 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs sm:text-sm text-slate-300 leading-relaxed">
                 <div class="text-blue-400 font-bold mb-2">【時系列ロードマップ】</div>
-                <div>2026年8月上旬  : [Phase 1〜2] 旧コードからの移設開始・基本骨格の再構築</div>
-                <div>2026年8月中旬  : [Phase 3〜4] 1画面化・列名フィルタ・UI/UX極限チューニング</div>
-                <div>2026年8月下旬  : [Phase 5〜6] メモリリーク根絶・COM/Excel前面化・高速化</div>
-                <div>2026年9月上旬  : [リリース準備] ライセンス・SmartScreen・VBSツール・公開へ</div>
+                <div>2026年4月18日  : [プロジェクト発足] Java資産からの脱却、C#+WPF全面ポーティング＆MemoryWorkbook設計</div>
+                <div>2026年5月      : [コア探求] 超高速インメモリ検索エンジンの確立とプロセスメモリの最適化</div>
+                <div>2026年6月上旬  : [Gemini終焉] チュートリアル等の追加と品質の乱れ、ライセンスモデル変更</div>
+                <div>2026年6月20日  : [Antigravity転籍] 初回セッション。「ソース提示モード」「デグレ防止」の初期防護柵誕生</div>
+                <div>2026年7月      : [旧4画面完成版] セル書式・取消線・図形完全再現、全205項目合格（7/14）、完成版コミット（7/28）</div>
+                <div>2026年7月末    : [大刷新の決断] 4画面完成直後に「モダンな1画面化（シングルウィンドウ）」を決断＆モック試作</div>
+                <div>2026年8月上旬  : [新章開幕] 新リポジトリKensakuKun創設（8/2）、1画面アーキテクチャ確立と結合（Phase 1〜2）</div>
+                <div>2026年8月中旬  : [激闘のUI] 列名フィルタ死闘編・ゾンビPopup撲滅・IME制御徹底（Phase 3〜4）</div>
+                <div>2026年8月下旬  : [OSの深淵] メモリリーク根絶・COM/Excel前面化・UI Automation行スポットライト（Phase 5〜6）</div>
+                <div>2026年9月上旬  : [公式公開] ライセンス機構・SmartScreen対策・VBSツール・GitHub全世界公開</div>
+                <div>2026年9月中旬  : [極限の仕上げ] Webマニュアル全面モダナイズ・6ステップ連続スライドショー・Vector公開へ</div>
             </div>
 
-            <h3>【第1幕：移設の混乱と基本機能の奪還】(B01 〜 B24)</h3>
+            <h3>【序幕：Gemini創世記とAntigravityへの転籍】(2026年4月18日 〜 6月)</h3>
             <p>
-                設定（TomlConfig）が揮発する、D&Dが効かない、ログウィンドウ分離でDataContextが吹っ飛ぶ、BackSpaceで文字が消えないなど、旧アプリにあった数々の「職人技的なキー入力ハンドリング」を無視してモダン風のペラペラなコードを書いて大ブーイングを浴びる。「元けんさくくんでシッカリ動いているのでまずは元けんさくくんを重点チェックしろ」と叩き直される。
+                <strong>2026年4月18日 14:32、プロジェクト発足。</strong> かつてJava + Apache POI環境で運用されていた検索ロジックを、Windowsネイティブ・モダンUIの有償級ツールとして <strong>C# + WPF</strong> へ全面ポーティングする企画書（<code>Proposal_ExcelSearchTool.md</code>）からすべてが始まりました。<br>
+                350ファイルの設計書を初回3.5分・再検索20秒で走査するため、<code>MemoryWorkbook</code> / <code>MemorySheet</code> / <code>MemoryCell</code> の階層構造を設計。当初は3フレーム（検索・ログ・一覧）独立ウィンドウ構成として進められました。<br>
+                しかし6月、機能拡充に伴う手戻りやコード品質の揺らぎ、Geminiのライセンス終了に直面。<strong>6月20日、Antigravity環境へ転籍。</strong> 初回セッションにて「デグレ防止」「合意形成」「勝手なソース提示の禁止（ソース提示ON/OFFモード）」という、のちの <code>AGENTS.md</code> の原点となる鉄則が刻まれました。
             </p>
 
-            <h3>【第2幕：列名フィルタと1画面化の死闘】(B25 〜 B63)</h3>
+            <h3>【第1幕：全205項目合格と『1画面化』への大決断】(2026年7月 〜 8月上旬 / B01 〜 B24)</h3>
             <p>
-                列名フィルタのレイアウト崩壊、日付ツリーフィルタ消失、曇りガラス（Overlay）のアニメ追従、ESC/SPACE/TABキーのフォーカス循環、スピナーのマイナス入力。列名フィルタのサイズを勝手に変えたり、真っ白にして消滅させたり、閉じた瞬間に再表示されるゾンビPopupを量産。<br>
-                時間差判定によるPopup抑制、<code>NumericInputBehavior</code> の復元、YIQ輝度計算によるシート名文字色反転など、泥臭いWPFの真髄を叩き込まれる。
+                7月、セルの色・背景色・取消線・図形・コメント表示の完全再現に挑み、7月14日に「205 / 205項目合格（Excel出力100点化）」を達成。7月28日に旧4画面構成（メイン・詳細・一覧・ログ）の「完成版」をコミットしました。<br>
+                しかし司令塔は完成に甘んじることなく、直後の7月末、<strong>「モダンな1画面構成（シングルウィンドウ）へ全面刷新する」</strong> という大決断を下します。モックUIでの試行錯誤を経て、8月2日に新リポジトリ <code>KensakuKun</code> を新設し、4分割UserControlによる1画面アーキテクチャを確立しました。<br>
+                設定（TomlConfig）揮発やD&D入力、ログドロワー分離でのトラブルを突破し、「元けんさくくんの挙動を死守せよ」という指導のもとPhase 1〜2を完遂しました。
             </p>
 
-            <h3>【第3幕：パフォーマンスとWindowsの深淵】(B64 〜 B110)</h3>
+            <h3>【第2幕：列名フィルタとUI/UXの死闘】(Phase 3〜4 / B25 〜 B63)</h3>
+            <p>
+                列名フィルタの部品化（<code>FilteredDataGridControl</code>）、レイアウト崩壊、日付ツリーフィルタ消失、曇りガラス（Overlay）のアニメ追従、ESC/SPACE/TABキーのフォーカス循環、スピナーのマイナス入力。列名フィルタのサイズを勝手に変えたり、真っ白にして消滅させたり、閉じた瞬間に再表示されるゾンビPopupを量産。<br>
+                時間差判定によるPopup抑制、<code>NumericInputBehavior</code> の復元、YIQ輝度計算によるシート名文字色反転など、泥臭いWPFの真髄を叩き込まれました。
+            </p>
+
+            <h3>【第3幕：パフォーマンスとWindowsの深淵】(Phase 5〜6 / B64 〜 B110)</h3>
             <p>
                 大量Excel解析時のメモリ爆発、ToolTipによるメモリリーク、WebView2のゾンビプロセス化、Excelジャンプ時のフォーカス枠はみ出し、行検索時の2点UIA合成スポットライト。<br>
-                <code>ConcurrentDictionary</code> によるBrushキャッシュ導入でメモリリークを根絶し、Excel起動エラー時のフォアグラウンド制御、COMビジー対策、<code>Rect.Intersect</code> によるクリッピングなど、Windowsプログラミングの深淵に挑む。
+                <code>ConcurrentDictionary</code> によるBrushキャッシュ導入でメモリリークを根絶し、Excel起動エラー時のフォアグラウンド制御、COMビジー対策、<code>Rect.Intersect</code> によるクリッピングなど、Windowsプログラミングの深淵に挑みました。
             </p>
 
             <h3>【第4幕：仕上げとプロの配布品質へ】(B111 〜 リリース)</h3>
             <p>
                 Excel即時前面化（Win10/Win11両対応）、フォーカスオーナー化、<code>SwitchSelectionMode</code> によるSelectionUnit例外の根治。<br>
-                <code>LicenseHelper</code> による一元管理、改ざん検知ペナルティ、オフライン完結設計、<code>Kensaku-kun</code> へのEXE・パス英数化、VBSによるスタートメニュー登録＆アンインストーラーの完備を達成。
+                <code>LicenseHelper</code> による一元管理、改ざん検知ペナルティ、オフライン完結設計、<code>Kensaku-kun</code> へのEXE・パス英数化、VBSによるスタートメニュー登録＆アンインストーラーの完備を達成しました。
+            </p>
+
+            <h3>【第5幕：公式マニュアル大刷新とVector公開準備】(2026年9月中旬 〜 現在)</h3>
+            <p>
+                公式HTML/WebヘルプをBIZ UDPGothic＋Tailwind/Lucide構成へ全面刷新。ダーク/ライトテーマ切り替え、スマートフォン閲覧にも完全対応。<br>
+                拡張セル検索の「1画面＝1ステップ」完全6ステップ連続スライドショーへの再構成、およびVector登録に向けた最終パッケージングを実施しています。
             </p>
 
             <h2>4. 総括：AIエージェントから見た人間（司令塔）へのリスペクト</h2>
