@@ -2,6 +2,7 @@
 <html lang="ja" class="scroll-smooth">
 
 <head>
+    <meta charset="UTF-8">
     <script>
         (function() {
             var urlParams = new URLSearchParams(window.location.search);
@@ -38,8 +39,6 @@
       "keywords": "神Excel, Excel方眼紙, セル結合, Excel全文検索, オフライン検索, インメモリ検索, 高速検索, AI駆動開発, AIペアプログラミング, C#, WPF"
     }
     </script>
-
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="hvWFbd0-8JQff8TVcIxgMjfLT86-cj4l71MWtDEFKRY" />
     <title>けんさくくん - 高機能Excel検索ツール</title>
@@ -115,7 +114,7 @@
                             <span>ライセンス案内（Vector販売）</span>
                         </a>
                     </div>
-                    <p class="text-xs text-slate-400">※自己完結型EXE（インストーラー不要／.NETランタイム同梱）</p>
+                    <p class="text-xs text-slate-400">※インストール不要・事前準備なし。ZIPを解凍して .exe をダブルクリックするだけで即起動（.NET 10ランタイム同梱）</p>
                 </div>
 
                 <!-- App Mockup / Video Demo Preview Area -->
@@ -248,20 +247,18 @@
                     </button>
                 </div>
 
-                <!-- F4: オートフィルタライクな絞り込み -->
+                <!-- F4: 検索フォルダのお気に入り -->
                 <div class="rounded-xl border border-slate-200 p-6 shadow-sm hover:border-blue-300 transition flex flex-col justify-between">
                     <div>
                         <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600"><i
-                                data-lucide="filter" class="w-5 h-5"></i></div>
-                        <h3 class="mt-4 text-base font-bold text-slate-900">Excel感覚の強力なノイズ除去フィルタ</h3>
+                                data-lucide="folder-heart" class="w-5 h-5"></i></div>
+                        <h3 class="mt-4 text-base font-bold text-slate-900">検索フォルダのお気に入り（最大15件）</h3>
                         <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            検索結果に対して「隠しセル」「非表示シート」「色別」「日付別」のフィルタをワンクリック適用。膨大なヒット件数から必要な情報だけを素早く絞り込めます。</p>
+                            検索フォルダは15個まで登録可能。フォルダ一覧やファイル一覧を用意して設定すれば、検索したいファイルに限った検索や、フォルダを跨いだ横断検索なども簡単に行えます。</p>
                     </div>
-                    <button type="button" onclick="openVideoModal('movie/ex-filter.mp4', '動作デモ：Excel感覚の強力なノイズ除去フィルタ')"
-                        class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold hover:text-blue-700 hover:underline w-full text-left">
-                        <span class="flex items-center gap-1.5"><i data-lucide="play-circle" class="w-4 h-4"></i> 動作イメージを確認</span>
-                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                    </button>
+                    <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                        <span class="flex items-center gap-1.5"><i data-lucide="folder-check" class="w-4 h-4 text-blue-600"></i> 最大15件登録 / 横断・限定検索</span>
+                    </div>
                 </div>
 
                 <!-- F5: 柔軟な検索オプション -->
@@ -311,8 +308,7 @@
                     </tr>
                     <tr class="border-b border-slate-200/70">
                         <th class="px-5 py-3.5 font-bold text-slate-900 bg-slate-50/50">ランタイム依存</th>
-                        <td class="px-5 py-3.5 text-slate-600"><strong>なし</strong>（.NET 10
-                            ランタイム同梱の自己完結型EXE。別途フレームワークの導入は不要です）</td>
+                        <td class="px-5 py-3.5 text-slate-600"><strong>なし</strong>（インストール不要・事前準備なし。ZIPを解凍して .exe をダブルクリックするだけで即起動。※.NET 10ランタイム同梱の自己完結型EXE）</td>
                     </tr>
                     <tr class="border-b border-slate-200/70">
                         <th class="px-5 py-3.5 font-bold text-slate-900 bg-slate-50/50">対象ファイル形式</th>
