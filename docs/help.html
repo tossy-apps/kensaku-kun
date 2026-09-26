@@ -31,12 +31,25 @@
       flex-direction: column;
       box-shadow: 2px 0 8px rgba(0,0,0,0.03);
       z-index: 20;
+      transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.28s cubic-bezier(0.4, 0, 0.2, 1), margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    body.sidebar-collapsed nav {
+      width: 0;
+      min-width: 0;
+      margin-left: -290px;
+      opacity: 0;
+      pointer-events: none;
+      border-right: none;
     }
 
     .nav-header {
       padding: 18px 16px 14px 16px;
       border-bottom: 1px solid #f0f0f0;
       background: #fafbfc;
+      position: relative;
     }
 
     .nav-brand-container {
@@ -95,7 +108,6 @@
       background: transparent;
       color: #5e35b1;
       transition: all 0.2s ease;
-      text-align: center;
     }
 
     .view-mode-btn.active {
@@ -104,29 +116,28 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
+    /* サイドバーメニュー */
     .nav-body {
-      padding: 16px;
-      overflow-y: auto;
       flex: 1;
+      overflow-y: auto;
+      padding: 14px 12px;
     }
 
     .nav-body h2 {
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.5px;
       color: #64748b;
-      margin: 16px 0 8px 6px;
+      margin: 10px 0 6px 8px;
+      padding: 0;
+      border: none;
       font-weight: 700;
-    }
-
-    .nav-body h2:first-child {
-      margin-top: 4px;
     }
 
     .nav-body ul {
       list-style: none;
       padding: 0;
-      margin: 0 0 12px 0;
+      margin: 0 0 16px 0;
     }
 
     .nav-body li {
@@ -134,11 +145,12 @@
     }
 
     .nav-body a {
-      display: block;
+      display: flex;
+      align-items: center;
       padding: 8px 12px;
-      color: #475569;
+      color: #334155;
       text-decoration: none;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 500;
       border-radius: 6px;
       transition: all 0.15s ease;
@@ -147,42 +159,38 @@
 
     .nav-body a:hover {
       background: #f1f5f9;
-      color: #1e293b;
+      color: #0f172a;
     }
 
     .nav-body a.active {
-      background: #eff6ff;
-      color: #1d4ed8;
-      font-weight: 600;
-      border-left: 3px solid #2563eb;
-      border-top-left-radius: 2px;
-      border-bottom-left-radius: 2px;
+      background: #ede7f6;
+      color: #311b92;
+      font-weight: 700;
+      border-left: 3px solid #5e35b1;
     }
 
-    /* 左サイドバー下部フッター（提案1：お問い合わせ・著作権） */
+    /* 左メニュー下部フッター */
     .nav-footer {
-      padding: 14px 16px;
-      border-top: 1px solid #e2e8f0;
+      padding: 12px 16px;
+      border-top: 1px solid #f0f0f0;
       background: #fafbfc;
-      font-size: 12px;
+      font-size: 11.5px;
       color: #64748b;
       line-height: 1.6;
     }
 
     .nav-footer-title {
       font-weight: 700;
-      color: #311b92;
+      color: #334155;
       margin-bottom: 4px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 12.5px;
+      gap: 4px;
     }
 
     .nav-footer a {
-      color: #1976d2;
+      color: #5e35b1;
       text-decoration: none;
-      word-break: break-all;
     }
 
     .nav-footer a:hover {
@@ -190,52 +198,70 @@
     }
 
     .nav-footer-copy {
-      font-size: 11px;
-      color: #94a3b8;
       margin-top: 6px;
-      border-top: 1px dashed #e2e8f0;
-      padding-top: 4px;
+      font-size: 10.5px;
+      color: #94a3b8;
     }
 
-    /* メインコンテンツエリア */
+    /* 右メインコンテンツ */
     main {
       flex: 1;
       display: flex;
       flex-direction: column;
       height: 100vh;
       overflow: hidden;
-      background: #f8fafc;
+      background: #ffffff;
       position: relative;
     }
 
-    /* 上部固定ヘッダー（約2.2cm） */
+    /* 上部固定ヘッダー */
     .fixed-pager-header {
-      height: 64px;
-      min-height: 64px;
-      background: #ffffff;
+      height: 52px;
       border-bottom: 1px solid #e2e8f0;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
+      padding: 0 20px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.03);
       z-index: 10;
-      position: relative;
+      flex-shrink: 0;
     }
 
-    /* 下部固定フッター（約2.2cm） */
+    .sidebar-toggle-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      margin-right: 12px;
+      line-height: 1;
+    }
+
+    .sidebar-toggle-btn:hover {
+      background: #ede7f6;
+      color: #311b92;
+      border-color: #d1c4e9;
+    }
+
     .fixed-pager-footer {
-      height: 64px;
-      min-height: 64px;
-      background: #ffffff;
+      height: 56px;
       border-top: 1px solid #e2e8f0;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
+      padding: 0 20px;
       box-shadow: 0 -1px 4px rgba(0,0,0,0.03);
       z-index: 10;
-      position: relative;
+      flex-shrink: 0;
     }
 
     .pager-left, .pager-right {
@@ -243,205 +269,206 @@
       align-items: center;
     }
 
+    .pager-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
     .pager-btn {
-      padding: 8px 16px;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #334155;
-      background: #f1f5f9;
-      border: 1px solid #cbd5e1;
+      padding: 7px 15px;
       border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.15s ease;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
     .pager-btn:hover:not(:disabled) {
-      background: #e2e8f0;
-      color: #0f172a;
+      background: #ede7f6;
+      color: #311b92;
+      border-color: #b39ddb;
     }
 
     .pager-btn:disabled {
       opacity: 0.35;
       cursor: not-allowed;
-      background: #f8fafc;
       border-color: #e2e8f0;
+      background: #f8fafc;
+      color: #94a3b8;
     }
 
-    .pager-title {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 15px;
-      font-weight: 700;
-      color: #311b92;
-      white-space: nowrap;
-      pointer-events: none;
-      text-align: center;
-    }
-
-    /* 中央スクロールエリア */
+    /* メインスクロール本文 */
     .main-scroll-body {
       flex: 1;
       overflow-y: auto;
-      padding: 40px;
-      scroll-behavior: smooth;
+      padding: 32px 48px 64px 48px;
     }
 
-    /* 全章固定幅＆中央寄せ */
+    /* 章（チャプター） */
     .manual-chapter {
       max-width: 960px;
-      margin: 0 auto 48px auto;
-      width: 100%;
-      box-sizing: border-box;
-      background: #ffffff;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-      border: 1px solid #e2e8f0;
+      margin: 0 auto;
+      animation: fadeInContent 0.25s ease;
     }
 
-    /* 見出しスタイル */
-    h1 {
-      color: #311b92;
-      border-bottom: 2px solid #ede7f6;
-      padding-bottom: 10px;
-      margin-top: 0;
-      font-size: 2.1em;
+    @keyframes fadeInContent {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
-      color: #4527a0;
-      margin-top: 40px;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 8px;
-      font-size: 1.5em;
-    }
-
-    .manual-chapter > h2:first-child,
-    .manual-chapter > h1:first-child {
-      margin-top: 0 !important;
+      font-size: 1.65em;
+      color: #311b92;
+      border-bottom: 2px solid #5e35b1;
+      padding-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 24px;
+      font-weight: 700;
     }
 
     h3 {
-      color: #1976d2;
-      margin-top: 44px;
-      margin-bottom: 12px;
       font-size: 1.25em;
+      color: #1e1b4b;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      padding-left: 10px;
+      border-left: 4px solid #5e35b1;
+      font-weight: 700;
     }
 
     h4 {
-      color: #374151;
-      margin-top: 32px;
+      font-size: 1.05em;
+      color: #334155;
+      margin-top: 24px;
       margin-bottom: 10px;
-      font-size: 1.1em;
+      font-weight: 700;
     }
 
-    p, li {
-      font-size: 15px;
-      line-height: 1.7;
-      color: #374151;
+    p {
+      line-height: 1.75;
+      font-size: 14.5px;
+      color: #334155;
+      margin: 12px 0;
     }
 
-    /* 注意・Tips */
-    .note, .note-box {
-      background-color: #fff8e1;
-      border-left: 4px solid #ffb300;
-      padding: 12px 16px;
+    ul, ol {
+      line-height: 1.75;
+      font-size: 14.5px;
+      color: #334155;
+      margin: 12px 0 16px 20px;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    kbd {
+      display: inline-block;
+      padding: 2px 7px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1e293b;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-bottom: 2px solid #94a3b8;
+      border-radius: 4px;
+      line-height: 1.2;
+    }
+
+    /* 注意書き・ノートボックス */
+    .note, .info {
+      background: #f8fafc;
+      border-left: 4px solid #5e35b1;
+      padding: 14px 18px;
       margin: 20px 0;
-      border-radius: 0 6px 6px 0;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
 
-    .info {
-      background-color: #e8f4fd;
-      border-left: 4px solid #1976d2;
-      padding: 12px 16px;
-      margin: 20px 0;
-      border-radius: 0 6px 6px 0;
+    .note {
+      background: #fffbeb;
+      border-left-color: #f59e0b;
     }
 
     /* テーブルスタイル */
     table {
-      border-collapse: collapse;
       width: 100%;
-      margin: 18px 0 30px 0;
+      border-collapse: collapse;
+      margin: 20px 0 28px 0;
+      font-size: 13.5px;
       background: #ffffff;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
       border-radius: 6px;
       overflow: hidden;
     }
 
     th, td {
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e2e8f0;
       padding: 10px 14px;
       text-align: left;
-      font-size: 14px;
-      line-height: 1.5;
+      vertical-align: middle;
+      line-height: 1.6;
     }
 
     th {
-      background: #f8fafc;
+      background: #f1f5f9;
       color: #1e293b;
-      font-weight: 600;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
     }
 
     .td-center {
       text-align: center;
-      vertical-align: middle;
     }
 
-    /* 画像ボックス・グリッド */
+    /* 画像コンテナ */
     .img-box {
-      margin: 18px auto 28px auto;
-      border: 1px solid #e2e8f0;
-      padding: 10px;
-      background: #fafbfc;
-      border-radius: 6px;
+      margin: 20px 0 24px 0;
       text-align: center;
-      box-sizing: border-box;
-      max-width: 100%;
     }
 
     .img-box img {
       max-width: 100%;
       height: auto;
-      border-radius: 4px;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       cursor: zoom-in;
-      transition: transform 0.2s ease;
-    }
-
-    .img-box img:hover {
-      opacity: 0.95;
     }
 
     .img-caption {
       display: block;
-      font-size: 13px;
-      color: #64748b;
       margin-top: 8px;
-      font-weight: 500;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #64748b;
       text-align: center;
     }
 
     .img-flex {
       display: flex;
       gap: 16px;
-      margin: 18px 0 28px 0;
+      margin: 20px 0;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .img-sub {
       flex: 1;
       min-width: 260px;
-      background: #fafbfc;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-      padding: 10px;
+      max-width: 48%;
       text-align: center;
-      box-sizing: border-box;
     }
 
     .img-sub img {
@@ -692,8 +719,8 @@
     <div class="nav-body">
       <h2>📖 マニュアル</h2>
       <ul id="nav-list">
-        <li><a href="#sec-1">1. はじめに・インストール</a></li>
-        <li><a href="#sec-2">2. 基本検索と対象指定</a></li>
+        <li><a href="#sec-1">1. Excel横断調査・レビュー支援ツール</a></li>
+        <li><a href="#sec-2">2. 基本的な操作</a></li>
         <li><a href="#sec-3">3. 高度な検索条件とオプション</a></li>
         <li><a href="#sec-4">4. 検索結果一覧の見方と操作</a></li>
         <li><a href="#sec-5">5. 結果の絞り込みと表示列設定</a></li>
@@ -705,12 +732,13 @@
       <ul id="nav-list-appendix">
         <li><a href="#shortcuts">A. ショートカット操作一覧</a></li>
         <li><a href="#messages">B. メッセージ・ログ一覧</a></li>
+        <li><a href="#support">サポート・著作権</a></li>
       </ul>
     </div>
 
-    <!-- 左メニュー最下部：お問い合わせ・著作権フッター（案1） -->
+    <!-- 左メニュー最下部：お問い合わせ・著作権フッター -->
     <div class="nav-footer">
-      <div class="nav-footer-title">📮 お問い合わせ・サポート</div>
+      <div class="nav-footer-title"><a href="#support" style="color: inherit; text-decoration: none;">📮 サポート・著作権</a></div>
       <div>・<a href="mailto:tossy.apps@gmail.com">tossy.apps@gmail.com</a></div>
       <div>・<a href="https://tossy-apps.github.io/kensaku-kun/" target="_blank" rel="noopener noreferrer">公式Webサイト</a></div>
       <div class="nav-footer-copy">© 2026 tossy.apps All Rights Reserved.</div>
@@ -721,9 +749,10 @@
     <!-- 上部固定ヘッダー -->
     <div id="main-header" class="fixed-pager-header">
       <div class="pager-left">
+        <button id="sidebar-toggle-btn" class="sidebar-toggle-btn" onclick="toggleSidebar()" title="サイドバーの表示/非表示 (VSCode風)">☰</button>
         <button id="header-prev-btn" class="pager-btn" onclick="goToPrevChapter()">◀ 前へ</button>
       </div>
-      <div id="header-chapter-title" class="pager-title">1. はじめに・インストール</div>
+      <div id="header-chapter-title" class="pager-title">1. Excel横断調査・レビュー支援ツール</div>
       <div class="pager-right">
         <button id="header-next-btn" class="pager-btn" onclick="goToNextChapter()">次へ ▶</button>
       </div>
@@ -735,19 +764,30 @@
       <div class="note">
         <p><strong>【重要】利用上の注意事項</strong><br>
           ・本ソフトウェアはWindows 10/11で動作します。<br>
-          ・SharePoint等のクラウド上のファイルは、ローカルに同期されたフォルダを指定するか、<br>
-          　ネットワークドライブとして扱える状態にする必要があります。<br>
-          ・本ソフトウェアは、その品質や機能について保証するものではありません。<br>
-          　また、本ソフトウェアの使用によって生じた損害について、開発者は一切の責任を負いません。<br>
-          ・本ソフトウェアはシェアウェアとして公開します。継続的な利用には、ライセンス登録が必要です。 </p>
+          ・SharePoint等のクラウド上のファイルは、ローカルに同期されたフォルダを指定するか、ネットワークドライブとして扱える状態にする必要があります。<br>
+          ・本ツールは検索高速化のためメモリとCPUを活用します。数万行に及ぶ巨大なデータベース表Excelの検索には向いていません。<br>
+          ・本ソフトウェアはシェアウェアとして公開します。初回30日間は全機能を無料でお試しいただけます（継続利用にはライセンス登録が必要です）。</p>
       </div>
-      <h2 id="sec-1">1. はじめに・インストール</h2>
-      <p>「けんさくくん」は、大量のExcelファイルから必要な情報を爆速で探し出すためのプロフェッショナル向け検索ツールです。<br>
-        インストーラー不要で、配布されたZipファイルを解凍し、任意のディレクトリに配置するだけで動作します。</p>
+      <h2 id="sec-1">1. Excel横断調査・レビュー支援ツール</h2>
+      <p>「けんさくくん」は、大量のExcel資産から素早く簡単に目的のデータを探し出すためのWindows専用デスクトップツールです。特に「Excel方眼紙」の横断調査やレビューに向けて設計されています。</p>
+      
+      <h3>主な特徴</h3>
+      <ul>
+        <li><strong>高速な検索</strong>：検索前にExcelファイルの解析とロードを行うことで、数百のExcelファイルに対しても検索条件を変えた高速な検索を実現します。</li>
+        <li><strong>多彩な検索条件</strong>：セルの値だけでなく、シート名やブック名、コメントや図形内のテキストなども検索・除外の対象にできます。</li>
+        <li><strong>柔軟なキーワード指定</strong>：改行による複数キーワードのOR検索や、ワイルドカード（* / ?）を用いたあいまい検索に対応しています。</li>
+        <li><strong>使いやすいUI</strong>：ドラッグ＆ドロップでのフォルダ・ファイル指定や、結果一覧から直接ファイルを開く機能など、ファイルを探すことに特化しています。</li>
+        <li><strong>検索結果の整理</strong>：結果をExcelへダウンロードできます。検索したセルや周辺の書式も可能な限り再現し、取消線もチェックできる業務目線の設計です。</li>
+      </ul>
+
       <h3>【動画】基本的な使い方</h3>
-      <div class="img-box" style="padding: 0; background: #000;"> <video src="help/movie/けんさくくん－基本動作.mp4"
+      <div class="img-box" style="padding: 0; background: #000; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.15);"> <video src="help/movie/けんさくくん－基本動作.mp4"
           controls="controls" autoplay="autoplay" muted="muted" loop="" style="max-width:
             100%; display: block;"></video> </div>
+      
+      <h3>フォルダ構成と同梱ファイル</h3>
+      <p>zipファイルを展開すると、以下のファイル構成となります。インストーラー不要で、<code>Kensaku-kun.exe</code> を実行するだけですぐにご利用いただけます。</p>
+      
       <div class="img-box"> <div class="manual-img-container" data-img-no="1">
     <img data-processed="true" src="help/pics/91_kensakukun_directory_kouzo.png" alt="【図】ディレクトリ構造。zipを解凍して「Kensaku-kun.exe」を実行します。">
     <svg class="manual-overlay-svg" viewBox="0 0 460 445" overflow="visible">
@@ -764,7 +804,6 @@
           class="img-caption">【図】ディレクトリ構造。zipを解凍して「Kensaku-kun.exe」を実行します。</span> </div>
       
       <h3>便利な付属ツール（セットアップ・管理・初期化）</h3>
-      <p>けんさくくんのフォルダ内には、導入や運用をサポートする便利なVBSスクリプトが同梱されています。用途に合わせてダブルクリックで実行してください。</p>
       <table>
         <tbody>
           <tr>
@@ -786,21 +825,20 @@
           </tr>
           <tr>
             <td><strong>tools/アンインストール.vbs</strong></td>
-            <td>本体フォルダ、設定ファイル、スタートメニューの登録情報を安全に一括削除します。<br>
-              <span style="color:#d97706;font-size:0.9em;">※エクスプローラー等で本体フォルダを開いていると削除できない場合があります。基本的にスタートメニューから呼び出されることを想定したツールです。</span></td>
+            <td>本体フォルダ、設定ファイル、スタートメニューの登録情報を安全に一括削除します。</td>
           </tr>
         </tbody>
       </table>
 
-      <div class="note-box" style="border-left: 4px solid #0284c7; background: #f0f9ff; padding: 12px 16px; margin: 16px 0;">
+      <div class="note-box" style="border-left: 4px solid #0284c7; background: #f0f9ff; padding: 14px 18px; margin: 18px 0; border-radius: 0 8px 8px 0;">
         <strong style="color: #0369a1;">🛡️ 電子署名と初回起動時のSmartScreenについて</strong>
         <p style="margin: 8px 0 0 0; font-size: 0.9em; line-height: 1.6;">
-          本アプリは正規のコードサイニング証明書（Certum認証）により電子署名されており、プログラムの改ざん防止と安全性が担保されています。<br>
+          本アプリは正規のコードサイニング証明書（Certum認証）により電子署名されており、<strong>発行元：けんさくくん開発元</strong> としてプログラムの改ざん防止と安全性が担保されています。<br>
           ※新規バージョンの公開直後はMicrosoftによる利用実績（レピュテーション）蓄積前のため、初回起動時にWindows SmartScreenの青い画面が表示される場合がありますが、以下の手順で安全に起動できます。
         </p>
         <ol style="margin: 8px 0 0 20px; padding: 0; font-size: 0.9em; line-height: 1.6;">
           <li>警告画面内の<strong>「詳細情報」</strong>リンクをクリックします。</li>
-          <li>右下に表示された<strong>「実行」</strong>ボタンをクリックします。</li>
+          <li>発行元が「けんさくくん開発元」であることを確認し、右下に表示された<strong>「実行」</strong>ボタンをクリックします。</li>
         </ol>
         
         <div class="img-box" style="margin: 18px auto 12px auto; text-align: center; max-width: 650px; width: 100%;">
@@ -830,12 +868,12 @@
 </article>
 
 <article class="manual-chapter" data-chapter-id="sec-2">
-<h2 id="sec-2">2. 基本検索と対象指定</h2>
-<h3>対象指定と検索実行</h3>
-      <p>画面上部の「検索対象」にフォルダやファイルリストを指定し、検索キーワードを入力して「検索」ボタン（または <kbd>Enter</kbd> / <kbd>F5</kbd>）を押します。<br>
-        検索キーワードは、改行を入れることで複数単語の「OR」検索となり、大量のメッセージIDや項目名を一括指定できます。<br>
-        入力枠の下の境界線をドラッグすることで、キーワード枠の高さを自由に拡げることができます。
-      </p>
+<h2 id="sec-2">2. 基本的な操作</h2>
+<h3>検索対象の指定と検索</h3>
+      <p>画面上部の「検索対象」にフォルダやファイルリストを指定します。<br>
+      検索キーワードを入力して「検索」ボタン（または <kbd>F5</kbd>）を押します。<br>
+      検索キーワードは、<span style="color:red;font-weight:bold;">改行</span>を入れることで複数単語の「OR」検索となり、大量のメッセージIDや項目名を一括指定できます。<br>
+      入力枠の下の境界線をドラッグすることで、キーワード枠の高さを自由に拡げることができます。</p>
       
       <div class="slideshow-container" data-slideshow-id="search-exec" data-interval="4000">
         <div class="slideshow-header">
@@ -883,7 +921,7 @@
     </g>
   </svg>
   </div>
-            <div class="slide-caption">② 検索したいキーワードを入力します（スペース区切りでAND検索が可能）</div>
+            <div class="slide-caption">② 検索したいキーワードを入力します（*、?のワイルドカード利用可能）</div>
           </div>
           <div class="slide-item" data-step-desc="③ 入力欄のドラッグ拡張">
             <div class="manual-img-container" data-img-no="3">
@@ -921,7 +959,7 @@
     </g>
   </svg>
   </div>
-            <div class="slide-caption">④ 「検索」ボタンをクリックして検索を実行します（Enterキーでも即座に実行可能）</div>
+            <div class="slide-caption">④ 「検索」ボタンをクリックして検索を実行します（F5キーでも即座に実行可能）</div>
           </div>
           <div class="slide-item" data-step-desc="⑤ 検索結果一覧の表示">
             <div class="manual-img-container" data-img-no="4">
@@ -1122,7 +1160,8 @@
         <strong>💡 パス一覧ファイル（.txt）を使ったピンポイント検索</strong>
         <p style="margin: 6px 0 0 0; font-size: 0.9em; line-height: 1.6;">
           検索対象にはフォルダだけでなく、ファイルパスが1行ずつ書かれたテキストファイル（<code>.txt</code>）をドラッグ＆ドロップで指定することも可能です。<br>
-          例えば、コマンドプロンプトで <code>dir /s /a-d /b &gt; files.txt</code> を実行してファイル一覧を作成し、不要な行を削除して指定すれば、必要なファイルだけを高速ピンポイント検索できます。
+          例えば、コマンドプロンプトで <code>dir /s /a-d /b &gt; files.txt</code> を実行してファイル一覧を作成し、不要な行を削除して指定すれば、必要なファイルだけを高速ピンポイント検索できます。<br>
+          また、フルパスを複数記載すれば、複数のフォルダの検索も可能です。
         </p>
       </div>
 
@@ -1208,7 +1247,8 @@
             <td> <strong>マッチング方式（部分一致 / 完全一致）</strong><br>
               ・<strong>部分一致</strong>：セル内にキーワードが含まれていればヒット。<br>
               ・<strong>完全一致</strong>：セル全体がキーワードと完全一致する場合のみヒット。<br>
-              ※ワイルドカード（<code>*</code> や <code>?</code>）を組み合わせることで、「<code>AB*</code>（前方一致）」や「<code>*CD</code>（後方一致）」の柔軟な検索も可能です。
+              ※ワイルドカード（<code>*</code> や <code>?</code>）を組み合わせることで、「<code>AB*</code>（前方一致）」や「<code>*CD</code>（後方一致）」の柔軟な検索も可能です。<br>
+              ※行検索時は、セルではなく、行全体を対象に、部分一致または完全一致で検索します。
             </td>
           </tr>
           <tr>
@@ -1259,23 +1299,23 @@
       <table>
         <tbody>
           <tr>
-            <th style="width: 25%;">条件項目</th>
+            <th style="width: 28%;">条件項目</th>
             <th>意味と活用方法</th>
           </tr>
           <tr>
-            <td><strong>シート内ヒット必須<br>（改行でAND）</strong></td>
-            <td>複数行キーワードを指定した際、<strong>すべてのキーワードが「同一シート内」に揃ってヒットした場合のみ</strong>結果に出力します。<br>
+            <td><strong>シート内ヒット必須<br><small>（改行でOR）</small></strong></td>
+            <td>複数行キーワードを指定した際、<strong>指定したキーワードが「同一シート内」にヒットした場合のみ</strong>結果に出力します。<br>
               ※「除外」欄にキーワードを指定した場合は、その単語を含むシートが丸ごと除外されます。</td>
           </tr>
           <tr>
-            <td><strong>このシートのみ<br>（改行でOR）</strong></td>
+            <td><strong>このシートのみ<br><small>（改行でOR）</small></strong></td>
             <td>指定したシート名（ワイルドカード可）に合致するシートのみを検索対象にします。<br>
               ※「除外」欄にシート名を指定すると、該当シートを探索対象から外します。</td>
           </tr>
           <tr>
-            <td><strong>このファイルのみ<br>（改行でOR）</strong></td>
-            <td>指定したファイル名（ワイルドカード可）に合致するブックのみを検索対象にします。<br>
-              ※「除外」欄にファイル名を指定すると、該当ファイルを探索対象から外します。</td>
+            <td><strong>このパス（ファイル名）含む<br><small>（改行でOR）</small></strong></td>
+            <td>指定したフォルダパスやファイル名（ワイルドカード可）に合致・包含するブックのみを検索対象にします。特定のサブフォルダや指定名称のファイルに絞り込んで検索したい場合に便利です。<br>
+              ※「除外」欄にパスやファイル名を指定すると、該当パスを含むファイルを探索対象から外します。</td>
           </tr>
         </tbody>
       </table>
@@ -1287,10 +1327,22 @@
       <h3>1. 一覧上部ツールバーの機能</h3>
       <p>検索結果一覧の上部には、置換パスの編集や起動履歴クリア、ページ送りなど、効率的なレビューをサポートする各種ツールバーが配置されています。</p>
       
-      <div class="img-box">
-        <img data-processed="true" src="help/pics/94_list_functions.png" alt="【図】検索結果一覧 上部ツールバー" style="max-width: 100%; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: 1px solid #cbd5e1;">
-        <span class="img-caption">【図】検索結果一覧 上部ツールバー</span>
+      <!-- 拡大トリム表示ツールバー -->
+      <div class="toolbar-zoom-container" style="display: flex; flex-direction: column; gap: 14px; margin: 20px 0;">
+        <div style="border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #ffffff;">
+          <div style="font-size: 12px; font-weight: 700; padding: 6px 12px; background: #f1f5f9; color: #334155; border-bottom: 1px solid #e2e8f0;">【ツールバー左側（置換パス編集・起動履歴クリア・ページ送り）】</div>
+          <div style="height: 68px; overflow: hidden; position: relative; background: #fafbfc;">
+            <img src="help/pics/94_list_functions.png" style="position: absolute; left: 0; top: 0; width: 185%; max-width: none; height: auto; cursor: zoom-in;" alt="ツールバー左側">
+          </div>
+        </div>
+        <div style="border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #ffffff;">
+          <div style="font-size: 12px; font-weight: 700; padding: 6px 12px; background: #f1f5f9; color: #334155; border-bottom: 1px solid #e2e8f0;">【ツールバー右側（表示列選択・行の高さ固定・表示モード）】</div>
+          <div style="height: 68px; overflow: hidden; position: relative; background: #fafbfc;">
+            <img src="help/pics/94_list_functions.png" style="position: absolute; right: 0; top: 0; width: 185%; max-width: none; height: auto; cursor: zoom-in;" alt="ツールバー右側">
+          </div>
+        </div>
       </div>
+      <span class="img-caption" style="margin-top: -6px; margin-bottom: 20px;">【図】検索結果一覧 上部ツールバー（左右に拡大表示・クリックで原寸全体表示）</span>
 
       <!-- ツールバー機能一覧テーブル -->
       <table>
@@ -1305,7 +1357,7 @@
           </tr>
           <tr>
             <td><strong>起動履歴クリア</strong></td>
-            <td>Excelを開いた際にNo列に付く「<span style="color:#1E88E5;font-weight:bold;">✔</span>（起動済マーク）」を一括でクリアし、確認作業を初期状態にリセットします。</td>
+            <td>Excelを開いた際にNo列に付く「<span style="color:#1E88E5;font-weight:bold;">✔</span>（起動済マーク）」および起動エラー時の「<span style="color:#E53935;font-weight:bold;">✖</span>（起動失敗マーク）」を一括でクリアし、確認作業を初期状態にリセットします。</td>
           </tr>
           <tr>
             <td><strong>改ページ（ページ送り）</strong></td>
@@ -1364,7 +1416,7 @@
         <li><strong>通常行（白/薄グレー）</strong>：まだExcelを開いていない未確認の状態です。</li>
         <li><strong>選択行（<span style="background:#dcfce7;padding:1px 6px;border-radius:3px;color:#15803d;font-weight:bold;">薄緑背景</span>）</strong>：現在カーソルやマウスクリックで選択している行です。</li>
         <li><strong>起動済（<span style="color:#1E88E5;font-weight:bold;">✔</span>）</strong>：ツールからExcelを開いた行です。確認済みのチェックマークになります。</li>
-        <li><strong>起動エラー（<span style="color:#E53935;font-weight:bold;">✖</span> ＋ <span style="background:#fee2e2;padding:1px 6px;border-radius:3px;color:#b91c1c;font-weight:bold;">薄ピンク背景</span>）</strong>：ファイルが存在しない・排他ロック中等で開けなかった行です。</li>
+        <li><strong>起動エラー（<span style="color:#E53935;font-weight:bold;">✖</span> ＋ <span style="background:#fee2e2;padding:1px 6px;border-radius:3px;color:#b91c1c;font-weight:bold;">薄ピンク背景</span>）</strong>：ファイルが存在しない・ファイル破損等で開けなかった行です。</li>
       </ul>
 
       <div class="info" style="margin: 16px 0;">
@@ -1405,7 +1457,7 @@
           </tr>
           <tr>
             <td><strong>リンク2</strong></td>
-            <td><strong>置換パス起動リンク（? / 🔗）</strong>。<br>置換パスで変換したURL（SharePoint等）や別パスで開くための専用リンクです。</td>
+            <td><strong>置換パス起動リンク（? / ■）</strong>。<br>置換パスで変換したURL（SharePoint等）や別パスで開くための専用リンクです。<br>※「?」は、SharePoint他、ローカル/ネットワークドライブでシステムがファイルの存在を確認できない状態です。</td>
           </tr>
           <tr>
             <td><strong>更新日付</strong></td>
@@ -1417,7 +1469,7 @@
           </tr>
           <tr>
             <td><strong>シート名</strong></td>
-            <td>ヒット箇所のシート名。<strong>Excelのシート見出し（タブ色）が背景色に忠実に再現</strong>されます。</td>
+            <td>ヒット箇所のシート名。<strong>Excelのシート見出し（タブ色）が背景色に可能な限り、再現</strong>されます。</td>
           </tr>
           <tr>
             <td><strong>隠</strong></td>
@@ -1440,18 +1492,18 @@
             <td><strong>セルの値</strong></td>
             <td>ヒットセルの内容です。<br>
               ・検索語が<strong>黄色マーカー</strong>でハイライトされます。<br>
-              ・文字色、背景色、太字、<strong>取消線</strong>を忠実に再現します。<br>
+              ・文字色、背景色、太字、<strong>取消線</strong>を可能な限り、再現します。<br>
               ・コメント付きセルには左上に赤い三角（<span style="color:#f44336;font-weight:bold;">◤</span>）が表示され、マウスを乗せるとコメントが表示されます。
             </td>
           </tr>
         </tbody>
       </table>
 
-      <div class="note-box" style="border-left: 4px solid #0284c7; background: #f0f9ff; padding: 12px 16px; margin: 18px 0;">
+      <div class="note-box" style="border-left: 4px solid #0284c7; background: #f0f9ff; padding: 12px 16px; margin: 18px 0; border-radius: 0 8px 8px 0;">
         <strong style="color: #0369a1;">💡 「リンク1」と「リンク2（置換パス）」の使い分け</strong>
         <p style="margin: 8px 0 0 0; font-size: 0.9em; line-height: 1.6;">
           ・<strong>リンク1（■）</strong>：ローカルの同期フォルダにあるExcelをそのまま開きます。<br>
-          ・<strong>リンク2（?）</strong>：置換パスで変換した<strong>「SharePoint原本URL（https://...）」</strong>などを直接開きます。<br>
+          ・<strong>リンク2（? / ■）</strong>：置換パスで変換した<strong>「SharePoint原本URL（https://...）」</strong>などを直接開きます（※「?」はシステムがファイルの存在を確認できない状態です）。<br>
           <em>【ユースケース】高速検索は手元のローカル同期フォルダで行い、実際に修正・レビューする際は原本（SharePoint）を直接開くといった運用が可能です。</em>
         </p>
       </div>
@@ -1495,7 +1547,7 @@
           </tr>
           <tr>
             <td><strong>起動失敗時（エラー）</strong></td>
-            <td>実ファイルが削除・移動されていたり排他ロック中の場合は、No列が「<span style="color:#E53935;font-weight:bold;">✖</span>（薄ピンク背景）」となり、エラー理由が通知されます。</td>
+            <td>実ファイルが削除・移動されていたりファイル破損等の場合は、No列が「<span style="color:#E53935;font-weight:bold;">✖</span>（薄ピンク背景）」となり、エラー理由が通知されます。</td>
           </tr>
         </tbody>
       </table>
@@ -1634,15 +1686,15 @@
         <div class="slideshow-body" style="min-height: 380px;">
           <div class="slide-item active" data-step-desc="① 設定アイコンをクリック">
             <div class="manual-img-container" data-img-no="39">
-    <img data-processed="true" src="help/pics/07_3_selector_display_mixed_before_list.png" alt="① 右上の設定アイコン（）をクリックします">
-    <svg class="manual-overlay-svg" viewBox="0 0 948 106" overflow="visible">
+    <img data-processed="true" src="help/pics/07_3_selector_display_mixed_before_list.png" alt="① 右上の設定アイコン（表示列選択）をクリックします">
+    <svg class="manual-overlay-svg" viewBox="0 0 1687 621" overflow="visible">
   <defs>
     <marker id="arrow-39" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
     </marker>
   </defs>
     <g class="shape-item pulse-red" data-step-group="1" data-step-order="1">
-      <rect x="742.7" y="1" width="37.8" height="34.9" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <rect x="1355" y="3" width="89" height="33" rx="6" ry="6" fill="none" stroke="#ff0033" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));" />
     </g>
   </svg>
   </div>
@@ -1665,16 +1717,16 @@
             <div class="slide-caption">② 表示列選択ダイアログが表示されます（初期状態は全選択）</div>
           </div>
           <div class="slide-item" data-step-desc="③ 不要な列のチェックを解除">
-            <div class="manual-img-container" data-img-no="40">
+            <div class="manual-img-container" data-img-no="40b">
     <img data-processed="true" src="help/pics/07_2_selector_display_mixed.png" alt="③ 不要な列のチェックを外して「OK」をクリックします">
-    <svg class="manual-overlay-svg" viewBox="0 0 425 187" overflow="visible">
+    <svg class="manual-overlay-svg" viewBox="0 0 424 189" overflow="visible">
   <defs>
-    <marker id="arrow-40" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+    <marker id="arrow-40b" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
     </marker>
   </defs>
     <g class="shape-item pulse-red" data-step-group="3" data-step-order="3">
-      <rect x="238.4" y="149" width="80.6" height="30.5" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <rect x="220" y="142" width="57" height="24" rx="4" ry="4" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
     </g>
   </svg>
   </div>
@@ -1683,14 +1735,14 @@
           <div class="slide-item" data-step-desc="④ カスタマイズされた一覧の表示">
             <div class="manual-img-container" data-img-no="41">
     <img data-processed="true" src="help/pics/07_4_selector_display_mixed_after_list.png" alt="④ チェックを外した列が非表示になり、スッキリとした一覧になります">
-    <svg class="manual-overlay-svg" viewBox="0 0 948 106" overflow="visible">
+    <svg class="manual-overlay-svg" viewBox="0 0 1689 624" overflow="visible">
   <defs>
     <marker id="arrow-41" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="#ff0033" />
     </marker>
   </defs>
     <g class="shape-item pulse-red" data-step-group="4" data-step-order="4">
-      <rect x="3" y="3" width="942" height="100" rx="8" ry="8" fill="none" stroke="#ff0033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));" />
+      <rect x="4" y="40" width="1681" height="555" rx="6" ry="6" fill="none" stroke="#ff0033" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="manual-shape" style="filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));" />
     </g>
   </svg>
   </div>
@@ -1711,14 +1763,14 @@
 
       <h3>【動画】周辺セル拡張出力機能（RANGE機能）</h3>
       <p>ヒットしたセル単体だけでなく、その周囲のヘッダーや関連セル（選択範囲）を自動拡張して出力できます。</p>
-      <div class="img-box" style="padding: 0; background: #000;"> <video src="help/movie/けんさくくん－拡張機能.mp4"
-          controls="controls" autoplay="autoplay" muted="muted" loop="" style="max-width:
-            100%; display: block;"></video> </div>
+      <div class="img-box" style="padding: 0; background: #000; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.2); max-width: 960px; margin: 20px auto;">
+        <video src="help/movie/けんさくくん－拡張機能.mp4" controls="controls" autoplay="autoplay" muted="muted" loop="" style="width: 100%; display: block; border-radius: 8px;"></video>
+      </div>
 
       <h3>拡張セル出力の仕様とポイント</h3>
       <ul>
         <li><strong>基点セルの自動縮小表示</strong>：拡張出力を行った際、基点となる検索ヒットセルは「縮小して全体を表示する」が自動適用され、長い文字列も枠内に収まります。</li>
-        <li><strong>書式の忠実な引き継ぎ</strong>：セルのフォント、文字色、塗りつぶし背景色を新規Excelへ反映します（※セル結合や複雑な条件付き書式を除く）。</li>
+        <li><strong>書式の引継ぎ</strong>：セルの文字色、塗りつぶし背景色を新規Excelへ反映します（※セル結合や条件付き書式等は除く）。</li>
       </ul>
 </article>
 
@@ -1839,10 +1891,12 @@
       <h4>試用期間（30日）終了後の動作について</h4>
       <p>30日が経過した後も、検索機能がロックされて使えなくなることはありません。引き続き業務でご利用いただけますが、以下の動作となります。</p>
       <ul>
-        <li>起動時に「試用期間終了」の案内ダイアログが表示されます。</li>
-        <li>検索結果からExcelファイルを開いた際やExcel出力を行った際、<strong>対象ファイルの背景に「けんさくくんのロゴマーク」が透かし（ウォーターマーク）として挿入</strong>されます。</li>
+        <li>検索一覧に表示されたExcelを開く際（Enterキーやダブルクリック操作時）に、案内メッセージが表示されます（Excelの起動は可能です）。</li>
+        <li>検索一覧およびExcel出力で出力したExcelのリンクが無効になります。</li>
+        <li>Excel出力で出力したExcelに、背景透かし（ウォーターマーク）が設定されます。</li>
       </ul>
-      <p>制限を解除して本格利用されたい場合は、「システム設定」内の「ライセンス登録」ボタンより製品版ライセンスキーをご登録ください。</p>
+      <p>継続して制限なくご利用いただく場合は、「システム設定」内の「ライセンス登録」ボタンより正規ライセンスキーをご登録ください。<br>
+      ※ライセンス購入手順は <a href="https://tossy-apps.github.io/kensaku-kun/" target="_blank" rel="noopener noreferrer">公式サイト</a> をご確認ください。</p>
 </article>
 
 <article class="manual-chapter" data-chapter-id="shortcuts">
@@ -1958,7 +2012,7 @@
           <tr>
             <td><span style="color: #f44336; font-weight: bold;">[ERROR]</span></td>
             <td>ファイルを開けませんでした（〇〇.xlsx）</td>
-            <td>ファイルが破損しているか、他プロセスで排他ロックされていて開けなかった場合です。</td>
+            <td>ファイルが破損しているなどの理由で開けなかった場合です。</td>
           </tr>
         </tbody>
       </table>
@@ -1994,6 +2048,39 @@
       </table>
 </article>
 
+<article class="manual-chapter" data-chapter-id="support">
+<h2 id="support">サポート・著作権</h2>
+
+      <h3>免責事項</h3>
+      <p>本ソフトウェアの使用により生じたいかなる損害（検索不可、データの損失、業務の停止、利益の損失、PCのハングアップや他アプリケーションへの影響などを含むがこれに限定されない）についても、作者（開発者）は一切の責任を負いません。すべてユーザー自身の自己責任においてご利用ください。</p>
+      <ul>
+        <li>本ソフトウェアは「現状のまま」無保証で提供され、特定の目的への適合性やバグがないことの保証、およびサポートの義務を負うものではありません。</li>
+        <li>予期せぬ不具合や試用期限判定の不作動等により、システムやファイルに影響を与える可能性がないとは言いきれません。重要なデータは事前にバックアップを取ることを強く推奨します。</li>
+        <li>業務利用・個人利用を問わずご利用いただけますが、利用によって派生するいかなるトラブルも利用者の責任において解決するものとします。</li>
+      </ul>
+
+      <h3>著作権およびライセンス</h3>
+      <p>本ツールの著作権は作者（tossy.apps）に帰属します。<br>
+      無断での再配布、リバースエンジニアリング、改変、および販売は禁止します。</p>
+
+      <h3>サードパーティ製コンポーネント</h3>
+      <p>本ソフトウェアは以下のオープンソースライブラリを使用しています。</p>
+      <ul>
+        <li><strong>ClosedXML</strong> (MIT License) - Copyright (c) ClosedXML</li>
+        <li><strong>DocumentFormat.OpenXml</strong> (MIT License) - Copyright (c) Microsoft Corporation.</li>
+        <li><strong>Material Design In XAML Toolkit</strong> (MIT License) - Copyright (c) 2015 James Willock, Mulholland Software and Contributors</li>
+        <li><strong>Microsoft Edge WebView2</strong> (WebView2 SDK License) - Copyright (c) Microsoft Corporation.</li>
+        <li><strong>Google Fonts (Material Symbols)</strong> (Apache License Version 2.0)</li>
+      </ul>
+
+      <h3>お問い合わせ</h3>
+      <p>不具合のご報告、ご要望、ライセンスに関するお問い合わせは以下までお願いいたします。</p>
+      <ul>
+        <li><strong>Email</strong>: <a href="mailto:tossy.apps@gmail.com">tossy.apps@gmail.com</a></li>
+        <li><strong>公式Webサイト</strong>: <a href="https://tossy-apps.github.io/kensaku-kun/" target="_blank" rel="noopener noreferrer">https://tossy-apps.github.io/kensaku-kun/</a></li>
+      </ul>
+</article>
+
     </div>
 
     <!-- 下部固定フッター -->
@@ -2001,7 +2088,7 @@
       <div class="pager-left">
         <button id="footer-prev-btn" class="pager-btn" onclick="goToPrevChapter()">◀ 前へ</button>
       </div>
-      <div id="footer-chapter-title" class="pager-title">1. はじめに・インストール</div>
+      <div id="footer-chapter-title" class="pager-title">1. Excel横断調査・レビュー支援ツール</div>
       <div class="pager-right">
         <button id="footer-next-btn" class="pager-btn" onclick="goToNextChapter()">次へ ▶</button>
       </div>
@@ -2017,19 +2104,24 @@
 
   <script>
     const CHAPTERS = [
-      { id: "sec-1", title: "1. はじめに・インストール" },
-      { id: "sec-2", title: "2. 基本検索と対象指定" },
+      { id: "sec-1", title: "1. Excel横断調査・レビュー支援ツール" },
+      { id: "sec-2", title: "2. 基本的な操作" },
       { id: "sec-3", title: "3. 高度な検索条件とオプション" },
       { id: "sec-4", title: "4. 検索結果一覧の見方と操作" },
       { id: "sec-5", title: "5. 結果の絞り込みと表示列設定" },
       { id: "sec-6", title: "6. Excel出力と周辺セル拡張" },
       { id: "sec-7", title: "7. システム設定とライセンス" },
       { id: "shortcuts", title: "付録 A. ショートカット操作一覧" },
-      { id: "messages", title: "付録 B. メッセージ・ログ一覧" }
+      { id: "messages", title: "付録 B. メッセージ・ログ一覧" },
+      { id: "support", title: "サポート・著作権" }
     ];
 
     let currentViewMode = 'paged';
     let currentChapterIndex = 0;
+
+    function toggleSidebar() {
+      document.body.classList.toggle('sidebar-collapsed');
+    }
 
     function setViewMode(mode) {
       currentViewMode = mode;
@@ -2048,7 +2140,7 @@
       } else {
         contBtn.classList.add('active');
         pagedBtn.classList.remove('active');
-        if (mainHeader) mainHeader.style.display = 'none';
+        if (mainHeader) mainHeader.style.display = 'flex'; // Keep top bar for sidebar toggle
         if (mainFooter) mainFooter.style.display = 'none';
         chapters.forEach(ch => {
           ch.style.display = 'block';
@@ -2193,7 +2285,7 @@
       if (e.key === 'Escape') closeLightbox();
     });
 
-    document.querySelectorAll('.manual-img-container img, .img-box img, .img-flex img').forEach(img => {
+    document.querySelectorAll('.manual-img-container img, .img-box img, .img-flex img, .toolbar-zoom-container img').forEach(img => {
       img.addEventListener('click', function() {
         openLightbox(this.src);
       });
