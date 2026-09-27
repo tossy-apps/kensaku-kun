@@ -19,14 +19,14 @@
     <link rel="alternate" hreflang="en" href="https://tossy-apps.github.io/kensaku-kun/index_en.html">
     <link rel="alternate" hreflang="x-default" href="https://tossy-apps.github.io/kensaku-kun/">
     <!-- OGP / Social Cards -->
-    <meta property="og:title" content="けんさくくん - 高機能Excel検索ツール">
+    <meta property="og:title" content="けんさくくん - Excel横断調査・レビュー支援ツール">
     <meta property="og:description" content="神Excel・Excel方眼紙・大量の設計書からインメモリで高速全文検索。書式・取消線再現、完全オフライン対応のWindows専用ツール。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tossy-apps.github.io/kensaku-kun/">
     <meta property="og:image" content="https://tossy-apps.github.io/kensaku-kun/help/pics/favicon.png">
     <meta name="twitter:card" content="summary">
-    <meta name="description" content="神Excel・Excel方眼紙・大量の設計書からインメモリで高速全文検索。書式・取消線再現、完全オフライン対応のWindows専用ツール。AI駆動開発（Antigravity）とのペアプログラミングにより極限までチューニングされた実用デスクトップアプリ。">
-    <meta name="keywords" content="神Excel, Excel方眼紙, セル結合, ネスト構造, Excel検索, 大量Excel, Excel全文検索, 仕様書検索, 設計書検索, 完全オフライン, インメモリ検索, 高速検索, Windowsデスクトップアプリ, C#, WPF, AI駆動開発, AI共創, AIペアプログラミング, Antigravity, けんさくくん, kensaku-kun">
+    <meta name="description" content="神Excel・Excel方眼紙・大量の設計書からインメモリで高速全文検索。書式・取消線再現、完全オフライン対応のWindows専用ツール。大量の仕様書や方眼紙Excelの調査・照合を極限まで効率化する実用デスクトップアプリ。">
+    <meta name="keywords" content="神Excel, Excel方眼紙, セル結合, ネスト構造, Excel検索, 大量Excel, Excel全文検索, 仕様書検索, 設計書検索, 完全オフライン, インメモリ検索, 高速検索, Windowsデスクトップアプリ, C#, WPF, けんさくくん, kensaku-kun">
     <!-- 構造化データ（JSON-LD） -->
     <script type="application/ld+json">
     {
@@ -35,13 +35,13 @@
       "name": "けんさくくん (KensakuKun)",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Windows 10, Windows 11",
-      "description": "神ExcelやExcel方眼紙、大量の仕様書からインメモリで高速全文検索を行う完全オフライン対応Windowsツール。AI駆動開発（Antigravity）により設計・最適化。",
-      "keywords": "神Excel, Excel方眼紙, セル結合, Excel全文検索, オフライン検索, インメモリ検索, 高速検索, AI駆動開発, AIペアプログラミング, C#, WPF"
+      "description": "神ExcelやExcel方眼紙、大量の仕様書からインメモリで高速全文検索を行う完全オフライン対応Windowsツール。大量の仕様書や方眼紙Excelの調査・照合を効率化。",
+      "keywords": "神Excel, Excel方眼紙, セル結合, Excel全文検索, オフライン検索, インメモリ検索, 高速検索, C#, WPF"
     }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="hvWFbd0-8JQff8TVcIxgMjfLT86-cj4l71MWtDEFKRY" />
-    <title>けんさくくん - 高機能Excel検索ツール</title>
+    <title>けんさくくん - Excel横断調査・レビュー支援ツール</title>
     <link rel="icon" type="image/png" href="help/pics/favicon.png">
     <!-- Tailwind CSS & Lucide Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -65,7 +65,7 @@
             <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 shrink-0">
                 <img src="help/pics/favicon.png" width="32" height="32" alt="けんさくくん" class="w-7 h-7 sm:w-8 sm:h-8"/>
                 <span class="text-base sm:text-xl font-bold tracking-tight text-slate-900">けんさくくん</span>
-                <span class="hidden sm:inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600 border border-slate-200">高機能Excel検索ツール</span>
+                <span class="hidden sm:inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600 border border-slate-200">Excel横断調査・レビュー支援ツール</span>
             </a>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
                 <a href="#features" class="hover:text-blue-600 transition">特長・機能</a>
@@ -90,9 +90,8 @@
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-center">
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div
-                        class="inline-flex items-center space-x-2 rounded-full bg-blue-50 border border-blue-200/60 p-1 pr-3 text-xs font-medium text-blue-800">
-                        <span class="rounded-full bg-blue-600 px-2.5 py-0.5 text-white font-bold">AI駆動開発</span>
+                    <div class="inline-flex items-center space-x-2 rounded-full bg-blue-50 border border-blue-200/60 px-3.5 py-1.5 text-xs font-medium text-blue-800">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-600"></i>
                         <span>現場の課題から生まれた実用ツール</span>
                     </div>
                     <h1 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl leading-tight">
@@ -449,31 +448,24 @@
 
             <!-- 初回起動時のSmartScreen警告についての案内カード -->
             <div class="mt-3.5 rounded-2xl bg-slate-800/70 border border-slate-700/80 p-4 sm:p-5 text-left max-w-2xl mx-auto shadow-xl backdrop-blur-sm">
-                <div class="flex items-center space-x-2 text-amber-400 font-bold text-sm sm:text-base mb-1.5">
-                    <i data-lucide="shield-alert" class="w-5 h-5 shrink-0 text-amber-400"></i>
-                    <span>初回起動時の「Windows によってPCが保護されました」について</span>
+                <div class="flex items-center space-x-2 text-sky-400 font-bold text-sm sm:text-base mb-1.5">
+                    <i data-lucide="shield-check" class="w-5 h-5 shrink-0 text-sky-400"></i>
+                    <span>電子署名と初回起動時のSmartScreenについて</span>
                 </div>
                 <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    本ツールは個人開発のソフトウェアのため、高額なコードサイニング証明書（EV/OV電子署名）による署名を行っておりません。そのため、初回起動時にWindows SmartScreenの青い警告画面が表示される場合があります。
+                    本ツールは正規のコードサイニング証明書（Certum認証）による電子署名を行っており、プログラムの完全性と安全性が保証されています。<br>
+                    ※新規バージョンの公開直後はMicrosoftによる利用実績（レピュテーション）の蓄積前のため、初回起動時に青い警告画面が表示される場合があります。
                 </p>
-                <div class="mt-2.5 bg-slate-900/90 rounded-xl p-3 border border-slate-700/60 text-xs sm:text-sm text-slate-200 space-y-1.5">
-                    <p class="font-bold text-sky-300 flex items-center gap-1.5">
-                        <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400"></i>
-                        起動手順（2ステップ）：
-                    </p>
-                    <ol class="list-decimal list-inside space-y-1 text-slate-300 pl-1">
-                        <li>警告画面内の <strong class="text-white underline decoration-sky-400 underline-offset-2">「詳細情報」</strong> をクリックします。</li>
-                        <li>右下に表示される <strong class="text-white underline decoration-sky-400 underline-offset-2">「実行」</strong> ボタンをクリックすると通常通り起動します。</li>
-                    </ol>
-                    <div class="pt-1.5 text-center">
-                        <div class="inline-block relative group cursor-zoom-in" onclick="openImageModal('help/pics/92_defender_smartscreen.png', 'Microsoft Defender SmartScreen 解除手順')">
-                            <img src="help/pics/92_defender_smartscreen.png" alt="SmartScreen解除手順（詳細情報→実行）" class="mx-auto rounded-lg border border-slate-700 shadow-md max-w-xs sm:max-w-sm w-full h-auto transition-transform duration-200 group-hover:scale-[1.02] group-hover:border-sky-500" />
-                            <div class="absolute inset-0 bg-sky-950/20 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity flex items-center justify-center">
-                                <span class="bg-slate-900/90 text-sky-300 text-[11px] px-2.5 py-1 rounded-full border border-sky-500/40 shadow-lg flex items-center gap-1">
-                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> クリックで拡大
-                                </span>
-                            </div>
-                        </div>
+                <ol class="mt-2 text-xs sm:text-sm text-slate-300 space-y-1 list-decimal list-inside pl-1 bg-slate-900/60 p-2.5 rounded-lg border border-slate-700/60">
+                    <li>警告画面内の <strong class="text-white underline decoration-sky-400 underline-offset-2">「詳細情報」</strong> をクリックします。</li>
+                    <li>右下に表示される <strong class="text-white bg-sky-600 px-2 py-0.5 rounded font-bold">「実行」</strong> ボタンをクリックすると即座に起動します。</li>
+                </ol>
+                <div class="mt-3 text-center">
+                    <div class="inline-block relative group cursor-zoom-in" onclick="openImageModal('help/pics/92_defender_smartscreen.png', 'Microsoft Defender SmartScreen 解除手順')">
+                        <img src="help/pics/92_defender_smartscreen.png" alt="SmartScreen解除手順（詳細情報→実行）" class="mx-auto rounded-lg border border-slate-700 shadow-md max-w-xs sm:max-w-sm w-full h-auto transition-transform duration-200 group-hover:scale-[1.02] group-hover:border-sky-500" />
+                    </div>
+                </div>
+            </div>
                         <p class="text-[11px] text-slate-400 mt-1">【画面】左：①「詳細情報」をクリック ➜ 右：②「実行」をクリック（クリックで拡大）</p>
                     </div>
                 </div>

@@ -37,13 +37,14 @@ A Windows desktop application designed to quickly and easily find data across ma
 - **Fully Offline**: This tool requires no internet connection. All search and parsing operations are completed entirely within your local PC.
 - **Zero Data Transmission**: Your Excel file contents, search keywords, and settings are **never** transmitted to external servers, cloud services, or AI systems. You can safely use it with highly confidential business data.
 
-## Security Warning on Initial Launch (Windows SmartScreen)
-- As this software is an indie/personal project, it is not signed with an expensive commercial Code Signing Certificate.
-- Therefore, Windows SmartScreen may display a warning screen stating **"Windows protected your PC"** upon your initial launch.
+## Digital Signature & Initial Launch (Windows SmartScreen)
 
-**[How to Run]**
-1. Click **"More info"** on the warning screen.
-2. Click the **"Run anyway"** button that appears at the bottom right to start the application normally.
+- This application is digitally signed with an official Code Signing Certificate (Certum) to ensure software integrity and safety.
+- When a new version is released, Microsoft SmartScreen may temporarily display a blue "Windows protected your PC" screen until reputation is built.
+
+**Steps to run:**
+1. Click **"More info"** on the warning dialog.
+2. Click the **"Run anyway"** button that appears at the bottom right. that appears at the bottom right to start the application normally.
 
 *Note: This tool operates completely offline and never communicates with external networks. Please feel safe to use it.*
 
