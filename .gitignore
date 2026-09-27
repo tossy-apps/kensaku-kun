@@ -67,3 +67,4 @@ nunit-*.xml
 Thumbs.db
 [Bb]in/
 [Oo]bj/
+_docs-review/
