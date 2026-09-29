@@ -1,4 +1,4 @@
-﻿> 🌐 **[日本語のREADMEはこちら (Japanese README)](README_ja.md)**
+> 🌐 **[日本語のREADMEはこちら (Japanese README)](README_ja.md)**
 
 # Kensaku-kun (Excel Quick Search Tool)
 
@@ -42,9 +42,9 @@ A Windows desktop application designed to quickly and easily find data across ma
 - This application is digitally signed with an official Code Signing Certificate (Certum) to ensure software integrity and safety.
 - When a new version is released, Microsoft SmartScreen may temporarily display a blue "Windows protected your PC" screen until reputation is built.
 
-**Steps to run:**
-1. Click **"More info"** on the warning dialog.
-2. Click the **"Run anyway"** button that appears at the bottom right. that appears at the bottom right to start the application normally.
+**[How to Run]**
+1. Click **"More info"** on the warning screen.
+2. Click the **"Run anyway"** button that appears at the bottom right to start the application normally.
 
 *Note: This tool operates completely offline and never communicates with external networks. Please feel safe to use it.*
 
