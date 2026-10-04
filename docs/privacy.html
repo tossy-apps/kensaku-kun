@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プライバシーポリシー＆サポート - けんさくくん －Excel横断調査・レビュー支援ツール－</title>
+    <link rel="icon" type="image/png" href="help/pics/favicon.png">
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts BIZ UDPGothic & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'BIZ UDPGothic', 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-5xl items-center justify-between px-3 sm:px-6">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <img src="help/pics/favicon.png" width="32" height="32" alt="けんさくくん" class="transition-transform group-hover:scale-105"/>
+                <span class="text-base sm:text-lg font-bold tracking-tight text-white group-hover:text-blue-400 transition">けんさくくん</span>
+                <span class="hidden sm:inline-block rounded-full bg-slate-800 px-2.5 py-0.5 text-xs font-semibold text-slate-400 border border-slate-700">Excel横断調査・レビュー支援ツール</span>
+            </a>
+            
+            <div class="flex items-center space-x-3 text-sm font-medium">
+                <!-- 言語切替ボタン -->
+                <div class="inline-flex rounded-lg bg-slate-800 p-0.5 border border-slate-700 text-xs">
+                    <button id="btn-lang-ja" onclick="setLang('ja')" class="px-2.5 py-1 rounded-md font-bold transition bg-blue-600 text-white shadow-sm">
+                        日本語
+                    </button>
+                    <button id="btn-lang-en" onclick="setLang('en')" class="px-2.5 py-1 rounded-md font-medium text-slate-400 hover:text-white transition">
+                        English
+                    </button>
+                </div>
+
+                <a href="index.html" class="text-slate-400 hover:text-white transition flex items-center gap-1 text-xs sm:text-sm pl-2">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline">トップへ</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-6 py-12 lg:py-16">
+
+        <!-- ========================================== -->
+        <!-- 日本語コンテンツ (JP) -->
+        <!-- ========================================== -->
+        <div id="content-ja" class="space-y-12">
+            <!-- Header Title -->
+            <div class="space-y-4 border-b border-slate-800 pb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                    <span>完全オフライン・安心設計</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                    プライバシーポリシー ＆ サポート窓口
+                </h1>
+                <p class="text-base sm:text-lg text-slate-300">
+                    「<strong class="text-white">けんさくくん<span class="inline-block">　－Excel横断調査・</span><span class="inline-block">レビュー支援ツール－</span></strong>」（以下、本アプリ）における個人情報の取り扱い方針、セキュリティ設計、およびサポート情報をご案内します。
+                </p>
+                <p class="text-xs text-slate-500 font-mono">最終改定日: 2026年10月3日</p>
+            </div>
+
+            <!-- 1. 基本方針 & 通信ゼロ宣言 -->
+            <section class="space-y-4">
+                <div class="flex items-center gap-2.5 text-lg font-bold text-white">
+                    <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm">1</div>
+                    <h2>データの収集・外部送信について（通信ゼロ設計）</h2>
+                </div>
+                <div class="p-5 sm:p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-emerald-200">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                        <div class="text-xs sm:text-sm leading-relaxed">
+                            <strong>完全オフライン動作：</strong>
+                            本アプリは、ユーザーのファイル内容、ファイル名、検索キーワード、操作ログ、個人情報を外部のサーバーへ送信・収集・蓄積することは<strong>一切ありません</strong>。
+                        </div>
+                    </div>
+                    <ul class="space-y-2 list-disc list-inside text-slate-400 text-xs sm:text-sm pl-1">
+                        <li><strong>ローカル処理の徹底：</strong> 指定されたExcel等の検索・解析・プレビュー処理はすべてお使いのPC内部（インメモリ）で完結します。</li>
+                        <li><strong>テレメトリ・トラッキングの不使用：</strong> アプリ利用状況の追跡（アナリティクス）や広告配信用SDKは一切組み込まれていません。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 2. Microsoft Store によるライセンス・決済管理 -->
+            <section class="space-y-4">
+                <div class="flex items-center gap-2.5 text-lg font-bold text-white">
+                    <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm">2</div>
+                    <h2>Microsoft Store 経由でのお支払い・ライセンス管理</h2>
+                </div>
+                <div class="p-5 sm:p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <p>
+                        Microsoft Store 版の「けんさくくん<span class="inline-block">　－Excel横断調査・</span><span class="inline-block">レビュー支援ツール－</span>」をご利用いただく場合、アプリの購入、無料トライアル期間の管理、およびアップデート配信は Microsoft 社の公式ストア基盤（Microsoft Store API）を通じて安全に行われます。
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-400">
+                        お支払い情報（クレジットカード番号や請求先住所等）はすべて Microsoft 社によって厳重に管理され、開発者がそれらの情報にアクセス・閲覧・保持することはありません。詳細については、<a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">Microsoft プライバシーステートメント</a> をご参照ください。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 3. 免責事項・著作権 -->
+            <section class="space-y-4">
+                <div class="flex items-center gap-2.5 text-lg font-bold text-white">
+                    <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm">3</div>
+                    <h2>免責事項・著作権</h2>
+                </div>
+                <div class="p-5 sm:p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-slate-400 leading-relaxed text-xs sm:text-sm">
+                    <p>
+                        ・本ソフトウェア「けんさくくん<span class="inline-block">　－Excel横断調査・</span><span class="inline-block">レビュー支援ツール－</span>」の著作権は <strong>tossy.apps</strong> が保有しています。<br>
+                        ・本ソフトウェアは現状有姿（AS IS）で提供され、動作の正確性、特定目的への適合性について明示または黙示を問わずいかなる保証もいたしません。<br>
+                        ・本ソフトウェアの使用または使用不能から生じた直接的・間接的・偶発的な損害（データ消失、業務中断等を含む）について、開発者は一切の責任を負いません。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 4. お問い合わせ・サポート窓口 -->
+            <section class="space-y-4">
+                <div class="flex items-center gap-2.5 text-lg font-bold text-white">
+                    <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm">4</div>
+                    <h2>お問い合わせ・サポート窓口</h2>
+                </div>
+                <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-950 to-blue-950/40 border border-slate-800 space-y-4 text-slate-300">
+                    <p class="text-xs sm:text-sm leading-relaxed">
+                        不具合のご報告、操作方法に関するご質問、改善のご要望などは、下記窓口までお気軽にお寄せください。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-700/80 flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-400 shrink-0"></i>
+                            <div>
+                                <span class="text-xs text-slate-400 block">サポートメールアドレス</span>
+                                <a href="mailto:tossy.apps@gmail.com" class="text-sm font-bold text-white hover:text-blue-400 transition underline">tossy.apps@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-700/80 flex items-center gap-3">
+                            <i data-lucide="book-open" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+                            <div>
+                                <span class="text-xs text-slate-400 block">詳しい操作マニュアル</span>
+                                <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="text-sm font-bold text-white hover:text-emerald-400 transition underline">オンラインマニュアルを見る</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- 英語コンテンツ (EN) -->
+        <!-- ========================================== -->
+        <div id="content-en" class="hidden space-y-12">
+            <!-- Header Title -->
+            <div class="space-y-4 border-b border-slate-800 pb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                    <span>Fully Offline &amp; Privacy-First Architecture</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+                    Privacy Policy &amp; Support
+                </h1>
+                <p class="text-base sm:text-lg text-slate-300">
+                    Learn about our privacy practices, offline security model, and support channels for "<strong class="text-white">Kensaku-kun<span class="inline-block"> - Excel Cross-Search &amp;</span> <span class="inline-block">Review Assistant Tool</span></strong>" (KensakuKun).
+                </p>
+                <p class="text-xs text-slate-500 font-mono">Last Updated: October 3, 2026</p>
+            </div>
+
+            <!-- 1. Zero Data Transmission -->
+            <section class="space-y-4">
+                <div class="flex items-center gap-2.5 text-lg font-bold text-white">
+                    <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm">1</div>
+                    <h2>Data Collection and Zero Network Transmission</h2>
+                </div>
+                <div class="p-5 sm:p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-emerald-200">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                        <div class="text-xs sm:text-sm leading-relaxed">
+                            <strong>100% Offline by Design:</strong>
+                            Kensaku-kun does <strong>NOT</strong> collect, upload, store, or transmit any of your personal data, workbook contents, filenames, search queries, or activity logs to external servers.
+                        </div>
+                    </div>
+                    <ul class="space-y-2 list-disc list-inside text-slate-400 text-xs sm:text-sm pl-1">
+                        <li><strong>Local-Only Execution:</strong> All workbook indexing, full-text searching, and cell rendering are performed exclusively in memory on your local machine.</li>
+                        <li><strong>No Tracking or Telemetry:</strong> No analytics trackers, advertising SDKs, or background telemetry services are bundled within the application.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 2. Microsoft Store In-App Licensing -->
+            <section class="space-y-4">
+                <div class="flex items-center gap-2.5 text-lg font-bold text-white">
+                    <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm">2</div>
+                    <h2>Microsoft Store Billing and License Verification</h2>
+                </div>
+                <div class="p-5 sm:p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <p>
+                        When using the Microsoft Store edition of "Kensaku-kun<span class="inline-block"> - Excel Cross-Search &amp;</span> <span class="inline-block">Review Assistant Tool</span>", app purchases, free trial validation, and automatic updates are handled securely through Microsoft Store official APIs.
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-400">
+                        Payment information (credit card numbers, billing addresses) is processed and secured directly by Microsoft Corporation. The developer never accesses or stores your financial information. For more details, please review the <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">Microsoft Privacy Statement</a>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 3. Disclaimer & Copyright -->
+            <section class="space-y-4">
+                <div class="flex items-center gap-2.5 text-lg font-bold text-white">
+                    <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm">3</div>
+                    <h2>Disclaimer and Copyright</h2>
+                </div>
+                <div class="p-5 sm:p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-slate-400 leading-relaxed text-xs sm:text-sm">
+                    <p>
+                        ・Copyright © 2026 <strong>tossy.apps</strong>. All rights reserved.<br>
+                        ・The software is provided "AS IS", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement.<br>
+                        ・In no event shall the author or copyright holders be liable for any claim, damages, or other liability arising from the use of or inability to use this software.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 4. Support Contact -->
+            <section class="space-y-4">
+                <div class="flex items-center gap-2.5 text-lg font-bold text-white">
+                    <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm">4</div>
+                    <h2>Support &amp; Contact</h2>
+                </div>
+                <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-950 to-blue-950/40 border border-slate-800 space-y-4 text-slate-300">
+                    <p class="text-xs sm:text-sm leading-relaxed">
+                        For feedback, bug reports, feature requests, or license inquiries, please feel free to reach out to us:
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-700/80 flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-400 shrink-0"></i>
+                            <div>
+                                <span class="text-xs text-slate-400 block">Support Email</span>
+                                <a href="mailto:tossy.apps@gmail.com" class="text-sm font-bold text-white hover:text-blue-400 transition underline">tossy.apps@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-700/80 flex items-center gap-3">
+                            <i data-lucide="globe" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+                            <div>
+                                <span class="text-xs text-slate-400 block">Official Website</span>
+                                <a href="https://tossy-apps.github.io/kensaku-kun/index_en.html" class="text-sm font-bold text-white hover:text-emerald-400 transition underline">Kensaku-kun Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Back to Top Links -->
+        <div class="mt-16 pt-8 border-t border-slate-800 flex items-center justify-between text-sm">
+            <a href="index.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-white transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>トップページに戻る (Back to Home)</span>
+            </a>
+            <a href="help.html" target="kensaku_kun_manual" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 font-bold transition">
+                <i data-lucide="book-open" class="w-4 h-4"></i>
+                <span>マニュアルを見る (Manual)</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-8 text-center text-xs text-slate-500">
+        <p>© 2026 tossy.apps - Kensaku-kun Project. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Language Switcher Handler
+        function setLang(lang) {
+            const jaContent = document.getElementById('content-ja');
+            const enContent = document.getElementById('content-en');
+            const btnJa = document.getElementById('btn-lang-ja');
+            const btnEn = document.getElementById('btn-lang-en');
+
+            if (lang === 'en') {
+                jaContent.classList.add('hidden');
+                enContent.classList.remove('hidden');
+                btnEn.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+                btnEn.classList.remove('text-slate-400');
+                btnJa.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+                btnJa.classList.add('text-slate-400');
+            } else {
+                enContent.classList.add('hidden');
+                jaContent.classList.remove('hidden');
+                btnJa.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+                btnJa.classList.remove('text-slate-400');
+                btnEn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+                btnEn.classList.add('text-slate-400');
+            }
+            lucide.createIcons();
+        }
+
+        // URLパラメータまたはブラウザ言語による自動判定
+        (function detectInitialLang() {
+            const params = new URLSearchParams(window.location.search);
+            const langParam = params.get('lang');
+            if (langParam === 'en') {
+                setLang('en');
+            } else if (langParam === 'ja') {
+                setLang('ja');
+            } else {
+                const browserLang = (navigator.language || '').toLowerCase();
+                if (browserLang && !browserLang.startsWith('ja')) {
+                    setLang('en');
+                } else {
+                    setLang('ja');
+                }
+            }
+        })();
+
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

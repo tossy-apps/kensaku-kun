@@ -1,6 +1,6 @@
 ﻿> 🌐 **[日本語のREADMEはこちら (Japanese README)](README_ja.md)**
 
-# Kensaku-kun (Excel Quick Search Tool)
+# Kensaku-kun - Excel Cross-Search & Review Assistant Tool -
 
 A Windows desktop application designed to quickly and easily find data across massive amounts of Excel assets. It is particularly optimized for searching heavily formatted or layout-driven Excel files (such as "Excel Hoganshi")!
 
