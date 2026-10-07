@@ -18,6 +18,7 @@ A Windows desktop application designed to quickly and easily find data across ma
 
 ## Download (Latest: v1.0.0)
 
+- **[Vector Product Page & Download (se529738)](https://www.vector.co.jp/soft/winnt/business/se529738.html)**
 - **[Kensaku-kun Application (kensaku-kun_v1.0.0.zip / ~81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
   *No installer required. Simply extract the ZIP to run standalone (.NET 10 Runtime bundled / self-contained EXE).*
 - **Sample Excel Datasets for Verification**:
@@ -83,6 +84,10 @@ The author (developer) assumes no responsibility for any damages (including but 
 ## Copyright and Licensing
 The copyright of this tool belongs to the author.
 Unauthorized redistribution, reverse engineering, modification, and sales are strictly prohibited.
+
+### Trademarks
+
+- Microsoft, Windows, and Excel are registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries.
 
 ### Third-Party Components
 This software utilizes the following open-source libraries.

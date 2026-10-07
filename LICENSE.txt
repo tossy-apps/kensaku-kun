@@ -62,3 +62,9 @@ SOFTWARE.
   Apache License Version 2.0, https://fonts.google.com/icons
 
 Copyright (c) 2026 tossy.apps All Rights Reserved.
+
+--------------------------------------------------
+【商標について (Trademarks)】
+Microsoft、Windows、Excelは、米国Microsoft Corporationの米国およびその他の国における登録商標または商標です。
+Microsoft, Windows, and Excel are registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries.
+

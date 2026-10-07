@@ -21,6 +21,7 @@
 
 ## ダウンロード (最新版: v1.0.0)
 
+- **[Vector 製品詳細・ダウンロード (se529738)](https://www.vector.co.jp/soft/winnt/business/se529738.html)**
 - **[けんさくくん 本体 (kensaku-kun_v1.0.0.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
   ※インストーラー不要。ZIP解凍ですぐに起動できます（.NET 10 ランタイム同梱・自己完結型EXE）。
 - **動作検証用 サンプルExcelデータセット**:
@@ -100,6 +101,10 @@ zipファイルを展開すると、以下のファイルに解凍されます�
 
 本ツールの著作権は作者に帰属します。  
 無断での再配布、リバースエンジニアリング、改変、および販売は禁止します。
+
+### 商標について
+
+- Microsoft、Windows、Excelは、米国Microsoft Corporationの米国およびその他の国における登録商標または商標です。
 
 ### サードパーティ コンポーネント
 
