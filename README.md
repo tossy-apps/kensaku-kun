@@ -1,4 +1,4 @@
-﻿> 🌐 **[日本語のREADMEはこちら (Japanese README)](README_ja.md)**
+> 🌐 **[日本語のREADMEはこちら (Japanese README)](README_ja.md)**
 
 # Kensaku-kun - Excel Cross-Search & Review Assistant Tool -
 
@@ -16,10 +16,12 @@ A Windows desktop application designed to quickly and easily find data across ma
 - While it excels at searching complex, layout-driven files ("Excel Hoganshi"), it is **not well-suited** for searching massive database-style Excel tables with tens of thousands of rows, as doing so consumes an excessive amount of memory.
 - It does not support direct searching of Excel files hosted on HTTP(S) locations (like SharePoint). Please download them to a local or network drive before searching.
 
-## Download (Latest: v1.0.0)
+## Download & Get Started (Latest: v1.0.0)
 
+- **[Get from Microsoft Store (Official Store Edition / Auto-updates)](https://apps.microsoft.com/detail/9P3M58NQM2LH)**  
+  [![Get it from Microsoft](https://get.microsoft.com/images/en-us%20dark.svg)](https://apps.microsoft.com/detail/9P3M58NQM2LH)
 - **[Vector Product Page & Download (se529738)](https://www.vector.co.jp/soft/winnt/business/se529738.html)**
-- **[Kensaku-kun Application (kensaku-kun_v1.0.0.zip / ~81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
+- **[Kensaku-kun Standalone ZIP Edition (kensaku-kun_v1.0.0.zip / ~81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
   *No installer required. Simply extract the ZIP to run standalone (.NET 10 Runtime bundled / self-contained EXE).*
 - **Sample Excel Datasets for Verification**:
   - [Test Excel × 200 files (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
@@ -43,9 +45,9 @@ A Windows desktop application designed to quickly and easily find data across ma
 - This application is digitally signed with an official Code Signing Certificate (Certum) to ensure software integrity and safety.
 - When a new version is released, Microsoft SmartScreen may temporarily display a blue "Windows protected your PC" screen until reputation is built.
 
-**Steps to run:**
-1. Click **"More info"** on the warning dialog.
-2. Click the **"Run anyway"** button that appears at the bottom right. that appears at the bottom right to start the application normally.
+**[How to Run]**
+1. Click **"More info"** on the warning screen.
+2. Click the **"Run anyway"** button that appears at the bottom right to start the application normally.
 
 *Note: This tool operates completely offline and never communicates with external networks. Please feel safe to use it.*
 

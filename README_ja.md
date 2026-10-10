@@ -1,4 +1,4 @@
-﻿> 🌐 **[Read this in English (English README)](README.md)**
+> 🌐 **[Read this in English (English README)](README.md)**
 
 # けんさくくん　－Excel横断調査・レビュー支援ツール－
 
@@ -19,10 +19,12 @@
 - "Excel方眼紙"のようなファイルの検索には向いています。一方、数万行に及ぶ巨大なデータベース表として利用されているExcelファイルの検索は、多くのメモリを消費するため、本ツールの用途にはあまり**向いていません**。
 - SharePointなどのhttp(s)上にあるExcelファイルを直接検索する機能は持っていません。ローカルやネットワークドライブへ、ダウンロードして検索してください。
 
-## ダウンロード (最新版: v1.0.0)
+## ダウンロード・入手方法 (最新版: v1.0.0)
 
+- **[Microsoft Store から入手 (公式ストア版 / 自動更新・署名済)](https://apps.microsoft.com/detail/9P3M58NQM2LH?hl=ja-jp&gl=JP&ocid=pdpshare)**  
+  [![Microsoft から入手](https://get.microsoft.com/images/ja-jp%20dark.svg)](https://apps.microsoft.com/detail/9P3M58NQM2LH?hl=ja-jp&gl=JP&ocid=pdpshare)
 - **[Vector 製品詳細・ダウンロード (se529738)](https://www.vector.co.jp/soft/winnt/business/se529738.html)**
-- **[けんさくくん 本体 (kensaku-kun_v1.0.0.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
+- **[けんさくくん ポータブルZIP版 (kensaku-kun_v1.0.0.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
   ※インストーラー不要。ZIP解凍ですぐに起動できます（.NET 10 ランタイム同梱・自己完結型EXE）。
 - **動作検証用 サンプルExcelデータセット**:
   - [テストExcel × 200件 (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
@@ -45,12 +47,14 @@
 ## 電子署名と初回起動時のSmartScreenについて
 
 - 本ソフトウェアは正規のコードサイニング証明書（Certum認証）による電子署名を付与し、改ざん防止と安全性を担保しています。
-- 新規バージョンの公開直後はMicrosoftによる利用実績（レピュテーション）の蓄積前のため、初回起動時にWindows SmartScreenにより「WindowsによってPCが保護されました」という青い画面が表示される場合があります。
+- 公開直後や新規バージョンのリリース直後は、Microsoftによる利用実績（レピュテーション）の蓄積前のため、初回起動時にWindows SmartScreenにより「WindowsによってPCが保護されました」という青い画面が表示される場合があります。
 
 **【起動手順】**
 
 1. 警告画面内の **「詳細情報」** をクリックします。
-2. 右下に表示される **「実行」** ボタンをクリックすると、通常通り起動します。 本ツールは完全オフラインで動作し、外部ネットワークへの通信は一切行いません。安心してご利用ください。
+2. 右下に表示される **「実行」** ボタンをクリックすると、通常通り起動します。
+
+※本ツールは完全オフラインで動作し、外部ネットワークへの通信は一切行いません。安心してご利用ください。
 
 ## フォルダ構成と同梱ファイル
 
