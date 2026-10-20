@@ -18,7 +18,7 @@ A Windows desktop application designed to quickly and easily find data across ma
 
 ## Download & Get Started (Latest: v1.0.0)
 
-- **[Get from Microsoft Store (Official Store Edition / Auto-updates)](https://apps.microsoft.com/detail/9P3M58NQM2LH)**  
+- **[Get from Microsoft Store (Official Store Edition / Auto-updates / Free Download & 30-Day Trial)](https://apps.microsoft.com/detail/9P3M58NQM2LH)**  
   [![Get it from Microsoft](https://get.microsoft.com/images/en-us%20dark.svg)](https://apps.microsoft.com/detail/9P3M58NQM2LH)
 - **[Vector Product Page & Download (se529738)](https://www.vector.co.jp/soft/winnt/business/se529738.html)**
 - **[Kensaku-kun Standalone ZIP Edition (kensaku-kun_v1.0.0.zip / ~81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
@@ -75,7 +75,9 @@ If the 30-day trial period expires, the following functional limitations will ap
 - A background watermark will be applied to the exported Excel files.
 
 To continue using the tool without limitations, please purchase and register a valid license.  
-*For purchase and registration instructions, please see our [Official Website](https://tossy-apps.github.io/kensaku-kun/).*
+- **Microsoft Store Edition**: You can purchase a permanent license via **[Help] -> [Purchase License...]** within the app (In-App Purchase; no license key required).
+- **Vector / Standalone Edition**: Purchase a license key on Vector and activate it via **[Help] -> [Register License]**.  
+*For more details, please see our [Official Website](https://tossy-apps.github.io/kensaku-kun/).*
 
 ## Disclaimer
 The author (developer) assumes no responsibility for any damages (including but not limited to search failure, data loss, business interruption, loss of profits, system crashes, or impact on other applications) arising from the use of this software. Please use it entirely at your own risk.

@@ -21,7 +21,7 @@
 
 ## ダウンロード・入手方法 (最新版: v1.0.0)
 
-- **[Microsoft Store から入手 (公式ストア版 / 自動更新・署名済)](https://apps.microsoft.com/detail/9P3M58NQM2LH?hl=ja-jp&gl=JP&ocid=pdpshare)**  
+- **[Microsoft Store から入手 (公式ストア版 / 自動更新・無料ダウンロード・アプリ内購入対応)](https://apps.microsoft.com/detail/9P3M58NQM2LH?hl=ja-jp&gl=JP&ocid=pdpshare)**  
   [![Microsoft から入手](https://get.microsoft.com/images/ja-jp%20dark.svg)](https://apps.microsoft.com/detail/9P3M58NQM2LH?hl=ja-jp&gl=JP&ocid=pdpshare)
 - **[Vector 製品詳細・ダウンロード (se529738)](https://www.vector.co.jp/soft/winnt/business/se529738.html)**
 - **[けんさくくん ポータブルZIP版 (kensaku-kun_v1.0.0.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/kensaku-kun_v1.0.0.zip)**  
@@ -86,7 +86,7 @@ zipファイルを展開すると、以下のファイルに解凍されます�
 - Excel出力で出力したExcelに、背景が設定されます。
 
 継続してご利用いただく場合は、正規ライセンスの登録をお願いいたします。  
-※ライセンスの購入方法および登録手順については、[公式サイト](https://tossy-apps.github.io/kensaku-kun/)をご確認ください。
+※Microsoft Store版はメニュー［ヘルプ］➜［ライセンス購入...］から直接購入いただけます（キー不要）。Vector版をご利用の場合は、ご購入後にメニュー［ヘルプ］➜［ライセンス登録］よりキーを入力してください。詳しい購入手順は [公式サイト](https://tossy-apps.github.io/kensaku-kun/) をご確認ください。
 
 ## 免責事項
 
