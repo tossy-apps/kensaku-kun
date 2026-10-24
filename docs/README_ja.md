@@ -19,12 +19,12 @@
 - "Excel方眼紙"のようなファイルの検索には向いています。一方、数万行に及ぶ巨大なデータベース表として利用されているExcelファイルの検索は、多くのメモリを消費するため、本ツールの用途にはあまり**向いていません**。
 - SharePointなどのhttp(s)上にあるExcelファイルを直接検索する機能は持っていません。ローカルやネットワークドライブへ、ダウンロードして検索してください。
 
-## ダウンロード・入手方法 (最新版: v1.0.3)
+## ダウンロード・入手方法 (最新版: v1.0.4)
 
 - **[Microsoft Store から入手 (公式ストア版 / 自動更新・無料ダウンロード・アプリ内購入対応)](https://apps.microsoft.com/detail/9P3M58NQM2LH?hl=ja-jp&gl=JP&ocid=pdpshare)**  
   [![Microsoft から入手](https://get.microsoft.com/images/ja-jp%20dark.svg)](https://apps.microsoft.com/detail/9P3M58NQM2LH?hl=ja-jp&gl=JP&ocid=pdpshare)
 - **[Vector 製品詳細・ダウンロード (se529738)](https://www.vector.co.jp/soft/winnt/business/se529738.html)**
-- **[けんさくくん ポータブルZIP版 (kensaku-kun_v1.0.3.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.3/kensaku-kun_v1.0.3.zip)**  
+- **[けんさくくん ポータブルZIP版 (kensaku-kun_v1.0.4.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.4/kensaku-kun_v1.0.4.zip)**  
   ※インストーラー不要。ZIP解凍ですぐに起動できます（.NET 10 ランタイム同梱・自己完結型EXE）。
 - **動作検証用 サンプルExcelデータセット**:
   - [テストExcel × 200件 (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)

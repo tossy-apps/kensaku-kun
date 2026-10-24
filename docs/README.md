@@ -16,12 +16,12 @@ A Windows desktop application designed to quickly and easily find data across ma
 - While it excels at searching complex, layout-driven files ("Excel Hoganshi"), it is **not well-suited** for searching massive database-style Excel tables with tens of thousands of rows, as doing so consumes an excessive amount of memory.
 - It does not support direct searching of Excel files hosted on HTTP(S) locations (like SharePoint). Please download them to a local or network drive before searching.
 
-## Download & Get Started (Latest: v1.0.3)
+## Download & Get Started (Latest: v1.0.4)
 
 - **[Get from Microsoft Store (Official Store Edition / Auto-updates / Free Download & 30-Day Trial)](https://apps.microsoft.com/detail/9P3M58NQM2LH)**  
   [![Get it from Microsoft](https://get.microsoft.com/images/en-us%20dark.svg)](https://apps.microsoft.com/detail/9P3M58NQM2LH)
 - **[Vector Product Page & Download (se529738)](https://www.vector.co.jp/soft/winnt/business/se529738.html)**
-- **[Kensaku-kun Standalone ZIP Edition (kensaku-kun_v1.0.3.zip / ~81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.3/kensaku-kun_v1.0.3.zip)**  
+- **[Kensaku-kun Standalone ZIP Edition (kensaku-kun_v1.0.4.zip / ~81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.4/kensaku-kun_v1.0.4.zip)**  
   *No installer required. Simply extract the ZIP to run standalone (.NET 10 Runtime bundled / self-contained EXE).*
 - **Sample Excel Datasets for Verification**:
   - [Test Excel × 200 files (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
