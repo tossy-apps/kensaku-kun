@@ -24,7 +24,7 @@
 - **[Microsoft Store から入手 (公式ストア版 / 自動更新・無料ダウンロード・アプリ内購入対応)](https://apps.microsoft.com/detail/9P3M58NQM2LH?hl=ja-jp&gl=JP&ocid=pdpshare)**  
   [![Microsoft から入手](https://get.microsoft.com/images/ja-jp%20dark.svg)](https://apps.microsoft.com/detail/9P3M58NQM2LH?hl=ja-jp&gl=JP&ocid=pdpshare)
 - **[Vector 製品詳細・ダウンロード (se529738)](https://www.vector.co.jp/soft/winnt/business/se529738.html)**
-- **[けんさくくん ポータブルZIP版 (kensaku-kun_v1.0.4.zip / 約81MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.4/kensaku-kun_v1.0.4.zip)**  
+- **[けんさくくん ポータブルZIP版 (kensaku-kun_v1.0.4.zip / 約92MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.4/kensaku-kun_v1.0.4.zip)**  
   ※インストーラー不要。ZIP解凍ですぐに起動できます（.NET 10 ランタイム同梱・自己完結型EXE）。
 - **動作検証用 サンプルExcelデータセット**:
   - [テストExcel × 200件 (11MB)](https://github.com/tossy-apps/kensaku-kun/releases/download/v1.0.0/200_excels.zip)
